@@ -354,7 +354,7 @@ section.work {
 	font-size: 5.8rem;
 	line-height: 1;
 	margin-left: -66px;
-	margin-top: -64px;
+	margin-top: -58px;
 }
 
 @media screen and (max-width: 899px) {
@@ -362,7 +362,7 @@ section.work {
 		margin-bottom: 4rem;
 	}
 	.work .card .title {
-		color: var(--color-black);color: #0057FF;
+		color: var(--color-black);
 		mix-blend-mode: normal;
 		font-size: 2rem;
 		line-height: 1;
