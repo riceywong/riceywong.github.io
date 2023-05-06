@@ -349,11 +349,12 @@ section.work {
 }
 
 .work .card .title {
-	color: #0057FF;
+	color: #ffe200;
+	mix-blend-mode: difference;
 	font-size: 5.8rem;
 	line-height: 1;
-	margin-left: -58px;
-	margin-top: -58px;
+	margin-left: -66px;
+	margin-top: -64px;
 }
 
 @media screen and (max-width: 899px) {
@@ -361,7 +362,8 @@ section.work {
 		margin-bottom: 4rem;
 	}
 	.work .card .title {
-		color: var(--color-black);
+		color: var(--color-black);color: #0057FF;
+		mix-blend-mode: normal;
 		font-size: 2rem;
 		line-height: 1;
 		margin-left: 0;
@@ -370,9 +372,9 @@ section.work {
 }
 @media (min-width: 900px) and (max-width: 1199px) {
 	.work .card .title {
-		font-size: 4.4rem;	
-		margin-left: -40px;
-		margin-top: -30px;
+		font-size: 5rem;	
+		margin-left: -45px;
+		margin-top: -33px;
 	}
 }
 
@@ -385,7 +387,6 @@ section.work {
 
 .work .card {
 	color: var(--color-black);
-	overflow: hidden;
 }
 
 .work .card img {
