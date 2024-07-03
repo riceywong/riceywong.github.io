@@ -135,11 +135,11 @@ h2,.h2 {font-size: 2.6em;line-height: 1;padding-top: 20px;padding-bottom: 40px;}
 
 div.stack {
 	display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
+  display: -ms-flexbox;
+  display: flex;
 	-webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 img.stack {
 	display: block;
@@ -154,15 +154,22 @@ img.stack {
 	overflow-x: unset;
 	margin-bottom: 20px;
 	max-width: fit-content;
-    width: 100%;
+  width: 100%;
 }
 .img-overflow>img {
 	max-height: 400px;
-    width: 100%;
-    max-width: none;
+  width: 100%;
+  max-width: none;
 }
 .padding-bottom-20-40 {
 	padding-bottom: 40px;
+}
+.hero-text {
+	height: 50%;
+	width: 310px;
+	position: absolute;
+	top: 170px;
+	left: 54%;
 }
 .hero-bottom {
 	margin-bottom: 120px;
@@ -197,6 +204,14 @@ img.stack {
 	.hero-bottom {
 		margin-bottom: 80px;
 	}
+	.hero-text {
+		width: 280px;
+    top: 220px;
+    left: -3px;
+	}
+	.mobile-height {
+		height: 278px;
+	}
 }
 
 .line1,.line2 {
@@ -215,13 +230,6 @@ img.stack {
 	width: 78px;
 	top: 480px;
     left: calc(50vw - 200px);
-}
-.hero-text {
-	height: 50%;
-	width: 310px;
-    position: absolute;
-    top: 170px;
-    left: 54%;
 }
 .street-bg {
 	background-image: url("images/back-hand.svg");
@@ -243,17 +251,13 @@ img.stack {
 @media screen and (max-width: 420px) {
 	.line1,.line2 {
 		padding: 20px 40px;
+		min-width: 300px;
 	}
 	.line2 {
 		margin-left: unset;
 	}
 	.line2>p {
 		margin: 40px 0 30px !important;
-	}
-	.hero-text {
-		width: 280px;
-        	top: 220px;
-        	left: -3px;
 	}
 	.street-bg {
 		background-image: unset;
@@ -290,7 +294,7 @@ img.stack {
 					<div class="col-5" style="margin-left:0;">
 						<h1 class="white">A <br><span style="color:#00B14F;">Grab</span>Wallet <span style="font-style:italic;">Case&nbsp;Study</span></h1>
 					</div>
-					<div class="col-1" style="height:278px;"></div>
+					<div class="col-1 mobile-height"></div>
 					<div class="col-6" style="display:flex;align-items:flex-end;">
 						<p class="text-right white lessbold" style="margin-bottom:3px;margin-top:20px">This is a story about expectations&nbsp;versus&nbsp;reality.</p>
 					</div>
@@ -639,12 +643,20 @@ img.stack {
 		<div class="row center" style="margin:0 0 20px 0">
 					<div class="col-4">
 						<p><b class="grot" style="opacity:0.4;">Team</b></p>
-						<p><span>Designer</span>&nbsp;<span class="pull-right">Suling Wong</span><br><span>Product Manager</span>&nbsp;<span class="pull-right">Ritesh Arora</span><br><span>Analytics</span>&nbsp;<span class="pull-right">Artem Diedkov</span><br><span>Engineering</span>&nbsp;<span class="pull-right">Various</span></p>
+						<p><span>Designer</span>&nbsp;
+							<span class="pull-right">Suling Wong</span><br>
+							<span>Product Manager</span>&nbsp;
+							<span class="pull-right">Ritesh Arora</span><br>
+							<span>Analytics</span>&nbsp;
+							<span class="pull-right">Artem Diedkov</span><br>
+							<span>Engineering</span>&nbsp;
+							<span class="pull-right">Various</span></p>
 					</div>
 					<div class="col-1"></div>
 					<div class="col-4">
 						<p><b class="grot" style="opacity:0.4;">Advisors</b></p>
-						<span>Design Manager</span>&nbsp;<span class="pull-right">Zoey Nguyen ❤️</span></p>
+						<span>Design Manager</span>&nbsp;
+						<span class="pull-right">Zoey Nguyen ❤️</span></p>
 					</div>
 		</div>
 		<div class="row center" style="margin:0">
