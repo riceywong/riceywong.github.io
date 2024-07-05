@@ -612,7 +612,7 @@ aside {
 
 @keyframes eyes {
      0%, 100% {transform: translateX(0);}
-     80%, 90% {transform: translateX(3px);}
+     80%, 90% {transform: translateX(5px);}
 }
 
 
@@ -622,7 +622,7 @@ aside {
 
 @keyframes eyebrow {
      0%, 100% {transform: translate(0,0);}
-     80%, 90% {transform: translate(2px,-3px);}
+     80%, 90% {transform: translate(0,-3px);}
 }
 
 #armleft {
@@ -647,24 +647,25 @@ aside {
      50% {transform: rotate(6deg) translateX(-16px);}
 }
 
-#armright {
-     animation: armright 2s ease-out infinite;
+#forearm {
+     animation: forearm 2s ease-out infinite;
+     transform-origin: 250px;
 }
 
-@keyframes armright {
-     0%, 100% {transform: translateY(5px);}
-     50%, 60% {transform: translateY(10px);}
+@keyframes forearm {
+     0%, 100% {transform: rotate(0deg);}
+     50%, 60% {transform: rotate(10deg);}
 }
 
 #handright {
      transform-box: fill-box;
-     transform-origin: center center;
+     transform-origin: 100px 110px;
      animation: handright 2s ease-out infinite;
 }
 
 @keyframes handright {
-     0%, 100% {transform: translateY(10px);}
-     50%, 60% {transform: rotate(5deg) translateY(15px);}
+     0%, 100% {transform: rotate(0deg);}
+     50%, 60% {transform: rotate(10deg);}
 }
 
 #face, #hair {
