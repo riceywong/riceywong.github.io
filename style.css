@@ -452,6 +452,7 @@ section.projects {
 
 .projects .card .title {
 	color: var(--color-black);
+	font-family: "Bricolage Grotesque", sans-serif;
 	font-size: 2rem;
 	display: flex;
     align-items: center;
