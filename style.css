@@ -2,7 +2,9 @@ section {
 	position: relative;
 	display: flex;
 }
-
+h2 {
+	font-family: "Bricolage Grotesque", sans-serif;
+}
 @media screen and (min-width: 600px) {
 	.sticky {
 		position: sticky;
@@ -11,7 +13,6 @@ section {
 		transform: translateY(-50%);
 	}
 }
-
 /*NAV*/
 .nav {
 	position: fixed;
@@ -313,6 +314,7 @@ section.writing {
 
 .writing .card .title {
 	color: var(--color-black);
+	font-family: "Bricolage Grotesque", sans-serif;
 	font-size: 2rem;
 	margin-top: 0;
 	margin-bottom: 0.8rem;
