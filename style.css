@@ -343,72 +343,63 @@ section.work {
 
 @media screen and (max-width: 899px) {
 	section.work {
-		padding: 60px 0 80px;
+		padding: 60px 0 60px;
 	}
 }
 
 .work h2 {
-	font-size: 3.2rem;
+	font-size: 5.8rem;
 	margin-bottom: 8rem;
 	font-weight: 600;
+	text-align: center;
 }
 
-.work .card .title {
-	color: #ffe200;
-	mix-blend-mode: difference;
-	font-size: 5.8rem;
-	line-height: 1;
-	margin-left: -66px;
-	margin-top: -55px;
+.work .card {
+	color: #ffffff;
+	background: #0500384f;
+	box-shadow: none;
+	text-transform: lowercase;
+	height: 260px;
+	padding: 26px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	background-image: url(#image);
+	background-repeat: no-repeat;
+	background-position: bottom right;
+}
+
+.work .card p:last-child {
+	margin-top: auto;
+}
+
+.work .card .year {
+	opacity: 0.5;
 }
 
 @media screen and (max-width: 899px) {
 	.work h2 {
+		font-size: 3.2rem;
 		margin-bottom: 4rem;
+		text-align: left;
 	}
-	.work .card .title {
-		color: var(--color-black);
-		mix-blend-mode: normal;
-		font-size: 2rem;
-		line-height: 1;
-		margin-left: 0;
-		margin-top: 10;
+	.work .row {
+		margin-bottom: 0 !important;
 	}
-}
-@media (min-width: 900px) and (max-width: 1199px) {
-	.work .card .title {
-		font-size: 5rem;	
-		margin-left: -45px;
-		margin-top: -33px;
+	.work .card {
+		background: #0000004a;
+		margin-bottom: 20px;
+		height: 300px;
+		background-repeat: no-repeat;
+		background-position: bottom right;
+		background-size: clamp(200px, 50%, 400px) auto !important;
 	}
-}
-
-.work .label {
-	color: var(--color-black);
-	font-size: 1.2rem;
-	opacity: 0.6;
-	min-width: max-content;
-}
-
-.work .card {
-	color: var(--color-black);
-}
-
-.work .card img {
-	padding-right: 10px;
-}
-
-@media screen and (max-width: 899px) {
-	.work .card img {
-		padding-right: 0;
-		max-width: 100px;
-		max-height: 100px;
+	.work .card p:last-child {
+		margin-top: 20px;
 	}
-}
-
-.work a.card {
-	box-shadow: 8px 8px 0 var(--color-black);
-	color: var(--color-black);
+	.work .card.unset {
+		height: unset;
+	}
 }
 
 /*PROJECTS*/
