@@ -373,6 +373,12 @@ section.work {
 	margin-top: auto;
 }
 
+.work a.card:hover {
+	background: #000;
+	box-shadow: unset;
+	transform: scale(1.02);
+}
+
 .work .card .year {
 	opacity: 0.5;
 }
@@ -400,6 +406,9 @@ section.work {
 	}
 	.work .card.unset {
 		height: unset;
+	}
+	.work a.card:hover {
+	transform: unset;
 	}
 }
 
