@@ -390,6 +390,7 @@ section.work {
 		background: #0000004a;
 		margin-bottom: 20px;
 		height: 300px;
+		font-size: 1.4rem;
 		background-repeat: no-repeat;
 		background-position: bottom right;
 		background-size: clamp(200px, 50%, 400px) auto !important;
