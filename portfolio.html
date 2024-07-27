@@ -126,6 +126,11 @@ section.lightgreen {
 	section.grey {
 		padding-top: 90px;
 	}
+	.hero-top {
+		margin-left: 0;
+		margin-bottom: 240px;
+		margin-top: 40px;
+	}
 }
 h1,h2,h3{font-weight: 400;font-family: "Bricolage Grotesque", sans-serif;
   font-optical-sizing: auto; margin: 0;} 
@@ -165,13 +170,20 @@ img.stack {
 }
 .hero-text {
 	height: 50%;
-	width: 610px;
+	width: 866px;
 	position: absolute;
 	top: 170px;
-	left: calc(50vw - 200px);
+	left: calc(50vw - 450px);
 }
 .hero-bottom {
 	margin-bottom: 120px;
+}
+@media (min-width: 600px) and (max-width: 780px) {
+	.hero-text {
+		width: 540px;
+		top: 220px;
+		left: 40px;
+	}
 }
 @media screen and (max-width: 599px) {
 	h1 {
@@ -311,7 +323,7 @@ img.stack {
 	<img class="hero-text hide-xs" src="images/hero-text-desktop.svg" alt="">
 	<div class="container" style="display:flex;align-items:flex-end;">
 		<div class="row hero-bottom">
-					<div class="col-5" style="margin-left:0;">
+					<div class="col-5 hero-top">
 						<h1 class="white">A <br><span style="color:#00B14F;">Grab</span>Wallet <span style="font-style:italic;">Case&nbsp;Study</span></h1>
 					</div>
 					<div class="col-1 mobile-height"></div>
