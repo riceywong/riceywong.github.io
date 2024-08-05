@@ -23,7 +23,8 @@ body {
 .ui-draggable-dragging {
 	cursor: grabbing;
 	transition: filter 200ms ease-out;
-	filter: drop-shadow(0px 4px 20px rgba(0,0,0,0.1));
+	filter: drop-shadow(0px 4px 20px rgba(0,0,0,0.2));
+	z-index: 100;
 }
 .grid {
 	display: grid;
@@ -122,12 +123,12 @@ body {
 .right-1 { right: -1vw; }
 .bottom-1 { bottom: -1vw; }
 .top-10 { top: -10vw; }
-.left-10 { left: -10vw; }
-.right-10 { right: -10vw; }
+.left-10 { left: -8vw; }
+.right-10 { right: -8vw; }
 .bottom-10 { bottom: -10vw; }
 .top-20 { top: -20vw; }
-.left-20 { left: -20vw; }
-.right-20 { right: -20vw; }
+.left-20 { left: -15vw; }
+.right-20 { right: -15vw; }
 .bottom-20 { bottom: -20vw; }
 
 .object img {
@@ -171,12 +172,12 @@ body {
 
 <div class="object draggable row-two col-one rot-four">
   <img src="ricey_image_009.png">
-  <span class="tooltip right">light leak effect in the first shot of a new roll of film</span>
+  <span class="tooltip top">light leak effect in the first shot of a new roll of film</span>
 </div>
 
 <div class="object draggable row-two col-two rot-three top-10">
   <img src="ricey_image_003.png">
-  <span class="tooltip top">a double-exposure shot taken night and day</span>
+  <span class="tooltip right">a double-exposure shot taken night and day</span>
 </div>
 
 <div class="object draggable row-two col-three rot-one top-1">
@@ -203,7 +204,7 @@ body {
   <img src="ricey_image_001.png" style="width: calc(22vw + 12vh);">
 </div>
 
-<div class="object draggable row-four col-five rot-four left-10 top-10">
+<div class="object draggable row-four col-five rot-four left-1 top-10">
   <img src="ricey_image_005.png" style="height: calc(12vw + 22vh);">
 </div>
 
