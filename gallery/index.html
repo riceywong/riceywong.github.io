@@ -10,9 +10,6 @@
 <body class="grid">
 
 <style>
-html {
-	overflow: hidden;
-}
 body {
 	box-sizing: border-box;
 	margin: 0;
@@ -30,26 +27,87 @@ body {
 }
 .grid {
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	grid-template-columns: minmax(120px, 1fr) 1fr 1fr 1fr 1fr;
 	grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
 	background-color: #eee;
 	background-size: 20px 20px;
 	background-image: radial-gradient(circle, rgba(0, 0, 0, 0.2) 1px, transparent 1px);
 	object-fit: cover;
 	width: 100vw;
-	height: 100vh;
+	height: 1600px;
 	min-height: 0;
 	min-width: 0;
 }
+
+@media screen and (max-width: 400px) {
+	.grid {
+		height: 1000px;
+	}
+}
+
 .object {
 	min-width: 0;
 	min-height: 0;
+}
+.tooltip {
+  visibility: hidden;
+  width: 150px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  position: absolute;
+  z-index: 100;
+  margin-left: -60px;
+}
+.tooltip.top {
+  bottom: 100%;
+  left: 50%;
+}
+.tooltip.right {
+	top: 20%;
+	left: 120%;
+}
+.tooltip.bottom {
+	top: 100%;
+	left: 50%;
+}
+.tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+.tooltip.right::after {
+	top: 40%;
+	left: 0%;
+	margin-left: -8px;
+	border-color: transparent #555 transparent transparent;
+}
+.tooltip.bottom::after {
+	top: -25%;
+	right: 100%;
+	margin-left: -5px;
+	border-color: transparent transparent #555 transparent;
+}
+.object:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
 }
 .row-one { grid-row: 1; margin-top: 0; margin-bottom: auto; }
 .row-two { grid-row: 2; margin-top: auto; margin-bottom: auto; }
 .row-three { grid-row: 3; margin-top: auto; margin-bottom: auto; }
 .row-four { grid-row: 4; margin-top: auto; margin-bottom: auto; }
-.row-five { grid-row: 5; margin-top: auto; margin-bottom: 0; }
+.row-five { grid-row: 5; margin-top: auto; margin-bottom: auto; }
+.row-six { grid-row: 6; margin-top: auto; margin-bottom: auto; }
+.row-seven { grid-row: 7; margin-top: auto; margin-bottom: 0; }
 .col-one { grid-column: 1; margin-left: 0; margin-right: auto; }
 .col-two { grid-column: 2; margin-left: auto; margin-right: auto; }
 .col-three { grid-column: 3; margin-left: auto; margin-right: auto; }
@@ -88,13 +146,11 @@ body {
 	0px 2px 8px -2px rgba(0,0,0,0.1);
 }
 .heading {
-	grid-row: 1;
-	grid-column: 2 / 5;
-	text-align: center;
 	z-index: 1;
-	font-size: calc(4vw + 4vh);
+	font-size: calc(3vw + 3vh);
 	margin: auto;
-	margin-bottom: 20px;
+	margin-left: 20px;
+	text-wrap: nowrap;
 }
 .emoji {
 	font-size: calc(4vw + 4vh);
@@ -108,49 +164,72 @@ body {
 }
 </style>
 
-<h1 class="heading rot-one">photo board</h1>
+<div class="row-one col-one">
+	<h2 class="heading">2023-2024</h2>
+</div>
 
-<div class="object draggable row-two col-one rot-four right-10">
+<div class="object draggable row-two col-two rot-four right-10 top-20">
+  <img src="ricey_image_009.png">
+  <span class="tooltip right">light leak effect in the first shot of a new roll of film</span>
+</div>
+
+<div class="object draggable row-two col-one rot-three top-10 right-10">
+  <img src="ricey_image_003.png">
+  <span class="tooltip top">a double-exposure shot taken night and day</span>
+</div>
+
+<div class="object draggable row-two col-four rot-one top-10">
+  <img src="ricey_image_010.png" style="width: calc(22vw + 12vh);">
+</div>
+
+<div class="row-three col-one">
+	<h2 class="heading">2022</h2>
+</div>
+
+<div class="object draggable row-three col-two rot-four bottom-10">
+  <img src="ricey_image_011.png" style="height: calc(12vw + 22vh);">
+</div>
+
+<div class="object draggable row-four col-three rot-three top-10">
+  <img src="ricey_image_001.png" style="width: calc(22vw + 12vh);">
+</div>
+
+<div class="object draggable row-three col-five rot-four left-10 bottom-20">
+  <img src="ricey_image_005.png" style="height: calc(12vw + 22vh);">
+</div>
+
+
+<div class="row-five col-one">
+	<h2 class="heading">2019</h2>
+</div>
+
+<div class="object draggable row-six col-one rot-four">
   <img src="ricey_image_002.png">
 </div>
 
-<div class="object draggable row-three col-three rot-three left-1">
+<div class="object draggable row-six col-two rot-three left-1">
   <img src="ricey_image_008.png">
 </div>
 
-<div class="object draggable row-four col-one rot-one top-10 right-1">
+<div class="object draggable row-six col-three rot-one right-1">
   <img src="ricey_image_006.png">
 </div>
 
-<div class="object draggable row-four col-five rot-three">
+<div class="object draggable row-six col-four rot-three">
   <img src="ricey_image_004.png">
 </div>
 
-<div class="object draggable row-five col-four rot-four top-1">
+<div class="object draggable row-six col-five rot-four top-1">
   <img src="ricey_image_007.png">
 </div>
 
-<div class="object draggable row-one col-five rot-two bottom-1 left-1">
-  <img src="ricey_image_001.png">
-</div>
 
-<div class="object draggable row-five col-one rot-three right-10">
-  <img src="ricey_image_003.png">
-</div>
-
-<div class="object draggable row-two col-five rot-one left-20">
-  <img src="ricey_image_005.png">
-</div>
-
-<div class="object draggable row-three col-two rot-one top-10 emoji">
+<div class="object draggable row-seven col-one rot-four top-10 emoji">
   <span>📸</span>
 </div>
 
-<div class="object draggable row-five col-one rot-four top-10 emoji">
-  <span>🎞</span>
-</div>
 
-<footer class="object draggable footer row-five col-three rot-two"><span>📷 by <a href="/">ricey.co</a></span></footer>
+<footer class="object draggable footer row-seven col-three rot-two"><span>📷 by <a href="/">ricey.co</a></span></footer>
 
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
