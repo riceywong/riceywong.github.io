@@ -117,18 +117,18 @@ body {
 .rot-two { transform: rotate(2deg); }
 .rot-three { transform: rotate(-6deg); }
 .rot-four { transform: rotate(8deg); }
-.top-1 { top: -1vh; }
+.top-1 { top: -1vw; }
 .left-1 { left: -1vw; }
 .right-1 { right: -1vw; }
-.bottom-1 { bottom: -1vh; }
-.top-10 { top: -10vh; }
+.bottom-1 { bottom: -1vw; }
+.top-10 { top: -10vw; }
 .left-10 { left: -10vw; }
 .right-10 { right: -10vw; }
-.bottom-10 { bottom: -10vh; }
-.top-20 { top: -20vh; }
+.bottom-10 { bottom: -10vw; }
+.top-20 { top: -20vw; }
 .left-20 { left: -20vw; }
 .right-20 { right: -20vw; }
-.bottom-20 { bottom: -20vh; }
+.bottom-20 { bottom: -20vw; }
 
 .object img {
 	display: block;
@@ -161,6 +161,7 @@ body {
 	font-size: 12px;
 	margin-bottom: 20px;
 	opacity: 0.5;
+	text-wrap: nowrap;
 }
 </style>
 
@@ -168,33 +169,41 @@ body {
 	<h2 class="heading">2023-2024</h2>
 </div>
 
-<div class="object draggable row-two col-two rot-four right-10 top-20">
+<div class="object draggable row-two col-one rot-four">
   <img src="ricey_image_009.png">
   <span class="tooltip right">light leak effect in the first shot of a new roll of film</span>
 </div>
 
-<div class="object draggable row-two col-one rot-three top-10 right-10">
+<div class="object draggable row-two col-two rot-three top-10">
   <img src="ricey_image_003.png">
   <span class="tooltip top">a double-exposure shot taken night and day</span>
 </div>
 
-<div class="object draggable row-two col-four rot-one top-10">
+<div class="object draggable row-two col-three rot-one top-1">
   <img src="ricey_image_010.png" style="width: calc(22vw + 12vh);">
+</div>
+
+<div class="object draggable row-two col-five rot-three left-10 top-20">
+  <img src="ricey_image_013.png" style="height: calc(12vw + 22vh);">
 </div>
 
 <div class="row-three col-one">
 	<h2 class="heading">2022</h2>
 </div>
 
-<div class="object draggable row-three col-two rot-four bottom-10">
+<div class="object draggable row-four col-one rot-three">
+  <img src="ricey_image_012.png" style="width: calc(22vw + 12vh);">
+</div>
+
+<div class="object draggable row-three col-two rot-four right-10 bottom-10">
   <img src="ricey_image_011.png" style="height: calc(12vw + 22vh);">
 </div>
 
-<div class="object draggable row-four col-three rot-three top-10">
+<div class="object draggable row-four col-three rot-three right-1 bottom-10">
   <img src="ricey_image_001.png" style="width: calc(22vw + 12vh);">
 </div>
 
-<div class="object draggable row-three col-five rot-four left-10 bottom-20">
+<div class="object draggable row-four col-five rot-four left-10 top-10">
   <img src="ricey_image_005.png" style="height: calc(12vw + 22vh);">
 </div>
 
