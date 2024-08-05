@@ -29,7 +29,7 @@ body {
 .grid {
 	display: grid;
 	grid-template-columns: minmax(120px, 1fr) 1fr 1fr 1fr 1fr;
-	grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+	grid-template-rows: minmax(200px, 1fr) minmax(300px, 1fr) minmax(200px, 1fr) minmax(300px, 1fr) minmax(200px, 1fr) minmax(300px, 1fr) minmax(200px, 1fr);
 	background-color: #eee;
 	background-size: 20px 20px;
 	background-image: radial-gradient(circle, rgba(0, 0, 0, 0.2) 1px, transparent 1px);
@@ -38,12 +38,7 @@ body {
 	height: 1600px;
 	min-height: 0;
 	min-width: 0;
-}
-
-@media screen and (max-width: 400px) {
-	.grid {
-		height: 1000px;
-	}
+	max-width: 1600px;
 }
 
 .object {
@@ -147,10 +142,12 @@ body {
 	0px 2px 8px -2px rgba(0,0,0,0.1);
 }
 .heading {
-	z-index: 1;
-	font-size: calc(3vw + 3vh);
+	z-index: 99;
+	position: relative;
+	font-size: 60px;
 	margin: auto;
-	margin-left: 20px;
+	margin-left: 80px;
+	margin-top: 60px;
 	text-wrap: nowrap;
 }
 .emoji {
@@ -163,6 +160,18 @@ body {
 	margin-bottom: 20px;
 	opacity: 0.5;
 	text-wrap: nowrap;
+}
+
+@media screen and (max-width: 600px) {
+	.grid {
+		grid-template-rows: minmax(100px, 1fr) minmax(200px, 1fr) minmax(100px, 1fr) minmax(200px, 1fr) minmax(100px, 1fr) minmax(200px, 1fr) minmax(100px, 1fr);
+		height: 1000px;
+	}
+	.heading {
+		margin-left: 20px;
+		margin-top: 0;
+		font-size: 40px;
+	}
 }
 </style>
 
