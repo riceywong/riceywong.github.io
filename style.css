@@ -261,8 +261,8 @@ section.hero {
 	padding: 2px 6px;
 	margin: 0 5px 5px 0;
 	color: white;
-	-webkit-clip-path: polygon(0% 0%, calc(100% - 5px) 0%, 100% 5px, 100% 0%, 100% 100%, 0% 100%, 0% 0%, 0% 0%);
-    	clip-path: polygon(0% 0%, calc(100% - 5px) 0%, 100% 5px, 100% 0%, 100% 100%, 0% 100%, 0% 0%, 0% 0%);
+	-webkit-clip-path: polygon(0% 0%, calc(100% - 6px) 0%, 100% 6px, 100% 0%, 100% 100%, 0% 100%, 0% 0%, 0% 0%);
+    	clip-path: polygon(0% 0%, calc(100% - 6px) 0%, 100% 6px, 100% 0%, 100% 100%, 0% 100%, 0% 0%, 0% 0%);
 }
 .pill>span {
 	color: var(--color-primary);
