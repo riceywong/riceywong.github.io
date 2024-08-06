@@ -322,6 +322,29 @@ img.stack {
 		font-size: 2em !important;
 	}
 }
+.grey .card {
+	color: #ffffff;
+	font-weight: 300;
+  background: #0A0071;
+  border-radius: 28px;
+  box-shadow: none;
+  height: 400px;
+  width: 278px;
+  min-width: 278px;
+  padding: 20px 40px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-image: url(#image);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom center;
+}
+@media screen and (max-width: 980px) {
+	.grey .card { 
+		margin: 20px 40px 40px 40px !important;
+	}
+}
 </style>
 <body>
 
@@ -691,16 +714,23 @@ img.stack {
 		</div>
 
 		<div class="row center" style="margin:20px 0">
-					<div class="col-4 text-center">
-						<p><b class="grot" style="opacity:0.4;color:#feca1f;
-    text-shadow:0 0 20px #feca1f,0 0 40px #feca1f,0 0 50px #feca1f,0 0 60px #feca1f,0 0 80px #feca1f;">Grab Empowered Teams</b><br>🔒</p>
-						<img src="">
+
+					<div class="col-4 is-center">
+						<div class="card" style="background-image:url(images/grab-teams.png);transform:rotate(-4deg);margin-top:-20px;">
+							<p style="margin-top:-40px;"><b class="grot" style="font-size:3rem;color:var(--color-primary);">Grab</b></p>
+							<p><b>Empowered Team</b></p>
+							<p style="color:#cdd6ff;">Brought direction to a team that did not have a clear path to success</p>
+	    			</div>
 					</div>
+
 					<div class="col-1"></div>
-					<div class="col-4 text-center">
-						<p><b class="grot" style="opacity:0.4;color:#feca1f;
-    text-shadow:0 0 20px #feca1f,0 0 40px #feca1f,0 0 50px #feca1f,0 0 60px #feca1f,0 0 80px #feca1f;">Beam Internal Tool</b><br>🔒</p>
-						<img src="">
+
+					<div class="col-4 is-center">
+						<div class="card" style="background-image:url(images/beam-tool.png);transform:rotate(7deg);margin-top:20px;">
+							<p style="margin-top:-40px;"><b class="grot" style="font-size:3rem;color:var(--color-primary);">Beam</b></p>
+							<p><b>Internal Tool</b></p>
+							<p style="color:#cdd6ff;">A look into the process of redesigning an internal operations web app</p>
+	  				</div>
 					</div>
 		</div>
 
