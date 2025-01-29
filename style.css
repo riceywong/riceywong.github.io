@@ -231,7 +231,7 @@ section.hero {
 
 @media screen and (max-width: 599px) {
 	.hero .header {
-		margin: 120px 0 20px 0;
+		margin: 80px 0 20px 0;
 	}
 }
 
