@@ -20,6 +20,23 @@
 			ga('create', 'UA-98385997-1', 'auto');
 			ga('require', 'GTM-5ZD3VV7');
 			ga('send', 'pageview');
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const svg = document.querySelector('svg');
+            let mouseX = 0;
+            let mouseY = 0;
+            
+            document.addEventListener('mousemove', function(e) {
+                const rect = svg.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+                
+                mouseX = (e.clientX - centerX) * 0.01;
+                mouseY = (e.clientY - centerY) * 0.01;
+                
+                svg.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+            });
+        });
 	</script>
 </head>
 <body>
@@ -540,24 +557,5 @@ const spyScrolling = ( ) => {
 makeNavLinksSmooth( );
 spyScrolling( );
 
-document.addEventListener('DOMContentLoaded', function() {
-            const svg = document.querySelector('svg');
-            let mouseX = 0;
-            let mouseY = 0;
-            
-            function updatePosition() {
-                svg.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
-            }
-            
-            document.addEventListener('mousemove', function(e) {
-                const rect = svg.getBoundingClientRect();
-                const centerX = rect.left + rect.width / 2;
-                const centerY = rect.top + rect.height / 2;
-                
-                mouseX = (e.clientX - centerX) * 0.01;
-                mouseY = (e.clientY - centerY) * 0.01;
-                
-            });
-        });
 </script>
 </body>
