@@ -544,6 +544,12 @@ document.addEventListener('DOMContentLoaded', function() {
             const svg = document.querySelector('svg');
             let mouseX = 0;
             let mouseY = 0;
+            let animationId = null;
+            
+            function updatePosition() {
+                svg.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+                animationId = null;
+            }
             
             document.addEventListener('mousemove', function(e) {
                 const rect = svg.getBoundingClientRect();
@@ -553,7 +559,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 mouseX = (e.clientX - centerX) * 0.02;
                 mouseY = (e.clientY - centerY) * 0.02;
                 
-                svg.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+                if (!animationId) {
+                    animationId = requestAnimationFrame(updatePosition);
+                }
             });
         });
 </script>
