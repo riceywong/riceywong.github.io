@@ -177,7 +177,7 @@ section.hero {
 
 @media screen and (max-width: 899px) {
 	section.hero {
-		min-height: 760px;
+		min-height: 460px;
 		background: linear-gradient(180deg, #090B0E 0%, rgba(63, 0, 231, 0.24) 60%, rgba(255, 84, 207, 0) 100%), linear-gradient(80deg, rgba(94, 4, 193, 0) 0%, #2F05A6 100%), linear-gradient(190deg, #090B0E 40%, #FF41B3 100%);
 	}
 }
