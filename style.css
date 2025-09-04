@@ -474,7 +474,6 @@ section.projects {
 }
 
 .projects .card {
-	box-shadow: 8px 8px 0 var(--color-black);
 	color: var(--color-black);
 	margin-bottom: 2rem;
 }
