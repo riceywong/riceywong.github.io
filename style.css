@@ -323,6 +323,11 @@ section.writing {
     background-size: 100%;
 }
 
+.writing a.card:hover {
+	-webkit-transform: translateX(4px);
+          transform: translateX(4px);
+}
+
 .writing .card:not(:last-child) {
 	margin-bottom: 4rem;
 }
@@ -402,9 +407,8 @@ section.work {
 }
 
 .work a.card:hover {
-	background: #000;
-	box-shadow: unset;
-	transform: scale(1.02);
+	-webkit-transform: translateX(4px);
+          transform: translateX(4px);
 }
 
 .work .card .year {
