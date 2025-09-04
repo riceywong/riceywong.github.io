@@ -407,8 +407,8 @@ section.work {
 }
 
 .work a.card:hover {
-	-webkit-transform: translateX(4px);
-          transform: translateX(4px);
+	-webkit-transform: scale(1.05);
+          transform: scale(1.05);
 }
 
 .work .card .year {
@@ -493,6 +493,11 @@ section.projects {
     align-items: center;
     justify-content: space-between;
 	font-weight: 600;
+}
+
+.projects a.card:hover {
+	-webkit-transform: translateX(4px);
+          transform: translateX(4px);
 }
 
 /*CONTACT*/
