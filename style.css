@@ -215,6 +215,7 @@ section.hero {
     position:relative;
     width: 400px;
     max-width: 100%;
+	transform: translateX(-10px);
 }
 
 @media screen and (max-width: 899px) {
@@ -227,6 +228,7 @@ section.hero {
 	}
 	.hero .wrapper svg {
 		max-height: 400px;
+		transform: unset;
 	}
 }
 
