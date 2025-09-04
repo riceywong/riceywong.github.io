@@ -553,7 +553,7 @@ spyScrolling( );
                 mouseX = (e.clientX - centerX) * 0.01;
                 mouseY = (e.clientY - centerY) * 0.01;
                 
-                svg.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+                svg.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
             });
         });
 </script>
