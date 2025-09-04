@@ -540,5 +540,21 @@ const spyScrolling = ( ) => {
 makeNavLinksSmooth( );
 spyScrolling( );
 
+document.addEventListener('DOMContentLoaded', function() {
+            const svg = document.querySelector('#circlePath');
+            let mouseX = 0;
+            let mouseY = 0;
+            
+            document.addEventListener('mousemove', function(e) {
+                const rect = svg.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+                
+                mouseX = (e.clientX - centerX) * 0.02;
+                mouseY = (e.clientY - centerY) * 0.02;
+                
+                svg.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+            });
+        });
 </script>
 </body>
