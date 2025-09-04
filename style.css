@@ -318,6 +318,7 @@ section.writing {
 @media (max-width: 1199px) and (min-width: 900px) {
 	.writing h2 {
 		font-size: 4.4rem;
+		line-height: 1;
 	}
 }
 
