@@ -308,7 +308,18 @@ section.writing {
 }
 
 .writing .card {
-	box-shadow: 8px 8px 0 var(--color-black);
+	position: relative;
+}
+
+.writing .card::after {
+	content: "";
+    position: absolute;
+    bottom: -8px;
+    height: 10px;
+    width: 100%;
+    left: 0;
+    background: url(images/rip.svg) bottom;
+    background-size: 100%;
 }
 
 .writing .card:not(:last-child) {
