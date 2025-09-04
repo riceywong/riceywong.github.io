@@ -349,7 +349,7 @@ section.writing {
     	line-height: 1.2;
 	}
 	.writing .card p {
-		font-size: 1.2rem;
+		font-size: 1.2rem !important;
 	}
 	i.outgoing {
 		width: 1.2rem;
@@ -538,7 +538,8 @@ section.contact {
 	    font-size: 3.2rem;
 	}
 	.contact p {
-		font-size: 1.8rem;
+		font-size: 1.6rem;
+        max-width: 90%;
 	}
 }
 
