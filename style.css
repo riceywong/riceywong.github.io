@@ -346,6 +346,17 @@ section.writing {
     .writing .card:not(:last-child) {
 		margin-bottom: 2rem;
 	}
+	.writing .card .title {
+		font-size: 1.8rem;
+    	line-height: 1.2;
+	}
+	.writing .card p {
+		font-size: 1.2rem;
+	}
+	i.outgoing {
+		width: 1.2rem;
+    	height: 1.2rem;
+	}
 }
 
 .writing .card .title {
@@ -472,8 +483,8 @@ section.projects {
 
 @media screen and (max-width: 899px) {
 	.projects h2 {
+		font-size: 3.2rem;
 		margin-bottom: 4rem;
-		line-height: 1.2;
 	}
 }
 
@@ -518,7 +529,7 @@ section.contact {
 }
 
 .contact h2 {
-	font-size: 5.2rem;
+	font-size: 5.8rem;
 	line-height: 1.1;
 	margin-bottom: 2rem;
 	font-weight: 600;
