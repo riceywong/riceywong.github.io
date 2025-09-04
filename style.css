@@ -245,7 +245,6 @@ section.hero {
 
 @media screen and (min-width: 1200px) {
 	.hero .wrapper {
-		margin-right: -200px;
 	}
 }
 
