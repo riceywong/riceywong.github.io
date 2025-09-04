@@ -5,8 +5,17 @@ section {
 h2 {
 	font-family: "Bricolage Grotesque", sans-serif;
 	text-transform: lowercase;
+	font-size: 5.2rem;
+	font-weight: 600;
 	line-height: 1;
 }
+
+@media (max-width: 1399px) and (min-width: 900px) {
+	h2 {
+		font-size: 4.8rem;
+	}
+}
+
 @media screen and (min-width: 600px) {
 	.sticky {
 		position: sticky;
@@ -299,11 +308,6 @@ section.writing {
     }
 }
 
-.writing h2 {
-	font-size: 5.8rem;
-	font-weight: 600;
-}
-
 .writing .card {
 	position: relative;
 }
@@ -330,13 +334,6 @@ section.writing {
 
 .writing .card:not(:last-child) {
 	margin-bottom: 4rem;
-}
-
-@media (max-width: 1199px) and (min-width: 900px) {
-	.writing h2 {
-		font-size: 4.4rem;
-		line-height: 1;
-	}
 }
 
 @media screen and (max-width: 899px) {
@@ -392,9 +389,7 @@ section.work {
 }
 
 .work h2 {
-	font-size: 5.8rem;
 	margin-bottom: 8rem;
-	font-weight: 600;
 	text-align: center;
 }
 
@@ -476,9 +471,7 @@ section.projects {
 }
 
 .projects h2 {
-	font-size: 5.8rem;
 	margin-bottom: 2rem;
-	font-weight: 600;
 }
 
 @media screen and (max-width: 899px) {
@@ -529,10 +522,7 @@ section.contact {
 }
 
 .contact h2 {
-	font-size: 5.8rem;
-	line-height: 1.1;
 	margin-bottom: 2rem;
-	font-weight: 600;
 	color: var(--color-primary);
 }
 
@@ -544,7 +534,7 @@ section.contact {
 
 @media (max-width: 1199px) and (min-width: 900px) {
 	.contact h2 {
-	    font-size: 4.4rem;
+	    font-size: 3.2rem;
 	}
 	.contact p {
 		font-size: 1.8rem;
