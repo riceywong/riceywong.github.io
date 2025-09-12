@@ -141,22 +141,22 @@ h2 {
 	.nav.hidden {
 		transform: translateX(-50%) scale(0.8) translateY(-100px);
 	}
-	
 	.nav>ul {
 		gap: 0;
 		overflow-x: auto;
 		-ms-overflow-style: none;
 		scrollbar-width: none;
 	}
-	
 	.nav>ul::-webkit-scrollbar {
 		display: none;
 	}
-	
 	.nav-link {
 		padding: 10px 16px;
 		font-size: 14px;
 		white-space: nowrap;
+	}
+	.nav-item .nav-link:hover {
+		color: unset;
 	}
 }
 @media screen and (min-width: 899px) {
