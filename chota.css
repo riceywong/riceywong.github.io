@@ -30,7 +30,7 @@ html {
           box-sizing: inherit;
 }
 body {
-  background-color: var(--color-black);
+  background-color: #f5f5f5;
   line-height: 1.6;
   font-weight: 350;
   font-size: var(--font-size);
@@ -65,8 +65,8 @@ a {
   color: var(--color-primary);
   text-decoration: none;
   cursor: pointer;
-  -webkit-transition: 200ms transform cubic-bezier(.57,2.05,.64,1), 200ms box-shadow ease;
-  transition: 200ms transform cubic-bezier(.57,2.05,.64,1), 200ms box-shadow ease;
+  -webkit-transition: 200ms transform cubic-bezier(.57,2.05,.64,1);
+  transition: 200ms transform cubic-bezier(.57,2.05,.64,1);
 }
 a:hover:not(.button):not(.card) {
   opacity: 0.9;
@@ -537,7 +537,6 @@ button {
 button:hover {
   -webkit-transform: scale(1.05);
           transform: scale(1.05);
-          box-shadow: 6px 6px 0 var(--color-black);
 }
 .button:active,
 [type="button"]:active,
@@ -719,8 +718,6 @@ button:disabled:hover {
   padding: 4rem 4rem;
   border-radius: 0;
   background: var(--bg-color);
-  -webkit-box-shadow: 0 1px 6px rgba(0,0,0,0.1);
-          box-shadow: 0 1px 6px rgba(0,0,0,0.1);
 }
 a.card>* {
   cursor: pointer;
