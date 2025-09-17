@@ -386,21 +386,6 @@ section.writing {
     clip-path: polygon(0% 0%, calc(100% - 12px) 0%, 100% 12px, 100% 0%, 100% 100%, 0% 100%);
 }
 
-.writing .card::after {
-	content: "";
-    position: absolute;
-    bottom: -8px;
-    height: 10px;
-    width: 100%;
-    left: 0;
-    background: url(images/rip.svg) bottom;
-    background-size: 100%;
-}
-
-.writing .card:nth-child(2)::after {
-    transform: scaleX(-1);
-}
-
 .writing a.card:hover {
 	-webkit-transform: scale(1.02);
           transform: scale(1.02);
