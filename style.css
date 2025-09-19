@@ -342,7 +342,7 @@ p.drag:hover {
 	min-height: 100px;
 	max-width: 600px;
 	padding: 30px 80px 50px 80px;
-	background-color: #e3e3e3;
+	background-color: #e5e6eb;
 	background-image: url("images/left.svg"), url("images/right.svg"), url("images/middle.svg"), url("images/bar.svg"), linear-gradient(white), linear-gradient(white), linear-gradient(#F0F0F0);
 	background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
 	background-position: left top, right top, 40px top, center bottom, left center, right center, center top;
