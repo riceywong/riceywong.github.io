@@ -202,7 +202,6 @@ section.hero {
 	background: #eef1f7;
 }
 
-/* Grid pattern in hero section */
 section.hero::before {
 	content: '';
 	position: absolute;
@@ -213,7 +212,7 @@ section.hero::before {
 	background-image: 
 		linear-gradient(rgb(216 216 229) 1px, transparent 1px),
 		linear-gradient(90deg, rgb(216 216 229) 1px, transparent 1px);
-	background-size: 25px 25px;
+	background-size: 20px 20px;
 	pointer-events: none;
 	z-index: 0;
 }
@@ -223,6 +222,8 @@ section.hero::before {
 		min-height: 520px;
         padding-top: 40px;
 	}
+	section.hero::before {
+		background-size: 25px 25px !important;
 }
 
 .hero .header {
