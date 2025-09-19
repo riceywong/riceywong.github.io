@@ -765,6 +765,61 @@ section.contact {
 	margin-left:-20%;
 }
 
+.cursor {
+	position: absolute;
+	right: 0;
+	top: 55%;
+	background-color: #626281;
+	border: 1.2px solid #42424d;
+	width: fit-content;
+	padding: 3px 14px 4px 12px;
+	border-radius: 1px 99px 99px 99px;
+	font-size: 1.2rem;
+	animation: cursorCircle 3s linear infinite;
+}
+
+@keyframes cursorCircle {
+	0% {
+		transform: translate(0, 0);
+	}
+	12.5% {
+		transform: translate(1.4px, -1.4px);
+	}
+	25% {
+		transform: translate(2px, -2px);
+	}
+	37.5% {
+		transform: translate(1.4px, -3.4px);
+	}
+	50% {
+		transform: translate(0, -4px);
+	}
+	62.5% {
+		transform: translate(-1.4px, -3.4px);
+	}
+	75% {
+		transform: translate(-2px, -2px);
+	}
+	87.5% {
+		transform: translate(-1.4px, -1.4px);
+	}
+	100% {
+		transform: translate(0, 0);
+	}
+}
+.cursor::before {
+	content: '';
+	position: absolute;
+	top: -14px;
+	left: -14px;
+	width: 14px;
+	height: 14px;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14' fill='none'%3E%3Cpath d='M0.0787209 1.85782C-0.307591 0.732965 0.795938 -0.330774 1.90585 0.0965708L12.451 4.15672C13.6779 4.62914 13.6359 6.37935 12.3877 6.79236L8.8545 7.96144C8.23209 8.16738 7.75014 8.66529 7.56456 9.29406L6.52692 12.8098C6.1409 14.1178 4.30305 14.1581 3.86009 12.8683L0.0787209 1.85782Z' fill='black'/%3E%3Cpath d='M0.0785946 1.85732C-0.307334 0.732612 0.795959 -0.330718 1.90574 0.0965784L12.4507 4.15713C13.6775 4.62959 13.6354 6.37889 12.3872 6.79189L8.85398 7.96181L8.62742 8.05166C8.11576 8.29352 7.72633 8.74374 7.56395 9.29384L6.52684 12.8095L6.4868 12.9286C6.0426 14.0807 4.40024 14.1165 3.90574 12.9853L3.85984 12.8681L0.0785946 1.85732ZM1.54637 1.03017C1.22926 0.908075 0.91353 1.21171 1.02391 1.5331L4.80516 12.5438C4.93185 12.9121 5.45758 12.8999 5.56785 12.5263L6.60496 9.01064C6.88338 8.06759 7.60698 7.32051 8.54051 7.01162L12.0737 5.84267C12.4299 5.72441 12.4417 5.22466 12.0913 5.08974L1.54637 1.03017Z' fill='white'/%3E%3C/svg%3E");
+	background-size: contain;
+	background-repeat: no-repeat;
+	z-index: 10;
+}
+
 @media screen and (max-width: 899px) {
 	.contact .exit {
 		margin: 0 auto;
