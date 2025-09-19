@@ -47,7 +47,7 @@ h2 {
 }
 /*NAV*/
 .nav {
-	position: fixed;
+	position: fixed !important;
     left: 20px;
     z-index: 200;
 	background-color: rgba(255, 255, 255, 0.2);
@@ -95,7 +95,6 @@ h2 {
 	transition: none;
 	position: relative;
 	z-index: 1;
-	border-bottom-left-radius: 8px;
 }
 
 .nav-item:nth-child(2) .nav-link {
@@ -252,7 +251,7 @@ section.hero::before {
 
 .hero .container {
 	padding-top: 180px;
-	padding-bottom: 64px;
+	padding-bottom: 84px;
     z-index: 1;
 }
 
@@ -270,20 +269,38 @@ section.hero::before {
 }
 .intro {
 	position: relative;
-	padding: 20px 30px;
 	font-size: 2.2rem;
-	left: 60px;
 	z-index: 100;
 	transition: background-color 0.3s ease;
 }
 .intro p {
-	margin: 0;
+	margin-bottom: 0;
 }
+
+.pill {
+	font-size: 1.6rem;
+    font-family: "Bricolage Grotesque", sans-serif;
+	z-index: 100;
+	display: inline-block;
+	background: blue;
+	padding: 2px 8px 2px 16px;
+	margin-top: 24px;
+	color: white;
+}
+.pill>span {
+	color: var(--color-primary);
+	font-weight: 700;
+}
+
 .drag {
-	border: 2px solid transparent;
+	position: relative;
 }
 .drag:hover {
-		border: 2px solid blue;
+		outline: 2px solid blue;
+}
+p.drag:hover {
+	text-decoration: underline;
+	text-decoration-color: blue;
 }
 .drag::before,
     .drag::after,
@@ -291,34 +308,47 @@ section.hero::before {
     .drag span::after {
       content: "";
       position: absolute;
-      width: 12px;
-      height: 12px;
+      width: 8px;
+      height: 8px;
       background: white;
-      border: 2px solid blue;
+      outline: 2px solid blue;
       display: none; /* Hidden until hover */
       box-sizing: border-box;
     }
 .drag::before {
-	top: -6px;
-	left: -6px;
+	top: -4px;
+	left: -4px;
 	}
 .drag::after {
-	top: -6px;
-	right: -6px;
+	top: -4px;
+	right: -4px;
 	}
 .drag span::before {
-	bottom: -6px;
-	left: -6px;
+	bottom: -4px;
+	left: -4px;
 	}
 .drag span::after {
-	bottom: -6px;
-	right: -6px;
+	bottom: -4px;
+	right: -4px;
 	}
 .drag:hover::before,
 	.drag:hover::after,
 	.drag:hover span::before,
 	.drag:hover span::after {
 	display: block;
+}
+
+.figma {
+	min-height: 100px;
+	max-width: 600px;
+	padding: 30px 80px 50px 80px;
+	background-color: #e3e3e3;
+	background-image: url("images/left.svg"), url("images/right.svg"), url("images/middle.svg"), url("images/bar.svg"), linear-gradient(white), linear-gradient(white), linear-gradient(#F0F0F0);
+	background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+	background-position: left top, right top, 40px top, center bottom, left center, right center, center top;
+	background-size: 41px auto, 41px auto, auto 19px, auto 19px, 41px 100%, 41px, 100% 19px;
+	border-radius: 6px;
+	box-shadow: 0 2px 15px 0 #0000ff08;
 }
 
 @media screen and (max-width: 899px) {
@@ -339,16 +369,14 @@ section.hero::before {
 	.intro {
 		left: 0;
 		padding: 0;
-		margin-top: 8px;
+		margin-top: 24px;
 		margin-bottom: 8px;
 	}
 	.intro p {
-		font-size: 1.8rem;
-		margin-bottom: 4px;
-		margin-left: 20px;
+		font-size: 1.4rem;
 	}
 	.drag {
-		border: none;
+		outline: none;
 	}
 	.drag:hover {
 		background-color: unset;
@@ -357,13 +385,20 @@ section.hero::before {
     .drag::after,
     .drag span::before,
     .drag span::after {
-		border: none;
+		outline: none;
 		content: unset;
 	}
+	p.drag:hover {
+		text-decoration: none
+	}
 	.pill {
-		position: relative !important;
-		left: 0 !important;
-		top: 0 !important;
+		font-size: 1.2rem;
+		margin-top: 16px;
+		margin-bottom: 4px;
+		padding-left: 8px;
+	}
+	.figma {
+		padding: 20px 50px 30px 60px;
 	}
 }
 
@@ -390,21 +425,6 @@ section.hero::before {
 @keyframes herohover {
 	100% {transform: rotate(1deg);}
 	0% {transform: rotate(0deg);}
-}
-
-.pill {
-	font-size: 1.6rem;
-    font-family: "Bricolage Grotesque", sans-serif;
-	z-index: 100;
-	display: inline-block;
-	background: blue;
-	padding: 2px 8px 2px 16px;
-	margin: 0 5px 5px 0;
-	color: white;
-}
-.pill>span {
-	color: var(--color-primary);
-	font-weight: 700;
 }
 
 /*WRITING*/
@@ -445,7 +465,6 @@ section.writing {
 	background-color: #2c2c2c;
 	-webkit-clip-path: polygon(0% 0%, calc(100% - 12px) 0%, 100% 12px, 100% 0%, 100% 100%, 0% 100%);
     clip-path: polygon(0% 0%, calc(100% - 12px) 0%, 100% 12px, 100% 0%, 100% 100%, 0% 100%);
-	border-bottom-left-radius: 12px;
 }
 
 .writing a.card:hover {
@@ -531,7 +550,6 @@ section.work {
 .work a.card {
 	-webkit-clip-path: polygon(0% 0%, calc(100% - 12px) 0%, 100% 12px, 100% 0%, 100% 100%, 0% 100%);
     clip-path: polygon(0% 0%, calc(100% - 12px) 0%, 100% 12px, 100% 0%, 100% 100%, 0% 100%);
-	border-bottom-left-radius: 12px;
 }
 
 .work .card p:last-child {
@@ -619,7 +637,6 @@ section.projects {
 .projects a.card {
 	-webkit-clip-path: polygon(0% 0%, calc(100% - 12px) 0%, 100% 12px, 100% 0%, 100% 100%, 0% 100%);
     clip-path: polygon(0% 0%, calc(100% - 12px) 0%, 100% 12px, 100% 0%, 100% 100%, 0% 100%);
-	border-bottom-left-radius: 12px;
 }
 
 .projects .card .title {
@@ -709,7 +726,6 @@ section.contact {
 	border: none;
 	-webkit-clip-path: polygon(100% 8px, 100% 100%, 0% 100%, 0% 0%, calc(100% - 8px) 0%);
 	clip-path: polygon(100% 8px, 100% 100%, 0% 100%, 0% 0%, calc(100% - 8px) 0%);
-	border-bottom-left-radius: 12px;
 }
 .fun.button:hover {
 	padding-right: 40px;
