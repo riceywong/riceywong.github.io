@@ -224,6 +224,7 @@ section.hero::before {
 	}
 	section.hero::before {
 		background-size: 25px 25px !important;
+	}
 }
 
 .hero .header {
