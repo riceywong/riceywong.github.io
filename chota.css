@@ -535,8 +535,14 @@ button {
 [type="reset"]:hover,
 [type="submit"]:hover,
 button:hover {
-  -webkit-transform: scale(1.05);
-          transform: scale(1.05);
+  -webkit-transform: scale(1.03);
+          transform: scale(1.03);
+}
+@media screen and (max-width: 899px) {
+	button:hover {
+        -webkit-transform: scale(1);
+                transform: scale(1);
+      }
 }
 .button:active,
 [type="button"]:active,

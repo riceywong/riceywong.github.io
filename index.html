@@ -61,7 +61,7 @@
 							a 40,40 0 0,1 80,0
 							" fill="none" stroke="none"></path>
 						<text fill="blue">
-							<textPath href="#circlePath" startOffset="50%" text-anchor="middle" style="font-size: 12px;font-weight:bold;&quot;Bricolage Grotesque&quot;, font-family: sans-serif;font-family: &quot;Bricolage Grotesque&quot;, sans-serif;">
+							<textPath href="#circlePath" startOffset="50%" text-anchor="middle" style="font-size: 12px;font-weight:bold;font-family: 'Bricolage Grotesque', sans-serif;">
 							hello, i'm suling
 							</textPath>
 						</text>
@@ -400,16 +400,11 @@
 					</a>
 				</div>
 				<div class="row is-vertical-align" style="margin-bottom:10px;">
-					<div class="card col-12 col-8-md" style="background-image:url(images/internal-tool.png);background-size:54%;">
+					<button class="card col-12 col-12-md internal-tool-card" style="background-image:url(images/internal-tool.png);background-size:38%; cursor: pointer;">
 						<p class="year">2021</p>
 						<img src="images/beam-logo.svg" style="height:24px;" alt="Beam logo">
-						<p>🔒 Internal Tool</p>
-					</div>
-					<div class="card col-12 col-4-md unset">
-						<p class="year">2020</p>
-						<img src="images/gobear-logo.svg" style="height:28px;" alt="GoBear logo">
-						<p>🔒 Lending App</p>
-					</div>
+						<p style="color:blue;">Internal Tool Redesign →</p>
+					</button>
 				</div>
 			</div>
 		</div>
@@ -678,6 +673,160 @@ spyScrolling( );
             window.addEventListener('resize', function() {
                 makeNavbarDraggable();
             });
+            
+            // Internal Tool Overlay functionality
+            const internalToolCard = document.querySelector('.internal-tool-card');
+            const overlay = document.getElementById('internal-tool-overlay');
+            const overlayBackdrop = document.querySelector('.project-overlay-backdrop');
+            const overlayCloseButton = document.querySelector('.project-overlay-close');
+            
+            // Open overlay when card is clicked
+            if (internalToolCard) {
+                internalToolCard.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    overlay.classList.add('show');
+                    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                });
+            }
+            
+            // Close overlay when close button is clicked
+            if (overlayCloseButton) {
+                overlayCloseButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    closeOverlay();
+                });
+            }
+            
+            // Close overlay when backdrop is clicked
+            if (overlayBackdrop) {
+                overlayBackdrop.addEventListener('click', function(e) {
+                    if (e.target === overlayBackdrop) {
+                        closeOverlay();
+                    }
+                });
+            }
+            
+            // Close overlay when clicking outside the content area
+            if (overlay) {
+                overlay.addEventListener('click', function(e) {
+                    if (e.target === overlay) {
+                        closeOverlay();
+                    }
+                });
+            }
+            
+            // Close overlay with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && overlay.classList.contains('show')) {
+                    closeOverlay();
+                }
+            });
+            
+            function closeOverlay() {
+                overlay.classList.remove('show');
+                document.body.style.overflow = ''; // Restore scrolling
+            }
         });
 </script>
+
+<!-- Internal Tool Overlay -->
+<div id="internal-tool-overlay" class="project-overlay">
+	<div class="project-overlay-backdrop">
+		<button class="project-overlay-close" aria-label="Close overlay">
+			<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+			</svg>
+		</button>
+	</div>
+	<div class="project-overlay-content">
+		<div class="project-overlay-tags">
+			<span class="project-tag">#Enterprise software</span>
+			<span class="project-tag">#Dashboards</span>
+		</div>
+		<div class="container">
+			<div class="row" style="margin-left: 0;margin-right: 0;">
+				<div class="col-12 col-12-md project-meta-item">
+					<h2>About</h2> 
+					<h1>Redesigned Beam's Vehicle and User Management Tool</h1>
+				</div>
+			</div>
+			<div class="row" style="margin-left: 0;margin-right: 0;">
+				<div class="col-12  col-6-md project-meta-item">
+					<h2>Role</h2> 
+					<p>Sole designer using Ant's design system as the foundations for the UI.</p>
+				</div>
+				<div class="col-12  col-6-md project-meta-item">
+					<h2>Period</h2> 
+					<p>Jun - Jul 2021</p>
+				</div>
+			</div>
+			<div class="row" style="margin-left: 0;margin-right: 0;">
+				<div class="col-12  col-6-md project-meta-item">
+					<h2>Challenge</h2> 
+					<p>Many requests for new features and improvements from ops team but time and dev resources were limited. Needed to prioritise the right issues while planning ahead for future additions.</p>
+				</div>
+				<div class="col-12  col-6-md project-meta-item">
+					<h2>Impact</h2> 
+					<p>Prioritized and redesigned core screens and flows within a month for a 20+ and growing ops team.</p><p>No event tracking implemented, as the tool served a small team, but steps required for commonly-used actions have been significantly reduced.</p>
+				</div>
+			</div>
+		</div>
+		
+		<div class="container">
+			<div class="col-12 col-12-md project-section">
+				<h2>Dashboard redesigns</h2>
+				
+				<div class="project-feature">
+					<img src="images/userlookup.png" alt="User Lookup Interface">
+					<div class="project-feature-content">
+						<span>🕵️</span><h3>User Lookup</h3></span>
+						<p>While the most frequent action taken on this page is 'Refund', the ops team often referred to supporting info about the user to decide if they should be refunded.</p>
+					</div>
+				</div>
+				
+				<div class="project-feature">
+					<img src="images/vehicle.png" alt="Vehicle Management Interface">
+					<div class="project-feature-content">
+						<span>🛴</span><h3>Vehicle Management</h3>
+						<p>A key consideration in this redesign was deciding what information and actions to group together as we had planned to add many more features in future. A potential solution was to allow ops to reorder sections themselves if we did get to that point.</p>
+					</div>
+				</div>
+				
+				<div class="project-feature">
+					<img src="images/mapfilter.png" alt="Map Filters and Markers">
+					<div class="project-feature-content">
+						<span>📍</span><h3>Map Filters and Markers</h3>
+						<p>Used by ops team to dive into problematic zones or vehicles. It's a lot of information and controls which can get overwhelming. So I looked at what filters the team was actually using to decide the level of control that was necessary to display.</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col-12 col-12-md project-section">
+				<h2>Flow revamps</h2>
+				
+				<div class="project-feature">
+					<video controls width="240" height="320" style="width:100%;height:auto;">
+						<source src="images/beamtoolrefund.mp4" type="video/mp4">
+						<!--[if lt IE 9]><img src="images/beamtoolrefund.png" width="320" height="320"><![endif]-->
+					</video>
+					<div class="project-feature-content">
+						<span>💸</span><h3>Refund Flow</h3>
+						<p>The original design was just an open input field which the ops team was fine with as they wanted to be able to decide the refund amount. But it wasn't efficient and most refunds were predictable - either the full fare or just the fines.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="col-12 col-12-md project-section project-overlay-footer">
+				<h2>There's more...</h2>
+				<p>Let me take you through the before/afters, iterations, and decision making process if you're looking to work with me!</p>
+				<p>
+					<a class="fun button linkedin" href="https://www.linkedin.com/in/suling-wong/" target="_blank">To LinkedIn!<i class="outgoing light"></i></a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
 </body>
