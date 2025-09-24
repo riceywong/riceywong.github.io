@@ -583,6 +583,7 @@ section.work {
 	}
 	.work .card p:last-child {
 		margin-top: 20px;
+		line-height: 1.3;
 	}
 	.work .card.unset {
 		height: unset;
@@ -1056,10 +1057,9 @@ aside {
 
 .project-overlay-tags .project-tag {
 	display: inline-block;
-	color: blue;
+	color: #c6c6d6;
 	margin-right: 8px;
-	font-size: 1.6rem;
-	font-weight: 500;
+	font-size: 1.4rem;
 }
 
 .project-meta-item {
@@ -1177,6 +1177,7 @@ aside {
 	
 	.project-overlay-tags {
 		margin: 20px;
+		margin-bottom: 30px;
 	}
 	.project-overlay-content {
 		width: calc(100% - 20px);
