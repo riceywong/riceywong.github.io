@@ -582,17 +582,18 @@ section.work {
 	.work .card {
 		background: #ffffff;
 		margin-bottom: 20px;
-		height: 300px;
+		height: 280px;
 		font-size: 1.4rem;
 		background-repeat: no-repeat;
 		background-position: bottom right;
 		background-size: clamp(200px, 50%, 400px) auto !important;
 	}
-	.work button.card {
+	.work button.internal-tool-card {
 		height: 320px;
 	}
 	.work .card p:last-child {
-		margin-top: 20px;
+		margin-top: 16px;
+		font-size: 3.2rem;
 	}
 	.work .card.unset {
 		height: unset;
