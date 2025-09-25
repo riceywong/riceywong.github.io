@@ -1,3 +1,6 @@
+a:-webkit-any-link:focus-visible {
+    outline-offset: -6px;
+}
 section {
 	position: relative;
 	display: flex;
