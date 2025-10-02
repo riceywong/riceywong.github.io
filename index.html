@@ -806,87 +806,210 @@ spyScrolling( );
 			<span class="project-tag">#Enterprise software</span>
 			<span class="project-tag">#Dashboards</span>
 		</div>
+
 		<div class="container">
-			<div class="row" style="margin-left: 0;margin-right: 0;">
+			<div class="row">
 				<div class="col-12 col-12-md project-meta-item">
 					<h2>About</h2> 
-					<h1>Redesigned Beam's Vehicle and User Management Tool</h1>
+					<p class="h1">Redesigned Beam's Vehicle🛴 and User🚴 Management Tool</p>
 				</div>
 			</div>
-			<div class="row" style="margin-left: 0;margin-right: 0;">
-				<div class="col-12  col-6-md project-meta-item">
-					<h2>Role</h2> 
-					<p>Sole designer using Ant's design system as the foundations for the UI.</p>
+			<div class="row">
+				<div class="col-12 col-12-md project-feature">
+					<div class="toggle text-center">
+						<style>
+							.switch {
+								display: inline-flex;
+								align-items: center;
+								background: #f0f0f7;
+								padding: 4px;
+								position: relative;
+								user-select: none;
+								transition: background 0.2s;
+								width: 100%;
+							}
+							.switch button {
+								border: none;
+								background: none;
+								padding: 12px 24px;
+								font-size: 1.4rem;
+								font-weight: 500;
+								color: #444;
+								cursor: pointer;
+								transition: color 0.2s;
+								position: relative;
+								min-width: 100px;
+								width: 100%;
+								z-index: 2;
+							}
+							.switch button.active {
+								color: #fff !important;
+							}
+							.switch button:hover {
+								transform: none;
+								color: blue;
+							}
+							.switch-slider {
+								position: absolute;
+								top: 4px;
+								bottom: 4px;
+								width: 50%;
+								background: #2c2c2c;
+								transition: left 0.25s cubic-bezier(0.76, 0, 0.24, 1);
+								z-index: 1;
+								-webkit-clip-path: polygon(0% 0%, calc(100% - 6px) 0%, 100% 6px, 100% 0%, 100% 100%, 0% 100%);
+    clip-path: polygon(0% 0%, calc(100% - 6px) 0%, 100% 6px, 100% 0%, 100% 100%, 0% 100%);
+							}
+							@media (max-width: 600px) {
+								.switch {
+									width: 100%;
+								}
+							}
+						</style>
+						<div class="switch" style="margin-bottom:10px;">
+							<div class="switch-slider" id="beforeAfterSlider"></div>
+							<button id="beforeBtn" type="button" class="switch-btn active" style="z-index:2;">Before</button>
+							<button id="afterBtn" type="button" class="switch-btn" style="z-index:2;">After</button>
+						</div>
+						<div id="beforeAfterImages" style="width:100%;margin:0 auto;">
+							<img id="beforeImage" src="images/userbefore.png" alt="Before redesign placeholder" style="width:100%;display:block;">
+							<img id="afterImage" src="images/userlookup.png" alt="After redesign placeholder" style="width:100%;display:none;">
+						</div>
+					</div>
+					<script>
+						(function() {
+							const beforeBtn = document.getElementById('beforeBtn');
+							const afterBtn = document.getElementById('afterBtn');
+							const beforeImage = document.getElementById('beforeImage');
+							const afterImage = document.getElementById('afterImage');
+							const slider = document.getElementById('beforeAfterSlider');
+							beforeBtn.addEventListener('click', function() {
+								beforeImage.style.display = 'block';
+								afterImage.style.display = 'none';
+								beforeBtn.classList.add('active');
+								afterBtn.classList.remove('active');
+								slider.style.left = '4px';
+							});
+							afterBtn.addEventListener('click', function() {
+								beforeImage.style.display = 'none';
+								afterImage.style.display = 'block';
+								afterBtn.classList.add('active');
+								beforeBtn.classList.remove('active');
+								slider.style.left = 'calc(50% - 4px)';
+							});
+							// Set initial state
+							beforeBtn.classList.add('active');
+							afterBtn.classList.remove('active');
+							slider.style.left = '4px';
+						})();
+					</script>
 				</div>
-				<div class="col-12  col-6-md project-meta-item">
+			</div>
+			<div class="row">
+				<div class="col-12 col-6-md project-meta-item">
+					<h2>Role</h2> 
+					<p>Sole designer. Used Ant's design system as the foundations for the UI.</p>
+				</div>
+				<div class="col-12 col-6-md project-meta-item">
 					<h2>Period</h2> 
 					<p>Jun - Jul 2021</p>
 				</div>
-			</div>
-			<div class="row" style="margin-left: 0;margin-right: 0;">
-				<div class="col-12  col-6-md project-meta-item">
+				<div class="col-12 col-6-md project-meta-item">
 					<h2>Challenge</h2> 
 					<p>The ops team submitted numerous feature requests and improvements, but with limited time and development resources, I focused on prioritising high-impact issues while planning for future enhancements.</p>
 				</div>
-				<div class="col-12  col-6-md project-meta-item">
+				<div class="col-12 col-6-md project-meta-item">
 					<h2>Impact</h2> 
 					<p>Prioritised and redesigned core screens and flows within a month for a 20+ and growing ops team.</p><p>No event tracking implemented as the tool served a small team, but steps required for commonly-used actions have been significantly reduced.</p>
 				</div>
 			</div>
-		</div>
-		
-		<div class="container">
-			<div class="col-12 col-12-md project-section">
-				<h2>Dashboard redesigns</h2>
-				
-				<div class="project-feature">
-					<img src="images/userlookup.png" alt="User Lookup Interface">
-					<div class="project-feature-content">
-						<span>🕵️</span><h3>User Lookup</h3></span>
-						<p>While the most frequent action taken on this page is 'Refund', the ops team often referred to supporting info about the user to decide if they should be refunded.</p>
-					</div>
-				</div>
-				
-				<div class="project-feature">
-					<img src="images/vehicle.png" alt="Vehicle Management Interface">
-					<div class="project-feature-content">
-						<span>🛴</span><h3>Vehicle Management</h3>
-						<p>A key consideration in this redesign was deciding what information and actions to group together as we had planned to add many more features in future. A potential solution was to allow ops to reorder sections themselves if we did get to that point.</p>
-					</div>
-				</div>
-				
-				<div class="project-feature">
-					<img src="images/mapfilter.png" alt="Map Filters and Markers">
-					<div class="project-feature-content">
-						<span>📍</span><h3>Map Filters and Markers</h3>
-						<p>Used by ops team to dive into problematic zones or vehicles. It's a lot of information and controls which can get overwhelming. So I looked at what filters the team was actually using to decide the level of control that was necessary to display.</p>
-					</div>
-				</div>
-			</div>
-			
-			<div class="col-12 col-12-md project-section">
-				<h2>Flow improvements</h2>
-				
-				<div class="project-feature">
-					<img src="images/refundflow.png" alt="Before and after of the refund UI">
-					<div class="project-feature-content">
-						<span>💸</span><h3>Refund Flow</h3>
-						<p style="margin-bottom:8px;">The original design was just an open input field which the ops team was fine with as they only needed to be able to modify the refund amount. But it wasn’t efficient.</p><p style="margin-bottom:8px;">As most refunds were predictable - either the full fare or just the fines, I surfaced these as options which also helped with error prevention from entering the wrong amount.</p>
-					</div>
-					<video controls width="240" height="320" style="width:100%;height:auto;">
-						<source src="images/beamtoolrefund.mp4" type="video/mp4">
-						<!--[if lt IE 9]><img src="images/beamtoolrefund.png" width="320" height="320"><![endif]-->
-					</video>
+			<div class="row">
+				<div class="col-12 col-12-md">
+					<hr style="margin-top:0;">
 				</div>
 			</div>
 		</div>
+
 		<div class="container">
-			<div class="col-12 col-12-md project-section project-overlay-footer">
-				<h2>There's more...</h2>
-				<p>Let me take you through the before/afters, iterations, and decision making process if you're looking to work with me!</p>
-				<p>
-					<a class="fun button linkedin" href="https://www.linkedin.com/in/suling-wong/" target="_blank">To LinkedIn!<i class="outgoing light"></i></a>
-				</p>
+			<div class="row">
+				<div class="col-12 col-12-md">
+					<h2 class="project-section">Preview: Refunds</h2>
+					<div class="project-feature" style="margin-bottom:10px;">
+						<div class="col-12 col-8-md">
+							<img src="images/refundflow1.png" alt="Before and after of the refund UI">
+						</div>
+						<div class="col-12 col-4-md">
+							<div class="project-feature-content">
+								<h3 style="margin-left:0;margin-bottom:2px;font-size:2.4rem;">Before</h3>
+								<p style="margin-bottom:0;margin-left:0;max-width:100%;">The original design was just an open input field which the ops team was fine with as they only needed to be able to modify the refund amount. But it wasn’t efficient.</p>
+							</div>
+						</div>
+					</div>
+					<div class="project-feature" style="margin-bottom:10px;">
+						<div class="col-12 col-8-md">
+							<img src="images/refundflow2.png" alt="Before and after of the refund UI">
+						</div>
+						<div class="col-12 col-4-md">
+							<div class="project-feature-content">
+								<h3 style="margin-left:0;margin-bottom:2px;font-size:2.4rem;">After</h3>
+								<p style="margin-bottom:0;margin-left:0;max-width:100%;">As most refunds were predictable - either the full fare or just the fines, I surfaced these as options which also helped with error prevention from entering the wrong amount.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-12 col-12-md project-section">
+					<div class="project-feature">
+						<div class="project-feature-content" style="margin-top:0;margin-bottom:0;">
+							<span>▶️</span><h3>Refund Prototype</h3>
+						</div>
+						<video controls width="240" height="320" style="width:100%;height:auto;">
+							<source src="images/beamtoolrefund.mp4" type="video/mp4">
+							<!--[if lt IE 9]><img src="images/beamtoolrefund.png" width="320" height="320"><![endif]-->
+						</video>
+					</div>	
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12 col-12-md">
+					<hr style="margin-top:0;">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12 col-12-md project-section">
+					<h2>Preview: Dashboards</h2>
+					<div class="project-feature">
+						<img src="images/userlookup.png" alt="User Lookup Interface">
+						<div class="project-feature-content">
+							<span>🕵️</span><h3>User Lookup</h3></span>
+							<p>While the most frequent action taken on this page is 'Refund', the ops team often referred to supporting info about the user to decide if they should be refunded. Hence, I opted to surface important information so that ops do not have to go back and forth between multiple tabs for the information they need.</p>
+						</div>
+					</div>
+					<div class="project-feature">
+						<img src="images/vehicle.png" alt="Vehicle Management Interface">
+						<div class="project-feature-content">
+							<span>🛴</span><h3>Vehicle Management</h3>
+							<p>A key consideration in this redesign was deciding what information and actions to group together as we had planned to add many more features in future. A potential solution was to allow ops to reorder sections themselves if we did get to that point.</p>
+						</div>
+					</div>
+					<div class="project-feature">
+						<img src="images/mapfilter.png" alt="Map Filters and Markers">
+						<div class="project-feature-content">
+							<span>📍</span><h3>Map Filters and Markers</h3>
+							<p>Used by ops team to dive into problematic zones or vehicles. It's a lot of information and controls which could get overwhelming. So I had to pinpoint the filters our ops team were actually using to decide the level of control that was necessary to display.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-12 col-12-md project-section project-overlay-footer" style="margin-bottom:0;">
+					<h2>There's more...</h2>
+					<p style="margin:0 auto 20px;max-width:560px;">Let me take you through the before/afters, iterations, and decision making process if you're looking to work with me!</p>
+					<p style="margin:0 auto;">
+						<a class="fun button linkedin" href="https://www.linkedin.com/in/suling-wong/" target="_blank">To LinkedIn!<i class="outgoing light"></i></a>
+					</p>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -1126,7 +1126,7 @@ aside {
 	gap: 16px;
 	margin-bottom: 60px;
 }
-.project-meta-item h1 {
+.project-meta-item .h1 {
 	margin: 0;
 	font-size: 4rem;
 	color: #000000;
@@ -1150,11 +1150,7 @@ aside {
 	max-width: 36ch;
 }
 
-.project-section {
-	margin-bottom: 50px;
-}
-
-.project-section h2 {
+.project-section h2, h2.project-section {
 	text-transform: none;
 	font-size: 4rem;
 	font-weight: 600;
@@ -1164,12 +1160,17 @@ aside {
 
 .project-feature {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	background: #ffffff;
 	padding: 10px;
 	margin-bottom: 60px;
-	align-items: start;
+	align-items: center;
 }
+.project-section .project-feature {
+	flex-direction: column !important;
+	align-items: start !important;
+}
+
 .project-feature img {
 	overflow: hidden;
 	width: 100%;
@@ -1203,7 +1204,7 @@ aside {
 }
 
 .project-overlay-footer {
-	padding: 40px;
+	padding: 40px 40px 60px;
 	background: #FFFFFF;
 	text-align: center;
 }
@@ -1244,7 +1245,7 @@ aside {
 	.project-overlay-sections {
 		padding: 20px;
 	}
-	.project-section h2, .project-meta-item h1 {
+	.project-section h2, .project-meta-item h1, h2.project-section {
 		font-size: 3.2rem;
 	}
 	.project-meta-item {
@@ -1257,6 +1258,7 @@ aside {
 
 	.project-feature {
 		margin-bottom: 40px;
+		flex-direction: column;
 	}
 	.project-feature-content {
 		margin: 0;
@@ -1265,6 +1267,8 @@ aside {
 	}
 	.project-feature-content h3 {
 		margin-left: 2px;
+		font-size: 1.4rem !important;
+		margin-bottom: 8px !important;
 	}
 	.project-feature-content p {
 		margin-left: 0;
