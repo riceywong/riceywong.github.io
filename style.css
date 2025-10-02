@@ -1276,7 +1276,9 @@ aside {
 		max-width: 100%;
 		line-height: 1.4;
 	}
-
+	.project-overlay-footer {
+		margin-bottom: 40px;
+	}
 	.project-overlay-footer p {
 		padding-left: 0;
 		padding-right: 0;
