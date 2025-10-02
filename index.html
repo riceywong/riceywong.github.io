@@ -687,11 +687,13 @@ spyScrolling( );
             const overlay = document.getElementById('internal-tool-overlay');
             const overlayBackdrop = document.querySelector('.project-overlay-backdrop');
             const overlayCloseButton = document.querySelector('.project-overlay-close');
+            let previouslyFocusedElement = null;
             
             // Open overlay when card is clicked
             if (internalToolCard) {
                 internalToolCard.addEventListener('click', function(e) {
                     e.preventDefault();
+                    previouslyFocusedElement = document.activeElement;
                     overlay.classList.add('show');
                     document.body.style.overflow = 'hidden'; // Prevent background scrolling
                 });
@@ -729,11 +731,59 @@ spyScrolling( );
                 if (e.key === 'Escape' && overlay.classList.contains('show')) {
                     closeOverlay();
                 }
+                
+                // Prevent Tab from reaching background elements when overlay is open
+                if (e.key === 'Tab' && overlay.classList.contains('show')) {
+                    const focusableElements = overlay.querySelectorAll(
+                        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+                    );
+                    const firstFocusable = focusableElements[0];
+                    const lastFocusable = focusableElements[focusableElements.length - 1];
+                    
+                    // If focus is not within the overlay, force it to the first element
+                    if (!overlay.contains(document.activeElement)) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        firstFocusable.focus();
+                    }
+                }
+            });
+            
+            // Focus trap for keyboard navigation
+            overlay.addEventListener('keydown', function(e) {
+                if (e.key === 'Tab') {
+                    const focusableElements = overlay.querySelectorAll(
+                        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+                    );
+                    const firstFocusable = focusableElements[0];
+                    const lastFocusable = focusableElements[focusableElements.length - 1];
+                    
+                    if (e.shiftKey) {
+                        // Shift + Tab
+                        if (document.activeElement === firstFocusable) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            lastFocusable.focus();
+                        }
+                    } else {
+                        // Tab
+                        if (document.activeElement === lastFocusable) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            firstFocusable.focus();
+                        }
+                    }
+                }
             });
             
             function closeOverlay() {
                 overlay.classList.remove('show');
                 document.body.style.overflow = ''; // Restore scrolling
+                // Restore focus to the previously focused element
+                if (previouslyFocusedElement) {
+                    previouslyFocusedElement.focus();
+                    previouslyFocusedElement = null;
+                }
             }
             
             // Portfolio Overlay functionality
@@ -741,11 +791,13 @@ spyScrolling( );
             const portfolioOverlay = document.getElementById('portfolio-overlay');
             const portfolioOverlayBackdrop = portfolioOverlay.querySelector('.project-overlay-backdrop');
             const portfolioOverlayCloseButton = portfolioOverlay.querySelector('.project-overlay-close');
+            let portfolioPreviouslyFocusedElement = null;
             
             // Open portfolio overlay when card is clicked
             if (portfolioCard) {
                 portfolioCard.addEventListener('click', function(e) {
                     e.preventDefault();
+                    portfolioPreviouslyFocusedElement = document.activeElement;
                     portfolioOverlay.classList.add('show');
                     document.body.style.overflow = 'hidden'; // Prevent background scrolling
                 });
@@ -783,11 +835,59 @@ spyScrolling( );
                 if (e.key === 'Escape' && portfolioOverlay.classList.contains('show')) {
                     closePortfolioOverlay();
                 }
+                
+                // Prevent Tab from reaching background elements when portfolio overlay is open
+                if (e.key === 'Tab' && portfolioOverlay.classList.contains('show')) {
+                    const focusableElements = portfolioOverlay.querySelectorAll(
+                        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+                    );
+                    const firstFocusable = focusableElements[0];
+                    const lastFocusable = focusableElements[focusableElements.length - 1];
+                    
+                    // If focus is not within the overlay, force it to the first element
+                    if (!portfolioOverlay.contains(document.activeElement)) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        firstFocusable.focus();
+                    }
+                }
+            });
+            
+            // Focus trap for portfolio overlay keyboard navigation
+            portfolioOverlay.addEventListener('keydown', function(e) {
+                if (e.key === 'Tab') {
+                    const focusableElements = portfolioOverlay.querySelectorAll(
+                        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+                    );
+                    const firstFocusable = focusableElements[0];
+                    const lastFocusable = focusableElements[focusableElements.length - 1];
+                    
+                    if (e.shiftKey) {
+                        // Shift + Tab
+                        if (document.activeElement === firstFocusable) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            lastFocusable.focus();
+                        }
+                    } else {
+                        // Tab
+                        if (document.activeElement === lastFocusable) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            firstFocusable.focus();
+                        }
+                    }
+                }
             });
             
             function closePortfolioOverlay() {
                 portfolioOverlay.classList.remove('show');
                 document.body.style.overflow = ''; // Restore scrolling
+                // Restore focus to the previously focused element
+                if (portfolioPreviouslyFocusedElement) {
+                    portfolioPreviouslyFocusedElement.focus();
+                    portfolioPreviouslyFocusedElement = null;
+                }
             }
         });
 </script>
@@ -801,7 +901,7 @@ spyScrolling( );
 			</svg>
 		</button>
 	</div>
-	<div class="project-overlay-content">
+	<div class="project-overlay-content" tabindex="-1">
 		<div class="project-overlay-tags">
 			<span class="project-tag">#Enterprise software</span>
 			<span class="project-tag">#Dashboards</span>
@@ -855,7 +955,7 @@ spyScrolling( );
 								bottom: 4px;
 								width: 50%;
 								background: #2c2c2c;
-								transition: left 0.25s cubic-bezier(0.76, 0, 0.24, 1);
+								transition: left 0.2s ease-out;
 								z-index: 1;
 								-webkit-clip-path: polygon(0% 0%, calc(100% - 6px) 0%, 100% 6px, 100% 0%, 100% 100%, 0% 100%);
     clip-path: polygon(0% 0%, calc(100% - 6px) 0%, 100% 6px, 100% 0%, 100% 100%, 0% 100%);
@@ -1024,7 +1124,7 @@ spyScrolling( );
 			</svg>
 		</button>
 	</div>
-	<div class="project-overlay-content">
+	<div class="project-overlay-content" tabindex="-1">
 		<iframe src="portfolio.html" width="100%" height="100%" frameborder="0" style="min-height: 80vh; border: none;"></iframe>
 	</div>
 </div>

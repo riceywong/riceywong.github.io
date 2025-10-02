@@ -1096,6 +1096,11 @@ aside {
 	transform: scale(0.95);
 }
 
+.project-overlay-close:focus-visible, button.card:focus-visible {
+	outline: 2px solid blue;
+	outline-offset: -5px;
+}
+
 .project-overlay-content {
 	position: relative;
 	bottom: 0;
