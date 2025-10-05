@@ -25,9 +25,13 @@ h2 {
 @media (max-width: 1199px) and (min-width: 900px) {
 	h2 {
 		font-size: 4.8rem;
+		margin: 10px 0 0;
 	}
 	.avatar {
 		max-width: 300px;
+	}
+	.writing .space {
+		padding: 40px !important;
 	}
 }
 @media screen and (max-width: 899px) {

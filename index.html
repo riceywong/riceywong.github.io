@@ -356,22 +356,22 @@
 	<div class="full-container center">
 		<div class="row">
 			<div class="col-1-md hide-sm hide-xs"></div>
-			<div class="solid col-12 col-5-md is-vertical-align">
+			<div class="solid col-12 col-12-md col-5-lg is-vertical-align">
 				<div class="row is-vertical-align">
 					<div class="col-12 col-12-md">
 						<h2>Things I write&nbsp;about</h2>
 					</div>
 	            </div>
 			</div>
-			<div class="space col-12 col-6-md is-center">
+			<div class="space col-12 col-12-md col-6-lg is-center">
 				<div class="row" style="margin:0">
-					<a href="https://ricey.notion.site/Design-learnings-from-Lasek-3515d518d8914d4c9e6940272197778f" target="_blank" class="card col-12">
+					<a href="https://ricey.notion.site/Design-learnings-from-Lasek-3515d518d8914d4c9e6940272197778f" target="_blank" class="card col-12 col-6-md col-12-lg">
 						<h3 class="title">How I became an advocate for accessibility</h3>
 						<p class="is-vertical-align">
 							<i class="outgoing light" aria-hidden="true" style="margin:0 8px 0 0"></i> Notion
 						</p>
 	            	</a>
-					<a href="https://ricey.notion.site/Me-myself-and-AI-2705e67457b7800bba97da97850f5ea3" target="_blank" class="card col-12">
+					<a href="https://ricey.notion.site/Me-myself-and-AI-2705e67457b7800bba97da97850f5ea3" target="_blank" class="card col-12 col-6-md col-12-lg">
 						<h3 class="title">Attempting to fit AI into my day-to-day</h3>
 						<p class="is-vertical-align">
 							<i class="outgoing light" aria-hidden="true" style="margin:0 8px 0 0"></i> Notion
@@ -890,6 +890,14 @@ spyScrolling( );
                 }
             }
         });
+        
+        // Load iframe content after page has fully loaded
+        window.addEventListener('load', function() {
+            const portfolioIframe = document.getElementById('portfolio-iframe');
+            if (portfolioIframe && portfolioIframe.dataset.src) {
+                portfolioIframe.src = portfolioIframe.dataset.src;
+            }
+        });
 </script>
 
 <!-- Internal Tool Overlay -->
@@ -1125,7 +1133,7 @@ spyScrolling( );
 		</button>
 	</div>
 	<div class="project-overlay-content" tabindex="-1" style="overflow-y:hidden;">
-		<iframe src="portfolio.html" width="100%" height="100%" frameborder="0"></iframe>
+		<iframe id="portfolio-iframe" data-src="portfolio.html" width="100%" height="100%" frameborder="0"></iframe>
 	</div>
 </div>
 
