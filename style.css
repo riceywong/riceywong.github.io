@@ -358,6 +358,7 @@ p.drag:hover {
 	background-size: 41px auto, 41px auto, auto 19px, auto 19px, 41px 100%, 41px, 100% 19px;
 	border-radius: 6px;
 	box-shadow: 0 2px 15px 0 #0000ff08;
+	color-scheme: only light;
 }
 
 @media screen and (max-width: 899px) {
