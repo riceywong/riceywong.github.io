@@ -31,7 +31,10 @@
     }
 @media (max-width: 899px) {
     iframe {
-        padding-bottom: 40px;
+        height: calc(100vh - env(safe-area-inset-top, 0) - env(safe-area-inset-bottom, 0) - 60px);
+    }
+    section.grey {
+        display: none;
     }
 }
 </style>
@@ -305,12 +308,12 @@
                 </div>
 
                 <br><br>
-                <h2 class="portfolio-label">About <i>Suling</i></h2>
+                <h2 class="portfolio-label">About Suling</h2>
                 <p class="portfolio-label">I started out in marketing where I worked directly with clients and customers to solve problems in hacky ways.</p>
-                <p class="portfolio-label">This experience led me to become a designer, where I could have a more direct impact on the product by identifying and solving problems more effectively.</p>
-                <p class="portfolio-label" style="margin-bottom: 100px;">I'm currently a <i style="text-decoration-thickness:1.5px;text-decoration-style:dotted;">Senior Product Designer</i> with 6 years of experience building and optimising consumer products and internal tools.</p>
+                <p class="portfolio-label">This experience led me to become a designer, where I could have a more direct impact on the product by <span style="background-color:rgb(0 74 255 / 50%);">identifying and solving problems</span> more effectively.</p>
+                <p class="portfolio-label" style="margin-bottom: 100px;">I'm currently a Senior Product Designer with <span style="background-color:rgb(226 0 172 / 50%);">6 years of experience</span> building and optimising consumer products and internal tools.</p>
                 <div class="cursor" style="top:unset;bottom:40px;right:140px;color:white;">
-                    <span>See ya!</span>
+                    <span>Talk soon!</span>
                 </div>
 
 
