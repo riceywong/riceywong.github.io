@@ -199,6 +199,8 @@ p.portfolio-label {
 	opacity: 0.4;
 	font-size: 1.2rem;
 	margin-bottom: 8px;
+	text-transform: unset;
+    font-weight: 500;
 }
 
 .portfolio-card .card .desc {
