@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Data Table</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .table-container {
+            padding: 30px;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 15px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 1.1rem;
+            position: relative;
+        }
+
+        td {
+            padding: 18px 15px;
+            border-bottom: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        tr:hover td {
+            background-color: #f8fafc;
+        }
+
+        .cell-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .cell-text {
+            flex: 1;
+        }
+
+        .cell-actions {
+            display: none;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            padding: 8px;
+            z-index: 10;
+        }
+
+        .cell-content:hover .cell-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .action-btn {
+            background: none;
+            border: none;
+            padding: 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+        }
+
+        .action-btn:hover {
+            background-color: #f3f4f6;
+            transform: scale(1.1);
+        }
+
+        .edit-btn {
+            color: #3b82f6;
+        }
+
+        .edit-btn:hover {
+            background-color: #dbeafe;
+        }
+
+        .delete-btn {
+            color: #ef4444;
+        }
+
+        .delete-btn:hover {
+            background-color: #fee2e2;
+        }
+
+        .view-btn {
+            color: #10b981;
+        }
+
+        .view-btn:hover {
+            background-color: #d1fae5;
+        }
+
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-active {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+
+        .status-inactive {
+            background-color: #fee2e2;
+            color: #991b1b;
+        }
+
+        .status-pending {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+
+        .priority-high {
+            color: #dc2626;
+            font-weight: 600;
+        }
+
+        .priority-medium {
+            color: #d97706;
+            font-weight: 600;
+        }
+
+        .priority-low {
+            color: #059669;
+            font-weight: 600;
+        }
+
+        .edit-input {
+            width: 100%;
+            padding: 8px 12px;
+            border: 2px solid #3b82f6;
+            border-radius: 4px;
+            font-size: 14px;
+            outline: none;
+            background: white;
+        }
+
+        .edit-input:focus {
+            border-color: #1d4ed8;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .save-btn, .cancel-btn {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            margin-left: 8px;
+        }
+
+        .save-btn {
+            background-color: #10b981;
+            color: white;
+        }
+
+        .save-btn:hover {
+            background-color: #059669;
+        }
+
+        .cancel-btn {
+            background-color: #6b7280;
+            color: white;
+        }
+
+        .cancel-btn:hover {
+            background-color: #4b5563;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 8px;
+            }
+            
+            .header {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .table-container {
+                padding: 15px;
+            }
+            
+            th, td {
+                padding: 12px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Interactive Data Table</h1>
+            <p>Hover over any cell to see available actions</p>
+        </div>
+        
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Department</th>
+                        <th>Status</th>
+                        <th>Priority</th>
+                        <th>Last Updated</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="cell-content">
+                                <span class="cell-text">001</span>
+                                <div class="cell-actions">
+                                    <button class="action-btn edit-btn" onclick="editCell(this)" title="Edit">✏️</button>
+                                    <button class="action-btn view-btn" onclick="viewDetails(this)" title="View">👁️</button>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="cell-content">
+                                <span class="cell-text">Sarah Johnson</span>
+                                <div class="cell-actions">
+                                    <button class="action-btn edit-btn" onclick="editCell(this)" title="Edit">✏️</button>
+                                    <button class="action-btn view-btn" onclick="viewDetails(this)" title="View">👁️</button>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="cell-content">
+                                <span class="cell-text">sarah.johnson@company.com</span>
+                                <div class="cell-actions">
+                                    <button class="action-btn edit-btn" onclick="editCell(this)" title="Edit">✏️</button>
+                                    <button class="action-btn view-btn" onclick="viewDetails(this)" title="View">👁️</button>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="cell-content">
+                                <span class="cell-text">Engineering</span>
+                                <div class="cell-actions">
+                                    <button class="action-btn edit-btn" onclick="editCell(this)" title="Edit">✏️</button>
+                                    <button class="action-btn view-btn" onclick="viewDetails(this)" title="View">👁️</button>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="cell-content">
+                                <span class="cell-text status-badge status-active">Active</span>
+                                <div class="cell-actions">
+                                    <button class="action-btn edit-btn" onclick="editCell(this)" title="Edit">✏️</button>
+                                    <button class="action-btn view-btn" onclick="viewDetails(this)" title="View">👁️</button>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="cell-content">
+                                <span class="cell-text priority-high">High</span>
+                                <div class="cell-actions">
+                                    <button class="action-btn edit-btn" onclick="editCell(this)" title="Edit">✏️</button>
+                                    <button class="action-btn view-btn" onclick="viewDetails(this)" title="View">👁️</button>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="cell-content">
+                                <span class="cell-text">2024-01-15</span>
+                                <div class="cell-actions">
+                                    <button class="action-btn edit-btn" onclick="editCell(this)" title="Edit">✏️</button>
+                                    <button class="action-btn view-btn" onclick="viewDetails(this)" title="View">👁️</button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="cell-content">
+                                <span class="cell-text">002</span>
+                                <div class="cell-actions">
+                                    <button class="action-btn edit-btn" onclick="editCell(this)" title="Edit">✏️</button>
+                                    <button class="action-btn view-btn" onclick="viewDetails(this)" title="View">👁️</button>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="cell-content">
+                                <span class="cell-text">Michael Chen</span>
+                                <div class="cell-actions">
+                                    <button class="action-btn edit-btn" onclick="editCell(this)" title="Edit">✏️</button>
+                                    <button class="action-btn view-btn" onclick="viewDetails(this)" title="View">👁️</button>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="cell-content">
+                                <span class="cell-text">michael.chen@company.com</span>
+                                <div class="cell-actions">
+                                    <button class="action-btn edit-btn" onclick="editCell(this)" title="Edit">✏️</button>
+                                    <button class="action-btn view-btn" onclick="viewDetails(this)" title="View">👁️</button>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="cell-content">
+                                <span class="cell-text">Marketing</span>
+                                <div class="cell-actions">
+                                    <button class="action-btn edit-btn" onclick="editCell(this)" title="Edit">✏️</button>
+                                    <button class="action-btn view-btn" onclick="viewDetails(this)" title="View">👁️</button>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="cell-content">
+                                <span class="cell-text status-badge status-pending">Pending</span>
+                                <div class="cell-actions">
+                                    <button class="action-btn edit-btn" onclick="editCell(this)" title="Edit">✏️</button>
+                                    <button class="action-btn view-btn" onclick="viewDetails(this)" title="View">👁️</button>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="cell-content">
+                                <span class="cell-text priority-medium">Medium</span>
+                                <div class="cell-actions">
+                                    <button class="action-btn edit-btn" onclick="editCell(this)" title="Edit">✏️</button>
+                                    <button class="action-btn view-btn" onclick="viewDetails(this)" title="View">👁️</button>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="cell-content">
+                                <span class="cell-text">2024-01-14</span>
+                                <div class="cell-actions">
+                                    <button class="action-btn edit-btn" onclick="editCell(this)" title="Edit">✏️</button>
+                                    <button class="action-btn view-btn" onclick="viewDetails(this)" title="View">👁️</button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="cell-content">
+                                <span class="cell-text">003</span>
+                                <div class="cell-actions">
+                                    <button class="action-btn edit-btn" onclick="editCell(this)" title="Edit">✏️</button>
+                                    <button class="action-btn view-btn" onclick="viewDetails(this)" title="View">👁️</button>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="cell-content">
+                                <span class="cell-text">Emily Rodriguez</span>
+                                <div class="cell-actions">
+                                    <button class="action-btn edit-btn" onclick="editCell(this)" title="Edit">✏️</button>
+                                    <button class="action-btn view-btn" onclick="viewDetails(this)" title="View">👁️</button>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="cell-content">
+                                <span class="cell-text">emily.rodriguez@company.com</span>
+                                <div class="cell-actions">
+                                    <button class="action-btn edit-btn" onclick="editCell(this)" title="Edit">✏️</button>
+                                    <button class="action-btn view-btn" onclick="viewDetails(this)" title="View">👁️</button>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="cell-content">
+                                <span class="cell-text">Sales</span>
+                                <div class="cell-actions">
+                                    <button class="action-btn edit-btn" onclick="editCell(this)" title="Edit">✏️</button>
+                                    <button class="action-btn view-btn" onclick="viewDetails(this)" title="View">👁️</button>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="cell-content">
+                                <span class="cell-text status-badge status-inactive">Inactive</span>
+                                <div class="cell-actions">
+                                    <button class="action-btn edit-btn" onclick="editCell(this)" title="Edit">✏️</button>
+                                    <button class="action-btn view-btn" onclick="viewDetails(this)" title="View">👁️</button>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="cell-content">
+                                <span class="cell-text priority-low">Low</span>
+                                <div class="cell-actions">
+                                    <button class="action-btn edit-btn" onclick="editCell(this)" title="Edit">✏️</button>
+                                    <button class="action-btn view-btn" onclick="viewDetails(this)" title="View">👁️</button>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="cell-content">
+                                <span class="cell-text">2024-01-13</span>
+                                <div class="cell-actions">
+                                    <button class="action-btn edit-btn" onclick="editCell(this)" title="Edit">✏️</button>
+                                    <button class="action-btn view-btn" onclick="viewDetails(this)" title="View">👁️</button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="cell-content">
+                                <span class="cell-text">004</span>
+                                <div class="cell-actions">
+                                    <button class="action-btn edit-btn" onclick="editCell(this)" title="Edit">✏️</button>
+                                    <button class="action-btn view-btn" onclick="viewDetails(this)" title="View">👁️</button>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="cell-content">
+                                <span class="cell-text">David Kim</span>
+                                <div class="cell-actions">
+                                    <button class="action-btn edit-btn" onclick="editCell(this)" title="Edit">✏️</button>
+                                    <button class="action-btn view-btn" onclick="viewDetails(this)" title="View">👁️</button>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="cell-content">
+                                <span class="cell-text">david.kim@company.com</span>
+                                <div class="cell-actions">
+                                    <button class="action-btn edit-btn" onclick="editCell(this)" title="Edit">✏️</button>
+                                    <button class="action-btn view-btn" onclick="viewDetails(this)" title="View">👁️</button>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="cell-content">
+                                <span class="cell-text">HR</span>
+                                <div class="cell-actions">
+                                    <button class="action-btn edit-btn" onclick="editCell(this)" title="Edit">✏️</button>
+                                    <button class="action-btn view-btn" onclick="viewDetails(this)" title="View">👁️</button>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="cell-content">
+                                <span class="cell-text status-badge status-active">Active</span>
+                                <div class="cell-actions">
+                                    <button class="action-btn edit-btn" onclick="editCell(this)" title="Edit">✏️</button>
+                                    <button class="action-btn view-btn" onclick="viewDetails(this)" title="View">👁️</button>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="cell-content">
+                                <span class="cell-text priority-high">High</span>
+                                <div class="cell-actions">
+                                    <button class="action-btn edit-btn" onclick="editCell(this)" title="Edit">✏️</button>
+                                    <button class="action-btn view-btn" onclick="viewDetails(this)" title="View">👁️</button>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="cell-content">
+                                <span class="cell-text">2024-01-16</span>
+                                <div class="cell-actions">
+                                    <button class="action-btn edit-btn" onclick="editCell(this)" title="Edit">✏️</button>
+                                    <button class="action-btn view-btn" onclick="viewDetails(this)" title="View">👁️</button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="cell-content">
+                                <span class="cell-text">005</span>
+                                <div class="cell-actions">
+                                    <button class="action-btn edit-btn" onclick="editCell(this)" title="Edit">✏️</button>
+                                    <button class="action-btn view-btn" onclick="viewDetails(this)" title="View">👁️</button>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="cell-content">
+                                <span class="cell-text">Lisa Thompson</span>
+                                <div class="cell-actions">
+                                    <button class="action-btn edit-btn" onclick="editCell(this)" title="Edit">✏️</button>
+                                    <button class="action-btn view-btn" onclick="viewDetails(this)" title="View">👁️</button>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="cell-content">
+                                <span class="cell-text">lisa.thompson@company.com</span>
+                                <div class="cell-actions">
+                                    <button class="action-btn edit-btn" onclick="editCell(this)" title="Edit">✏️</button>
+                                    <button class="action-btn view-btn" onclick="viewDetails(this)" title="View">👁️</button>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="cell-content">
+                                <span class="cell-text">Finance</span>
+                                <div class="cell-actions">
+                                    <button class="action-btn edit-btn" onclick="editCell(this)" title="Edit">✏️</button>
+                                    <button class="action-btn view-btn" onclick="viewDetails(this)" title="View">👁️</button>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="cell-content">
+                                <span class="cell-text status-badge status-pending">Pending</span>
+                                <div class="cell-actions">
+                                    <button class="action-btn edit-btn" onclick="editCell(this)" title="Edit">✏️</button>
+                                    <button class="action-btn view-btn" onclick="viewDetails(this)" title="View">👁️</button>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="cell-content">
+                                <span class="cell-text priority-medium">Medium</span>
+                                <div class="cell-actions">
+                                    <button class="action-btn edit-btn" onclick="editCell(this)" title="Edit">✏️</button>
+                                    <button class="action-btn view-btn" onclick="viewDetails(this)" title="View">👁️</button>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="cell-content">
+                                <span class="cell-text">2024-01-12</span>
+                                <div class="cell-actions">
+                                    <button class="action-btn edit-btn" onclick="editCell(this)" title="Edit">✏️</button>
+                                    <button class="action-btn view-btn" onclick="viewDetails(this)" title="View">👁️</button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        let originalValue = '';
+        let isEditing = false;
+
+        function editCell(button) {
+            if (isEditing) return;
+            
+            const cellContent = button.closest('.cell-content');
+            const cellText = cellContent.querySelector('.cell-text');
+            const cellActions = cellContent.querySelector('.cell-actions');
+            
+            originalValue = cellText.textContent.trim();
+            
+            // Create input field
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.className = 'edit-input';
+            input.value = originalValue;
+            
+            // Create save and cancel buttons
+            const saveBtn = document.createElement('button');
+            saveBtn.className = 'save-btn';
+            saveBtn.textContent = 'Save';
+            saveBtn.onclick = () => saveEdit(cellContent, input);
+            
+            const cancelBtn = document.createElement('button');
+            cancelBtn.className = 'cancel-btn';
+            cancelBtn.textContent = 'Cancel';
+            cancelBtn.onclick = () => cancelEdit(cellContent, cellText);
+            
+            // Replace content
+            cellText.style.display = 'none';
+            cellActions.style.display = 'none';
+            
+            const editContainer = document.createElement('div');
+            editContainer.style.display = 'flex';
+            editContainer.style.alignItems = 'center';
+            editContainer.appendChild(input);
+            editContainer.appendChild(saveBtn);
+            editContainer.appendChild(cancelBtn);
+            
+            cellContent.appendChild(editContainer);
+            
+            input.focus();
+            input.select();
+            isEditing = true;
+        }
+
+        function saveEdit(cellContent, input) {
+            const newValue = input.value.trim();
+            const cellText = cellContent.querySelector('.cell-text');
+            const cellActions = cellContent.querySelector('.cell-actions');
+            
+            if (newValue !== originalValue) {
+                cellText.textContent = newValue;
+                
+                // Update styling based on content
+                updateCellStyling(cellText, newValue);
+            }
+            
+            // Restore original display
+            cellText.style.display = 'block';
+            cellActions.style.display = 'flex';
+            
+            // Remove edit container
+            const editContainer = cellContent.querySelector('div:last-child');
+            if (editContainer && editContainer.style.display === 'flex') {
+                editContainer.remove();
+            }
+            
+            isEditing = false;
+        }
+
+        function cancelEdit(cellContent, cellText) {
+            const cellActions = cellContent.querySelector('.cell-actions');
+            
+            // Restore original display
+            cellText.style.display = 'block';
+            cellActions.style.display = 'flex';
+            
+            // Remove edit container
+            const editContainer = cellContent.querySelector('div:last-child');
+            if (editContainer && editContainer.style.display === 'flex') {
+                editContainer.remove();
+            }
+            
+            isEditing = false;
+        }
+
+        function updateCellStyling(cellText, value) {
+            // Remove existing classes
+            cellText.className = 'cell-text';
+            
+            // Add appropriate classes based on content
+            if (value.toLowerCase() === 'active') {
+                cellText.className += ' status-badge status-active';
+            } else if (value.toLowerCase() === 'inactive') {
+                cellText.className += ' status-badge status-inactive';
+            } else if (value.toLowerCase() === 'pending') {
+                cellText.className += ' status-badge status-pending';
+            } else if (value.toLowerCase() === 'high') {
+                cellText.className += ' priority-high';
+            } else if (value.toLowerCase() === 'medium') {
+                cellText.className += ' priority-medium';
+            } else if (value.toLowerCase() === 'low') {
+                cellText.className += ' priority-low';
+            }
+        }
+
+        function viewDetails(button) {
+            const cellContent = button.closest('.cell-content');
+            const cellText = cellContent.querySelector('.cell-text');
+            const value = cellText.textContent.trim();
+            
+            alert(`Viewing details for: ${value}\n\nThis would typically open a detailed view or modal with more information about this record.`);
+        }
+
+        // Handle Enter and Escape keys in edit mode
+        document.addEventListener('keydown', function(e) {
+            if (isEditing) {
+                if (e.key === 'Enter') {
+                    const activeInput = document.querySelector('.edit-input:focus');
+                    if (activeInput) {
+                        const cellContent = activeInput.closest('.cell-content');
+                        const saveBtn = cellContent.querySelector('.save-btn');
+                        if (saveBtn) saveBtn.click();
+                    }
+                } else if (e.key === 'Escape') {
+                    const activeInput = document.querySelector('.edit-input:focus');
+                    if (activeInput) {
+                        const cellContent = activeInput.closest('.cell-content');
+                        const cellText = cellContent.querySelector('.cell-text');
+                        const cancelBtn = cellContent.querySelector('.cancel-btn');
+                        if (cancelBtn) cancelBtn.click();
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+
+
