@@ -29,12 +29,21 @@
     .project-overlay-close {
         background: white !important;
     }
+    .link {
+        color:#2c2c2c;
+        padding:4px 8px;
+        border-radius: 2px;
+    }
+    .link:hover {
+        background-color: #f0f0f0;
+        color: black;
+    }
 @media (max-width: 899px) {
     iframe {
         height: calc(100vh - env(safe-area-inset-top, 0) - env(safe-area-inset-bottom, 0) - 60px);
     }
-    section.grey {
-        display: none;
+    .link:hover {
+        background-color: none;
     }
 }
 </style>
@@ -46,10 +55,10 @@
 <div class="figmaright"></div>
 <div class="figmabottom"></div>
 
-<section class="portfolio-section">
+<section id="top" class="portfolio-section">
 	<div class="container center">
 		<div class="row">
-			<div class="col-12">
+			<div class="col-12" style="position:relative;">
                 <h1 class="portfolio-label">Suling's portfolio for&nbsp;<i>GovTech</i></h1>
 
                 <h2 class="portfolio-label">Case studies</h2>
@@ -279,7 +288,7 @@
                     </div>
                 </div>
 
-                <div class="portfolio-card" style="position:relative;">
+                <div class="portfolio-card">
                     <div class="row is-vertical-align" style="margin:0;">
                         <div class="card col-12 col-12-md" style="transform:none;">
                             <div class="pills-container">
@@ -312,13 +321,15 @@
                 <p class="portfolio-label">I started out in marketing where I worked directly with clients and customers to solve problems in hacky ways.</p>
                 <p class="portfolio-label">This experience led me to become a designer, where I could have a more direct impact on the product by <span style="background-color:rgb(0 74 255 / 50%);">identifying and solving problems</span> more effectively.</p>
                 <p class="portfolio-label" style="margin-bottom: 100px;">I'm currently a Senior Product Designer with <span style="background-color:rgb(226 0 172 / 50%);">6 years of experience</span> building and optimising consumer products and internal tools.</p>
-                <div class="cursor" style="top:unset;bottom:40px;right:140px;color:white;">
+                <div class="cursor" style="top:unset;bottom:20px;right:100px;color:white;">
                     <span>Talk soon!</span>
                 </div>
-
-
-
 			</div>
+
+            <div class="is-center" style="padding:4px 4px;background:white;border-radius:5px;margin-left:auto;margin-right:auto;margin-top:40px;margin-bottom:40px;display:flex;gap:4px;font-size:1.2rem;">
+                <a class="link" href="#top">Back to top<span style="font-size:1rem;padding-left:1px;">↑</span></a>
+                <a class="link" href="https://www.linkedin.com/in/suling-wong/" target="_blank">To LinkedIn<span style="font-size:0.8rem;">↗</span></a>
+            </div>
 		</div>
 	</div>
 </section>
