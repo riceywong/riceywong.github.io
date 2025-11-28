@@ -114,6 +114,48 @@
         height: unset;
     }
 }
+    /* Loading state styles */
+    .project-overlay-loader {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: white;
+        border-radius: 13px 13px 0 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1001;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.2s ease, visibility 0.2s ease;
+    }
+    .project-overlay-loader.show {
+        opacity: 1;
+        visibility: visible;
+    }
+    .project-overlay-loader-spinner {
+        width: 40px;
+        height: 40px;
+        border: 3px solid #e6e6e6;
+        border-top-color: #999;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+    .project-overlay-content {
+        position: relative;
+    }
+    .project-overlay-content iframe {
+        opacity: 1;
+        transition: opacity 0.2s ease;
+    }
+    .project-overlay-content iframe.loading {
+        opacity: 0;
+    }
 </style>
 
 <!-- Main Content -->
@@ -480,6 +522,9 @@
             </button>
             </div>
         </div>
+		<div class="project-overlay-loader">
+            <div class="project-overlay-loader-spinner"></div>
+        </div>
 		<iframe id="portfolio-iframe" data-src="codemethods.html" width="100%" height="100%" frameborder="0" tabindex="5"></iframe>
 	</div>
 </div>
@@ -513,6 +558,9 @@
             </button>
             </div>
         </div>
+		<div class="project-overlay-loader">
+            <div class="project-overlay-loader-spinner"></div>
+        </div>
 		<iframe id="portfolio-iframe" data-src="grabwallet.html" width="100%" height="100%" frameborder="0" tabindex="5"></iframe>
 	</div>
 </div>
@@ -545,6 +593,9 @@
                 </svg>                    
             </button>
             </div>
+        </div>
+		<div class="project-overlay-loader">
+            <div class="project-overlay-loader-spinner"></div>
         </div>
 		<iframe id="portfolio-iframe" data-src="beamrefunds.html" width="100%" height="100%" frameborder="0" tabindex="5"></iframe>
 	</div>
@@ -610,6 +661,9 @@ document.addEventListener('DOMContentLoaded', function() {
             sourceEvent.preventDefault();
         }
 
+        // Check if we're switching between overlays (not initial open)
+        const isSwitching = document.querySelector('.project-overlay.show') !== null;
+        
         closeAllOverlays();
         overlay.classList.add('show');
         body.style.overflow = 'hidden';
@@ -631,9 +685,46 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         const iframe = overlay.querySelector('iframe');
-        if (iframe && iframe.dataset.src && !iframe.src) {
-            iframe.src = iframe.dataset.src;
+        const loader = overlay.querySelector('.project-overlay-loader');
+        
+        // Show loader if switching between overlays
+        if (isSwitching && loader) {
+            loader.classList.add('show');
+            if (iframe) {
+                iframe.classList.add('loading');
+            }
         }
+
+        // Handle iframe loading
+        if (iframe) {
+            // Set src if not already set
+            if (iframe.dataset.src && !iframe.src) {
+                iframe.src = iframe.dataset.src;
+            }
+            
+            // Hide loader when iframe is ready (doesn't need to be fully loaded)
+            if (isSwitching && loader) {
+                // Function to hide loader
+                const hideLoader = () => {
+                    if (loader) {
+                        loader.classList.remove('show');
+                    }
+                    if (iframe) {
+                        iframe.classList.remove('loading');
+                    }
+                };
+                
+                // Hide loader after iframe starts loading (not waiting for full load)
+                // Use load event if iframe needs to load, otherwise use timeout
+                if (iframe.src && iframe.src !== 'about:blank') {
+                    iframe.addEventListener('load', hideLoader, { once: true });
+                }
+                // Also hide after a short timeout to prevent layout shift even if load event doesn't fire
+                // This ensures the loader doesn't stay visible too long
+                setTimeout(hideLoader, 150);
+            }
+        }
+        
         const overlayLink = overlay.querySelector('.project-overlay-link');
         if (overlayLink && iframe) {
             const linkTarget = iframe.src || iframe.dataset.src || '';
