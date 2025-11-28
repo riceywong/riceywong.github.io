@@ -26,8 +26,66 @@
 <body>
 
 <style>
-    .project-overlay-close {
-        background: white !important;
+    .project-overlay-content {
+        background: none;
+        max-height: calc(100vh - env(safe-area-inset-top, 0) - env(safe-area-inset-bottom, 0) - 20px) !important;
+    }
+    .project-overlay-nav {
+        width: 100%;
+        background-color: white;
+        border-radius: 13px 13px 0 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px;
+        z-index: 1002;
+        border-bottom: 1px solid #e6e6e6;
+    }
+    .project-overlay-nav .project-overlay-close {
+        background: transparent !important;
+        position: unset;
+        top: auto;
+        right: auto;
+        width: 40px;
+        height: 40px;
+        clip-path: none;
+        border-radius: 6px;
+    }
+    .project-overlay-link,.project-overlay-prev,.project-overlay-next {
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        border-radius: 6px;
+        background: transparent;
+        cursor: pointer;
+    }
+    .project-overlay-nav-left {
+        display: flex;
+        align-items: center;
+    }
+    .project-overlay-nav-right {
+        display: flex;
+        align-items: center;
+    }
+    .project-overlay-prev svg,
+    .project-overlay-next svg {
+        width: 16px;
+        height: 16px;
+    }
+    .project-overlay-prev:disabled,
+    .project-overlay-next:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+    }
+    .project-overlay-link:hover, .project-overlay-close:hover,.project-overlay-prev:hover,.project-overlay-next:hover {
+        background: #f5f5f5 !important;
+        transform: none;
+        transition: all 0.2s 
+        ease;;
     }
     .link {
         color:#2c2c2c;
@@ -39,11 +97,21 @@
         color: black;
     }
 @media (max-width: 899px) {
+    .project-overlay-content {
+        max-height: calc(100vh - env(safe-area-inset-top, 0) - env(safe-area-inset-bottom, 0) - 10px) !important;
+    }
+    .project-overlay-nav {
+        padding: 4px;
+    }
     iframe {
         height: calc(100vh - 60px);
     }
     .link:hover {
         background-color: unset;
+    }
+    .project-overlay-close svg {
+        width: unset;
+        height: unset;
     }
 }
 </style>
@@ -383,120 +451,343 @@
 
 <!-- Portfolio Overlays -->
 <div id="tiktok-overlay" class="project-overlay">
-	<div class="project-overlay-backdrop">
-		<button class="project-overlay-close" aria-label="Close overlay">
-			<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-				<path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-			</svg>
-		</button>
-	</div>
+	<div class="project-overlay-backdrop"></div>
 	<div class="project-overlay-content" tabindex="-1" style="overflow-y:hidden;">
-		<iframe id="portfolio-iframe" data-src="codemethods.html" width="100%" height="100%" frameborder="0"></iframe>
+        <div class="project-overlay-nav">
+            <div class="project-overlay-nav-left">
+                <button class="project-overlay-prev" aria-label="Previous case study" title="Previous case study" tabindex="4">
+                    <svg width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8.28033 14.2197C8.57322 14.5126 8.57322 14.9873 8.28033 15.2802C7.98744 15.5731 7.51268 15.5731 7.21978 15.2802L0.219783 8.28022C-0.0731104 7.98732 -0.0731104 7.51256 0.219783 7.21967L7.21978 0.21967C7.51268 -0.0732233 7.98744 -0.0732233 8.28033 0.21967C8.57322 0.512563 8.57322 0.987324 8.28033 1.28022L1.8106 7.74994L8.28033 14.2197Z" fill="black"/>
+                    </svg> 
+                </button>
+                <button class="project-overlay-next" aria-label="Next case study" title="Next case study" tabindex="3">
+                    <svg width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0.21967 14.2197C-0.0732233 14.5126 -0.0732233 14.9873 0.21967 15.2802C0.512563 15.5731 0.987324 15.5731 1.28022 15.2802L8.28022 8.28022C8.57311 7.98732 8.57311 7.51256 8.28022 7.21967L1.28022 0.21967C0.987324 -0.0732233 0.512563 -0.0732233 0.21967 0.21967C-0.0732233 0.512563 -0.0732233 0.987324 0.21967 1.28022L6.6894 7.74994L0.21967 14.2197Z" fill="black"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="project-overlay-nav-right">
+            <a class="project-overlay-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Open case study in new tab" title="Open in new tab" tabindex="2">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.75 1.5C7.16421 1.5 7.5 1.83579 7.5 2.25C7.5 2.66421 7.16421 3 6.75 3H3C2.17157 3 1.5 3.67157 1.5 4.5V15C1.5 15.8284 2.17157 16.5 3 16.5H13.5C14.3284 16.5 15 15.8284 15 15V11.25C15 10.8358 15.3358 10.5 15.75 10.5C16.1642 10.5 16.5 10.8358 16.5 11.25V15C16.5 16.6569 15.1569 18 13.5 18H3C1.34315 18 0 16.6569 0 15V4.5C0 2.84315 1.34315 1.5 3 1.5H6.75Z" fill="black"/>
+                    <path d="M17.25 0C17.6642 0 18 0.335786 18 0.75V8.25C18 8.66421 17.6642 9 17.25 9C16.8358 9 16.5 8.66421 16.5 8.25V2.56055L10.2803 8.78027C9.98738 9.07317 9.51262 9.07317 9.21973 8.78027C8.92683 8.48738 8.92683 8.01262 9.21973 7.71973L15.4395 1.5H9.75C9.33579 1.5 9 1.16421 9 0.75C9 0.335786 9.33579 0 9.75 0H17.25Z" fill="black"/>
+                </svg>                    
+            </a>
+            <button class="project-overlay-close" aria-label="Close overlay" title="Close overlay" tabindex="1">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14.2197 0.219649C14.5126 -0.0732021 14.9873 -0.0732304 15.2802 0.219649C15.5731 0.512531 15.5731 0.987313 15.2802 1.2802L8.81049 7.74992L15.2197 14.1591C15.5122 14.452 15.5124 14.9269 15.2197 15.2196C14.9269 15.5124 14.452 15.5122 14.1591 15.2196L7.74994 8.81047L1.34076 15.2196C1.04786 15.5122 0.573016 15.5124 0.280217 15.2196C-0.012579 14.9269 -0.0123841 14.452 0.280217 14.1591L6.6894 7.74992L0.21967 1.2802C-0.0732233 0.987302 -0.0732233 0.512542 0.21967 0.219649C0.512567 -0.073202 0.987338 -0.0732304 1.28022 0.219649L7.74994 6.68938L14.2197 0.219649Z" fill="black"/>
+                </svg>
+            </button>
+            </div>
+        </div>
+		<iframe id="portfolio-iframe" data-src="codemethods.html" width="100%" height="100%" frameborder="0" tabindex="5"></iframe>
 	</div>
 </div>
 <div id="grab-overlay" class="project-overlay">
-	<div class="project-overlay-backdrop">
-		<button class="project-overlay-close" aria-label="Close overlay">
-			<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-				<path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-			</svg>
-		</button>
-	</div>
+    <div class="project-overlay-backdrop"></div>
 	<div class="project-overlay-content" tabindex="-1" style="overflow-y:hidden;">
-		<iframe id="portfolio-iframe" data-src="grabwallet.html" width="100%" height="100%" frameborder="0"></iframe>
+        <div class="project-overlay-nav">
+            <div class="project-overlay-nav-left">
+                <button class="project-overlay-prev" aria-label="Previous case study" title="Previous case study" tabindex="4">
+                    <svg width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8.28033 14.2197C8.57322 14.5126 8.57322 14.9873 8.28033 15.2802C7.98744 15.5731 7.51268 15.5731 7.21978 15.2802L0.219783 8.28022C-0.0731104 7.98732 -0.0731104 7.51256 0.219783 7.21967L7.21978 0.21967C7.51268 -0.0732233 7.98744 -0.0732233 8.28033 0.21967C8.57322 0.512563 8.57322 0.987324 8.28033 1.28022L1.8106 7.74994L8.28033 14.2197Z" fill="black"/>
+                    </svg> 
+                </button>
+                <button class="project-overlay-next" aria-label="Next case study" title="Next case study" tabindex="3">
+                    <svg width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0.21967 14.2197C-0.0732233 14.5126 -0.0732233 14.9873 0.21967 15.2802C0.512563 15.5731 0.987324 15.5731 1.28022 15.2802L8.28022 8.28022C8.57311 7.98732 8.57311 7.51256 8.28022 7.21967L1.28022 0.21967C0.987324 -0.0732233 0.512563 -0.0732233 0.21967 0.21967C-0.0732233 0.512563 -0.0732233 0.987324 0.21967 1.28022L6.6894 7.74994L0.21967 14.2197Z" fill="black"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="project-overlay-nav-right">
+            <a class="project-overlay-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Open case study in new tab" title="Open in new tab" tabindex="2">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.75 1.5C7.16421 1.5 7.5 1.83579 7.5 2.25C7.5 2.66421 7.16421 3 6.75 3H3C2.17157 3 1.5 3.67157 1.5 4.5V15C1.5 15.8284 2.17157 16.5 3 16.5H13.5C14.3284 16.5 15 15.8284 15 15V11.25C15 10.8358 15.3358 10.5 15.75 10.5C16.1642 10.5 16.5 10.8358 16.5 11.25V15C16.5 16.6569 15.1569 18 13.5 18H3C1.34315 18 0 16.6569 0 15V4.5C0 2.84315 1.34315 1.5 3 1.5H6.75Z" fill="black"/>
+                    <path d="M17.25 0C17.6642 0 18 0.335786 18 0.75V8.25C18 8.66421 17.6642 9 17.25 9C16.8358 9 16.5 8.66421 16.5 8.25V2.56055L10.2803 8.78027C9.98738 9.07317 9.51262 9.07317 9.21973 8.78027C8.92683 8.48738 8.92683 8.01262 9.21973 7.71973L15.4395 1.5H9.75C9.33579 1.5 9 1.16421 9 0.75C9 0.335786 9.33579 0 9.75 0H17.25Z" fill="black"/>
+                </svg>
+            </a>
+            <button class="project-overlay-close" aria-label="Close overlay" title="Close overlay" tabindex="1">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14.2197 0.219649C14.5126 -0.0732021 14.9873 -0.0732304 15.2802 0.219649C15.5731 0.512531 15.5731 0.987313 15.2802 1.2802L8.81049 7.74992L15.2197 14.1591C15.5122 14.452 15.5124 14.9269 15.2197 15.2196C14.9269 15.5124 14.452 15.5122 14.1591 15.2196L7.74994 8.81047L1.34076 15.2196C1.04786 15.5122 0.573016 15.5124 0.280217 15.2196C-0.012579 14.9269 -0.0123841 14.452 0.280217 14.1591L6.6894 7.74992L0.21967 1.2802C-0.0732233 0.987302 -0.0732233 0.512542 0.21967 0.219649C0.512567 -0.073202 0.987338 -0.0732304 1.28022 0.219649L7.74994 6.68938L14.2197 0.219649Z" fill="black"/>
+                </svg>
+            </button>
+            </div>
+        </div>
+		<iframe id="portfolio-iframe" data-src="grabwallet.html" width="100%" height="100%" frameborder="0" tabindex="5"></iframe>
 	</div>
 </div>
 <div id="beam-overlay" class="project-overlay">
-	<div class="project-overlay-backdrop">
-		<button class="project-overlay-close" aria-label="Close overlay">
-			<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-				<path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-			</svg>
-		</button>
-	</div>
+    <div class="project-overlay-backdrop"></div>
 	<div class="project-overlay-content" tabindex="-1" style="overflow-y:hidden;">
-		<iframe id="portfolio-iframe" data-src="beamrefunds.html" width="100%" height="100%" frameborder="0"></iframe>
+        <div class="project-overlay-nav">
+            <div class="project-overlay-nav-left">
+                <button class="project-overlay-prev" aria-label="Previous case study" title="Previous case study" tabindex="4">
+                    <svg width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8.28033 14.2197C8.57322 14.5126 8.57322 14.9873 8.28033 15.2802C7.98744 15.5731 7.51268 15.5731 7.21978 15.2802L0.219783 8.28022C-0.0731104 7.98732 -0.0731104 7.51256 0.219783 7.21967L7.21978 0.21967C7.51268 -0.0732233 7.98744 -0.0732233 8.28033 0.21967C8.57322 0.512563 8.57322 0.987324 8.28033 1.28022L1.8106 7.74994L8.28033 14.2197Z" fill="black"/>
+                    </svg>                        
+                </button>
+                <button class="project-overlay-next" aria-label="Next case study" title="Next case study" tabindex="3">
+                    <svg width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0.21967 14.2197C-0.0732233 14.5126 -0.0732233 14.9873 0.21967 15.2802C0.512563 15.5731 0.987324 15.5731 1.28022 15.2802L8.28022 8.28022C8.57311 7.98732 8.57311 7.51256 8.28022 7.21967L1.28022 0.21967C0.987324 -0.0732233 0.512563 -0.0732233 0.21967 0.21967C-0.0732233 0.512563 -0.0732233 0.987324 0.21967 1.28022L6.6894 7.74994L0.21967 14.2197Z" fill="black"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="project-overlay-nav-right">
+            <a class="project-overlay-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Open case study in new tab" title="Open in new tab" tabindex="2">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.75 1.5C7.16421 1.5 7.5 1.83579 7.5 2.25C7.5 2.66421 7.16421 3 6.75 3H3C2.17157 3 1.5 3.67157 1.5 4.5V15C1.5 15.8284 2.17157 16.5 3 16.5H13.5C14.3284 16.5 15 15.8284 15 15V11.25C15 10.8358 15.3358 10.5 15.75 10.5C16.1642 10.5 16.5 10.8358 16.5 11.25V15C16.5 16.6569 15.1569 18 13.5 18H3C1.34315 18 0 16.6569 0 15V4.5C0 2.84315 1.34315 1.5 3 1.5H6.75Z" fill="black"/>
+                    <path d="M17.25 0C17.6642 0 18 0.335786 18 0.75V8.25C18 8.66421 17.6642 9 17.25 9C16.8358 9 16.5 8.66421 16.5 8.25V2.56055L10.2803 8.78027C9.98738 9.07317 9.51262 9.07317 9.21973 8.78027C8.92683 8.48738 8.92683 8.01262 9.21973 7.71973L15.4395 1.5H9.75C9.33579 1.5 9 1.16421 9 0.75C9 0.335786 9.33579 0 9.75 0H17.25Z" fill="black"/>
+                </svg>                              
+            </a>
+            <button class="project-overlay-close" aria-label="Close overlay" title="Close overlay" tabindex="1">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14.2197 0.219649C14.5126 -0.0732021 14.9873 -0.0732304 15.2802 0.219649C15.5731 0.512531 15.5731 0.987313 15.2802 1.2802L8.81049 7.74992L15.2197 14.1591C15.5122 14.452 15.5124 14.9269 15.2197 15.2196C14.9269 15.5124 14.452 15.5122 14.1591 15.2196L7.74994 8.81047L1.34076 15.2196C1.04786 15.5122 0.573016 15.5124 0.280217 15.2196C-0.012579 14.9269 -0.0123841 14.452 0.280217 14.1591L6.6894 7.74992L0.21967 1.2802C-0.0732233 0.987302 -0.0732233 0.512542 0.21967 0.219649C0.512567 -0.073202 0.987338 -0.0732304 1.28022 0.219649L7.74994 6.68938L14.2197 0.219649Z" fill="black"/>
+                </svg>                    
+            </button>
+            </div>
+        </div>
+		<iframe id="portfolio-iframe" data-src="beamrefunds.html" width="100%" height="100%" frameborder="0" tabindex="5"></iframe>
 	</div>
 </div>
 
 </body>
 <script type="text/javascript">
-// Open overlays from case study cards
 document.addEventListener('DOMContentLoaded', function() {
-    const caseStudyCards = document.querySelectorAll('.portfolio-card[data-overlay] .card');
+    const overlayOrder = ['tiktok-overlay', 'grab-overlay', 'beam-overlay'];
+    const body = document.body;
 
-    caseStudyCards.forEach(function(card) {
-        const portfolioCard = card.closest('.portfolio-card');
-        const overlayId = portfolioCard && portfolioCard.getAttribute('data-overlay');
-        const overlay = overlayId ? document.getElementById(overlayId) : null;
+    function closeOverlayElement(overlay) {
+        overlay.classList.remove('show');
+        if (!document.querySelector('.project-overlay.show')) {
+            body.style.overflow = '';
+            // Restore background content accessibility
+            const mainContent = document.querySelector('.portfolio-section');
+            if (mainContent) {
+                mainContent.removeAttribute('aria-hidden');
+                // Restore tabindex on focusable elements
+                const focusableElements = mainContent.querySelectorAll('[data-original-tabindex]');
+                focusableElements.forEach(el => {
+                    const originalTabindex = el.getAttribute('data-original-tabindex');
+                    if (originalTabindex === 'null' || originalTabindex === '') {
+                        el.removeAttribute('tabindex');
+                    } else {
+                        el.setAttribute('tabindex', originalTabindex);
+                    }
+                    el.removeAttribute('data-original-tabindex');
+                });
+            }
+        }
+    }
+
+    function closeAllOverlays() {
+        document.querySelectorAll('.project-overlay.show').forEach(closeOverlayElement);
+    }
+
+    function updateNavButtons(currentId) {
+        const overlay = document.getElementById(currentId);
+        if (!overlay) return;
+        const index = overlayOrder.indexOf(currentId);
+        if (index === -1) return;
+        const prevId = overlayOrder[(index - 1 + overlayOrder.length) % overlayOrder.length];
+        const nextId = overlayOrder[(index + 1) % overlayOrder.length];
+        const prevBtn = overlay.querySelector('.project-overlay-prev');
+        const nextBtn = overlay.querySelector('.project-overlay-next');
+        if (prevBtn) prevBtn.setAttribute('data-target', prevId);
+        if (nextBtn) nextBtn.setAttribute('data-target', nextId);
+    }
+
+    function openOverlayById(overlayId, sourceEvent) {
+        const overlay = document.getElementById(overlayId);
         if (!overlay) return;
 
-        // Make the card accessible as a button
-        card.setAttribute('role', 'button');
-        card.setAttribute('tabindex', '0');
-        card.setAttribute('aria-controls', overlayId);
-
-        function openOverlay(e) {
-            // Do not open overlay when interacting with before/after toggles or controls
-            const ignoreSelector = '.switch, .switch-btn, button, a, input, select, textarea, video, iframe, label';
-            const targetEl = e.target;
+        const ignoreSelector = '.switch, .switch-btn, button, a, input, select, textarea, video, iframe, label';
+        if (sourceEvent) {
+            const targetEl = sourceEvent.target;
             const activeEl = document.activeElement;
             if ((targetEl && targetEl.closest(ignoreSelector)) || (activeEl && activeEl.closest && activeEl.closest(ignoreSelector))) {
                 return;
             }
-            e.preventDefault();
-            overlay.classList.add('show');
-            document.body.style.overflow = 'hidden';
-            const iframe = overlay.querySelector('iframe');
-            if (iframe && iframe.dataset.src && !iframe.src) {
-                iframe.src = iframe.dataset.src;
-            }
-            // focus trap entry
-            const closeBtn = overlay.querySelector('.project-overlay-close');
-            if (closeBtn) closeBtn.focus();
+            sourceEvent.preventDefault();
         }
 
-        card.addEventListener('click', openOverlay);
+        closeAllOverlays();
+        overlay.classList.add('show');
+        body.style.overflow = 'hidden';
+
+        // Hide background content from screen readers and prevent tabbing
+        const mainContent = document.querySelector('.portfolio-section');
+        if (mainContent) {
+            mainContent.setAttribute('aria-hidden', 'true');
+            // Make all focusable elements in background not focusable
+            const focusableSelectors = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"]), [role="button"]';
+            const focusableElements = mainContent.querySelectorAll(focusableSelectors);
+            focusableElements.forEach(el => {
+                // Store original tabindex
+                const currentTabindex = el.getAttribute('tabindex');
+                el.setAttribute('data-original-tabindex', currentTabindex || '');
+                // Make it not focusable
+                el.setAttribute('tabindex', '-1');
+            });
+        }
+
+        const iframe = overlay.querySelector('iframe');
+        if (iframe && iframe.dataset.src && !iframe.src) {
+            iframe.src = iframe.dataset.src;
+        }
+        const overlayLink = overlay.querySelector('.project-overlay-link');
+        if (overlayLink && iframe) {
+            const linkTarget = iframe.src || iframe.dataset.src || '';
+            overlayLink.href = linkTarget;
+        }
+
+        updateNavButtons(overlayId);
+
+        const closeBtn = overlay.querySelector('.project-overlay-close');
+        if (closeBtn) closeBtn.focus();
+    }
+
+    const caseStudyCards = document.querySelectorAll('.portfolio-card[data-overlay] .card');
+    caseStudyCards.forEach(function(card) {
+        const portfolioCard = card.closest('.portfolio-card');
+        const overlayId = portfolioCard && portfolioCard.getAttribute('data-overlay');
+        if (!overlayId) return;
+
+        card.setAttribute('role', 'button');
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('aria-controls', overlayId);
+
+        card.addEventListener('click', function(e) {
+            openOverlayById(overlayId, e);
+        });
         card.addEventListener('keydown', function(e) {
             if (e.key === 'Enter' || e.key === ' ') {
-                openOverlay(e);
+                openOverlayById(overlayId, e);
             }
         });
     });
 
-    // Close handlers for overlays
-    const overlays = document.querySelectorAll('.project-overlay');
-    overlays.forEach(function(overlay) {
+    // Prev/next navigation
+    document.querySelectorAll('.project-overlay-prev, .project-overlay-next').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            const targetId = btn.getAttribute('data-target');
+            if (targetId) {
+                openOverlayById(targetId);
+            }
+        });
+    });
+
+    // Get all focusable elements within an overlay
+    function getFocusableElements(overlay) {
+        const focusableSelectors = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"]), iframe';
+        const allFocusable = overlay.querySelectorAll(focusableSelectors);
+        // Filter to only include visible, enabled elements and sort by tabindex
+        return Array.from(allFocusable).filter(el => {
+            return el.offsetParent !== null && // visible
+                   !el.disabled && // enabled
+                   (el.tabIndex >= 0 || el.tagName === 'IFRAME' || el.tagName === 'A' || el.tagName === 'BUTTON');
+        }).sort((a, b) => {
+            const aIndex = a.tabIndex || 0;
+            const bIndex = b.tabIndex || 0;
+            if (aIndex === 0 && bIndex === 0) return 0;
+            if (aIndex === 0) return 1;
+            if (bIndex === 0) return -1;
+            return aIndex - bIndex;
+        });
+    }
+
+    // Close handlers and tab order management
+    document.querySelectorAll('.project-overlay').forEach(function(overlay) {
         const closeBtn = overlay.querySelector('.project-overlay-close');
         const backdrop = overlay.querySelector('.project-overlay-backdrop');
-
-        function closeOverlay() {
-            overlay.classList.remove('show');
-            document.body.style.overflow = '';
-        }
+        const iframe = overlay.querySelector('iframe');
+        const overlayContent = overlay.querySelector('.project-overlay-content');
 
         if (closeBtn) {
             closeBtn.addEventListener('click', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
-                closeOverlay();
+                closeOverlayElement(overlay);
             });
         }
 
         if (backdrop) {
             backdrop.addEventListener('click', function(e) {
-                if (e.target === backdrop) closeOverlay();
+                if (e.target === backdrop) {
+                    closeOverlayElement(overlay);
+                }
             });
         }
     });
 
-    // Global ESC to close any open overlay
+    // Global focus trap for when any overlay is open
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
-            document.querySelectorAll('.project-overlay.show').forEach(function(ov) {
-                ov.classList.remove('show');
-                document.body.style.overflow = '';
-            });
+            closeAllOverlays();
+            return;
+        }
+
+        if (e.key !== 'Tab') return;
+
+        const openOverlay = document.querySelector('.project-overlay.show');
+        if (!openOverlay) return;
+
+        const focusableElements = getFocusableElements(openOverlay);
+        if (focusableElements.length === 0) return;
+
+        const activeElement = document.activeElement;
+        const activeIndex = focusableElements.indexOf(activeElement);
+
+        // Check if focus is within the overlay
+        const isFocusInOverlay = openOverlay.contains(activeElement) || activeIndex !== -1;
+
+        if (!isFocusInOverlay) {
+            // Focus escaped the overlay, bring it back to first element
+            e.preventDefault();
+            focusableElements[0].focus();
+            return;
+        }
+
+        // Handle tabbing at boundaries
+        if (!e.shiftKey) {
+            // Forward tab
+            if (activeIndex === focusableElements.length - 1) {
+                // At last element, loop to first
+                e.preventDefault();
+                focusableElements[0].focus();
+            }
+        } else {
+            // Backward tab (Shift+Tab)
+            if (activeIndex === 0 || activeIndex === -1) {
+                // At first element or outside, loop to last
+                e.preventDefault();
+                focusableElements[focusableElements.length - 1].focus();
+            }
+        }
+    });
+
+    // Additional focus trap: catch focus that escapes via other means
+    document.addEventListener('focusin', function(e) {
+        const openOverlay = document.querySelector('.project-overlay.show');
+        if (!openOverlay) return;
+
+        const target = e.target;
+        // If focus moved to something outside the overlay, redirect it back
+        if (!openOverlay.contains(target)) {
+            const focusableElements = getFocusableElements(openOverlay);
+            if (focusableElements.length > 0) {
+                // Check if the target is in the background (should be prevented)
+                const mainContent = document.querySelector('.portfolio-section');
+                if (mainContent && mainContent.contains(target)) {
+                    // Use setTimeout to redirect focus after the current event completes
+                    setTimeout(function() {
+                        if (document.activeElement === target && !openOverlay.contains(document.activeElement)) {
+                            focusableElements[0].focus();
+                        }
+                    }, 0);
+                }
+            }
         }
     });
 });
