@@ -130,6 +130,7 @@
         opacity: 0;
         visibility: hidden;
         transition: opacity 0.2s ease, visibility 0.2s ease;
+        pointer-events: none;
     }
     .project-overlay-loader.show {
         opacity: 1;
@@ -150,8 +151,11 @@
         position: relative;
     }
     .project-overlay-content iframe {
+        position: relative;
+        z-index: 1002;
         opacity: 1;
         transition: opacity 0.2s ease;
+        background: white;
     }
     .project-overlay-content iframe.loading {
         opacity: 0;
@@ -702,26 +706,34 @@ document.addEventListener('DOMContentLoaded', function() {
                 iframe.src = iframe.dataset.src;
             }
             
-            // Hide loader when iframe is ready (doesn't need to be fully loaded)
+            // Show iframe on top of loader when ready, then hide loader
             if (isSwitching && loader) {
-                // Function to hide loader
-                const hideLoader = () => {
-                    if (loader) {
-                        loader.classList.remove('show');
-                    }
+                let iframeShown = false;
+                let loaderHidden = false;
+                
+                // First, make iframe visible (fade in on top of loader)
+                const showIframe = () => {
+                    if (iframeShown) return;
+                    iframeShown = true;
                     if (iframe) {
                         iframe.classList.remove('loading');
                     }
+                    // Hide loader after iframe is visible
+                    setTimeout(() => {
+                        if (!loaderHidden && loader) {
+                            loaderHidden = true;
+                            loader.classList.remove('show');
+                        }
+                    }, 100);
                 };
                 
-                // Hide loader after iframe starts loading (not waiting for full load)
+                // Show iframe first (overlays on loader)
                 // Use load event if iframe needs to load, otherwise use timeout
                 if (iframe.src && iframe.src !== 'about:blank') {
-                    iframe.addEventListener('load', hideLoader, { once: true });
+                    iframe.addEventListener('load', showIframe, { once: true });
                 }
-                // Also hide after a short timeout to prevent layout shift even if load event doesn't fire
-                // This ensures the loader doesn't stay visible too long
-                setTimeout(hideLoader, 150);
+                // Also show iframe after a short timeout to prevent layout shift
+                setTimeout(showIframe, 100);
             }
         }
         
