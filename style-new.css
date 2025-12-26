@@ -1,9 +1,7 @@
-/* CSS Custom Properties for Theming */
 :root {
     --font-inter: "Inter", 'Bricolage Grotesque', sans-serif;
     --font-bg: 'Bricolage Grotesque', sans-serif;
 
-	/* Light Theme Colors */
 	--color-background-primary: #EEEEEE;
 	--color-background-secondary: #ffffff;
 	--color-background-sidebar: #ffffff;
@@ -17,7 +15,6 @@
 }
 
 [data-theme="dark"] {
-	/* Dark Theme Colors */
 	--color-background-primary: #000000;
 	--color-background-secondary: #2c2c2c;
 	--color-background-sidebar: #1a1a1a;
@@ -30,7 +27,6 @@
 	--color-shadow-card: rgba(0, 0, 0, 0.3);
 }
 
-/* Base Styles */
 body {
 	font-family: 'Bricolage Grotesque', sans-serif;
 	background-color: var(--color-background-primary);
@@ -43,13 +39,11 @@ a {
     color: var(--color-text-primary);
 }
 
-/* Layout */
 body {
 	display: flex;
 	min-height: 100vh;
 }
 
-/* Sidebar Styles */
 .sidebar {
 	width: 385px;
 	background-color: var(--color-background-sidebar);
@@ -427,20 +421,6 @@ body {
     margin-right: -50%;
   }
 
-
-
-/* Reduced Motion Support */
-@media (prefers-reduced-motion: reduce) {
-	*,
-	*::before,
-	*::after {
-		animation-duration: 0.01ms !important;
-		animation-iteration-count: 1 !important;
-		transition-duration: 0.01ms !important;
-	}
-}
-
-/* Responsive Design */
 @media (max-width: 899px) {
 	body {
 		flex-direction: column;
@@ -553,10 +533,6 @@ body {
 	}
 }
 
-
-
-
-/* Avatar SVG Animations */
 #eyeright {
 	animation: eyeright 8s ease infinite;
 }
@@ -924,8 +900,6 @@ body {
 	opacity: 0;
 }
 
-
-/* Mobile adjustments */
 @media (max-width: 899px) {
 	.project-overlay-content {
 		max-height: calc(100vh - env(safe-area-inset-top, 0) - env(safe-area-inset-bottom, 0) - 10px);
