@@ -1,11 +1,12 @@
+<!DOCTYPE html>
 <html>
 <head>
 	<title>ricey.co</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet" href="chota.css?v=0.3">
-	<link rel="stylesheet" href="style.css?v=0.3">
-	<link href="https://fonts.googleapis.com/css2?family=Recursive:wght@350;600" rel="stylesheet">
+	<link rel="stylesheet" href="style-new.css">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
 	<link rel="shortcut icon" href="images/favicon.ico">
 	<meta name="description" content="Hi, I'm Suling and I create immersive experiences.">
@@ -13,1128 +14,1340 @@
 	<meta name="author" content="Suling Wong">
 	<meta name="google-site-verification" content="BuLa3yGRyL01gX4RB4ZOTh1hunDOJXedb4OO-eBVsxg" />
 	<script>
-			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-			ga('create', 'UA-98385997-1', 'auto');
-			ga('require', 'GTM-5ZD3VV7');
-			ga('send', 'pageview');
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-98385997-1', 'auto');
+		ga('require', 'GTM-5ZD3VV7');
+		ga('send', 'pageview');
+	</script>
+	<script>
+		// Set initial theme immediately to prevent flash and first-click issues
+		(function() {
+			const root = document.documentElement;
+			const isManualTheme = localStorage.getItem('theme-manual') === 'true';
+			const savedTheme = localStorage.getItem('theme');
+			
+			let initialTheme;
+			if (isManualTheme && savedTheme) {
+				initialTheme = savedTheme;
+			} else {
+				initialTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+			}
+			
+			root.setAttribute('data-theme', initialTheme);
+		})();
 	</script>
 </head>
 <body>
 
-<style type="text/css">
-	body {
-		text-transform: lowercase;
-	}
-</style>
-
-<nav class="nav drag"><span></span>
-	<ul>
-		<li class="nav-item active">
-			<a class="nav-link" href="#home">ricey.co</a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link" href="#writing">writing</a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link" href="#work">work</a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link" href="#stuff">stuff</a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link" href="#contact">contact</a>
-		</li>
-    </ul>
-</nav>
-
-<section id="home" class="hero is-vertical-align">
-	<div class="container center">
-		<div class="row" style="margin:0;">
-			<div class="col-12 col-5-md">
-				<div class="row is-center" style="position: relative;">
-					<svg class="circletext" viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg">
-						<path id="circlePath" d="
-							M 10, 50
-							a 40,40 0 0,1 80,0
-							" fill="none" stroke="none"></path>
-						<text fill="blue">
-							<textPath href="#circlePath" startOffset="50%" text-anchor="middle" style="font-size: 12px;font-weight:bold;font-family: 'Bricolage Grotesque', sans-serif;">
-							hello, i'm suling
-							</textPath>
-						</text>
+<!-- Sidebar - appears first in HTML for mobile stacking -->
+<aside class="sidebar">
+	<div class="sidebar-header">
+		<div class="sidebar-brand">ricey.co</div>
+		<button class="theme-toggle" aria-label="Toggle theme" title="Toggle theme">
+			<div class="theme-switch">
+				<div class="theme-switch-slider"></div>
+				<div class="theme-switch-icon theme-switch-icon-light">
+					<svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<circle cx="10" cy="10" r="4" stroke="currentColor" stroke-width="1.5" fill="none"/>
+						<path d="M10 2V4M10 16V18M18 10H16M4 10H2M15.6569 4.34315L14.2426 5.75736M5.75736 14.2426L4.34315 15.6569M15.6569 15.6569L14.2426 14.2426M5.75736 5.75736L4.34315 4.34315" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
 					</svg>
-					<div class="wrapper avatar drag"><span></span>
-						<svg style="color-scheme: only light;" viewBox="0 0 802 1196" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path d="M73.5 1072C83.5 1144.5 159.5 1144 159.5 1144C168 1175.5 216.5 1211 291.5 1187.5C438.5 1192 552.5 1029.5 660.5 980.5C701.5 939.5 602 939.5 602 939.5C602 939.5 350.485 808.5 243.5 808.5C146.5 897.5 63.5 999.5 73.5 1072Z" fill="url(#paint0_radial)"/>
-							<path d="M250 963C229.791 981.73 198.893 1014.55 168.801 1072C162.515 1084 154 1104.5 158 1141" stroke="#E07151" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-							<path d="M522.277 1012C448.5 1067 363 1052 314 1121.5" stroke="#E07151" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-							<path d="M602.5 836.812C585.603 831.046 544.132 840.825 526 841.485C499.845 842.436 494.583 832.331 469.28 836.812C450.295 840.175 465.494 869.3 458 883.985C480.404 891.784 510.601 879.304 528.621 894.997C523.872 900.714 502.304 940.181 528.621 930.485C563.501 917.633 584.873 895.286 620.643 881.541C632.5 876.985 643.5 874.179 643.5 862.019C643.5 852.832 635.027 847.913 602.5 836.812Z" fill="#9D9FC4"/>
-							<g id="shoe">
-							<path d="M653 891C638 891 626.5 880.5 597 886.5C576.818 890.605 582.5 907.396 582.5 919.5C582.5 930 574.5 948 574.5 948C574.5 948 592.52 955.204 616 954.5C639.48 953.796 658 956 664.5 962.5C664.5 962.5 644 992 646.5 998.5C647.476 1001.04 650.495 1005.06 653 1004C666 998.5 692.822 972.62 724.5 962.5C743.216 956.521 754 957.5 776 952C789.797 948.551 802 942.384 802 926.5C802 914.5 783.5 907 746.5 892.5C727.28 884.968 715.625 880.638 695 881.5C678.198 882.202 669.816 891 653 891Z" fill="url(#paint1_linear)"/>
-							<path d="M761 949C731 944 711.5 935 670.5 959" stroke="#9D9FC4" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-							</g>
-							<path d="M618.5 847C618.5 969.5 519 1016.5 519 1016.5C519 1016.5 519.008 964.584 486.5 922C419.175 833.809 246 815.5 199.5 839.5C240.461 801.27 272.5 768.822 307 739C326.631 722.031 340 707.5 340 693.5L581 726.5C581 726.5 618.5 779 618.5 847Z" fill="url(#paint2_linear)"/>
-							<path d="M527.5 900L251.5 785L118 907L373 1034.5L527.5 910V900Z" fill="url(#paint3_radial)"/>
-							<path d="M527.5 900L251.5 785L118 907L373 1034.5L527.5 910V900Z" fill="url(#paint4_linear)"/>
-							<path d="M212.5 846.5L443 952.5L368.5 1013L146 904.5L212.5 846.5Z" fill="url(#paint5_linear)"/>
-							<path d="M328.5 827L415 863.5L362 905L280 868L328.5 827Z" fill="url(#paint6_linear)"/>
-							<path d="M270 875L6.5 752L0.5 759L117.5 906.5L373 1034.5L380.5 1028.5L270 875Z" fill="url(#paint7_radial)"/>
-							<path d="M270 875L6.5 752L0.5 759L117.5 906.5L373 1034.5L380.5 1028.5L270 875Z" fill="url(#paint8_linear)"/>
-							<path d="M270 875L6.5 752L0.5 759L117.5 906.5L373 1034.5L380.5 1028.5L270 875Z" fill="url(#paint9_radial)"/>
-							<path id="armright" d="M264.24 645.49C223.093 645.49 233.379 534.265 250.738 520.121C250.738 520.121 257.244 489.473 264.24 450.043C271.312 410.182 268.74 370.321 331.746 339.46C374.707 318.418 381.893 645.49 264.24 645.49Z" fill="url(#paint12_radial)"/>
-								
-							<path id="armright" d="M264.24 645.49C223.093 645.49 233.379 534.265 250.738 520.121C250.738 520.121 257.244 489.473 264.24 450.043C271.312 410.182 268.74 370.321 331.746 339.46C374.707 318.418 381.893 645.49 264.24 645.49Z" fill="url(#paint10_linear_245_979)"/>
-
-							<g id="forearm">
-							<path d="M275.812 644.846C216.663 655.6 197.376 609.54 122.798 537.479C97.5298 513.065 105.439 489.26 105.439 489.26C105.439 489.26 81.9504 470.056 82.2939 459.043C83.1146 432.734 122.964 414.989 155.586 403.752C168.182 399.414 180.66 437.184 180.66 437.184C216.664 437.184 213.449 475.759 250.738 520.12C300.886 566.41 297.95 640.821 275.812 644.846Z" fill="url(#paint11_radial_245_979)"/>
-							<path d="M281.5 640.5C224.967 660.951 197.376 609.54 122.797 537.479C97.5297 513.065 105.439 489.26 105.439 489.26C105.439 489.26 81.9504 470.056 82.2939 459.043C83.1146 432.734 122.964 414.989 155.586 403.752C168.182 399.414 180.66 437.184 180.66 437.184C216.664 437.184 213.449 475.759 250.738 520.121C300.886 566.41 303.188 632.654 281.5 640.5Z" fill="url(#paint12_radial_245_979)"/>
-							<path d="M281.5 640.5C224.967 660.951 197.376 609.54 122.797 537.479C97.5297 513.065 105.439 489.26 105.439 489.26C105.439 489.26 81.9504 470.056 82.2939 459.043C83.1146 432.734 122.964 414.989 155.586 403.752C168.182 399.414 180.66 437.184 180.66 437.184C216.664 437.184 213.449 475.759 250.738 520.121C300.886 566.41 303.188 632.654 281.5 640.5Z" fill="url(#paint13_radial_245_979)"/>
-							<path d="M181.946 446.185C181.946 473.83 145.942 498.904 112.511 494.403" stroke="#C1C4E0" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-
-							<g id="handright">
-							<path d="M48.2197 386.395C49.4654 391.38 58.4037 405.884 68.7934 419.183C78.9203 432.145 95.7961 459.253 104.882 460.436C123.245 462.827 139.751 453.345 152.204 437.828C156.465 432.519 158.104 427.013 156.873 412.754C155.958 402.141 155.986 392.994 153.659 387.68C148.823 376.64 152.942 369.161 152.373 365.178C151.804 361.195 142.729 361.374 138.872 373.536C136.291 381.671 138.563 393.271 136.075 393.532C131.157 394.05 126.955 386.525 124.727 379.965C119.488 364.534 113.503 341.096 109.94 337.533C106.377 333.97 101.788 335.901 100.939 339.462C99.6536 344.853 104.154 368.391 106.726 383.822C98.3677 370.32 84.7431 347.153 82.9377 343.961C81.1322 340.77 75.8655 339.462 73.2937 343.961C71.5756 346.967 72.6509 353.605 74.5796 360.677C71.365 355.587 71.2465 353.124 69.4364 351.676C66.2218 349.105 63.1655 351.206 61.7214 357.463C59.7525 365.993 73.9368 388.966 78.4373 403.753C66.9234 397.324 56.5777 379.606 53.363 378.68C50.1484 377.754 46.9344 381.252 48.2197 386.395Z" fill="url(#paint14_radial_245_979)"/>
-							<path opacity="0.5" d="M124.084 438.471C117.655 414.683 134.08 408.897 134.08 397.324" stroke="#E07151" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-							<path opacity="0.5" d="M91.9379 394.109C91.938 390.895 82.2941 376.782 77.1505 364.938" stroke="#E07151" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-							<path opacity="0.5" d="M83.0593 410.037C87.4368 397.968 108.011 396.581 108.011 388.323" stroke="#E07151" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-							</g>
-							</g>
-								
-							<path d="M625.559 473.187C610.538 521.751 576.86 584.958 559.349 640.492C546.361 681.682 543.431 731.168 523.327 737.052C441.275 761.067 362.226 743.556 336.21 702.531C322.885 681.518 333.164 675.866 328.705 659.004C315.717 609.878 287.529 588.46 281.176 536.928C276.673 500.405 301.688 439.367 301.688 439.367C286.099 359.392 306.672 330.46 414.039 324.031C463.944 321.042 511.319 339.805 551.844 371.324C592.37 402.844 633.444 447.698 625.559 473.187Z" fill="url(#paint14_radial)"/>
-							<path d="M625.559 473.187C610.538 521.751 576.86 584.958 559.349 640.492C546.361 681.682 543.431 731.168 523.327 737.052C441.275 761.067 362.226 743.556 336.21 702.531C322.885 681.518 333.164 675.866 328.705 659.004C315.717 609.878 287.529 588.46 281.176 536.928C276.673 500.405 301.688 439.367 301.688 439.367C286.099 359.392 306.672 330.46 414.039 324.031C463.944 321.042 511.319 339.805 551.844 371.324C592.37 402.844 633.444 447.698 625.559 473.187Z" fill="url(#paint15_linear)"/>
-							<g id="armleft">
-							<path d="M630.5 692C626.79 715 546 799.167 515 825C489 846.667 465 841 465 841C465 841 447.5 864 436.5 863.5C414.023 862.478 366.5 841 378 783C379.567 775.095 409 766.5 409 766.5C413.495 742.152 472.432 710.788 505.5 687.335C516.571 679.483 516 667 530 669.5C530 669.5 523 661.5 530 644C535.561 630.097 530.5 586.5 532.5 547.5C535.283 493.239 556.309 464.519 597.5 447.5C651.027 425.384 640.84 627.89 630.5 692Z" fill="url(#paint16_radial)"/>
-							<path d="M630.5 692C626.79 715 546 799.167 515 825C489 846.667 465 841 465 841C465 841 447.5 864 436.5 863.5C414.023 862.478 366.5 841 378 783C379.567 775.095 409 766.5 409 766.5C413.495 742.152 472.432 710.788 505.5 687.335C516.571 679.483 516 667 530 669.5C530 669.5 523 661.5 530 644C535.561 630.097 530.5 586.5 532.5 547.5C535.283 493.239 556.309 464.519 597.5 447.5C651.027 425.384 640.84 627.89 630.5 692Z" fill="url(#paint17_radial)"/>
-							<path d="M630.5 692C626.79 715 546 799.167 515 825C489 846.667 465 841 465 841C465 841 447.5 864 436.5 863.5C414.023 862.478 366.5 841 378 783C379.567 775.095 409 766.5 409 766.5C413.495 742.152 472.432 710.788 505.5 687.335C516.571 679.483 516 667 530 669.5C530 669.5 523 661.5 530 644C535.561 630.097 530.5 586.5 532.5 547.5C535.283 493.239 556.309 464.519 597.5 447.5C651.027 425.384 640.84 627.89 630.5 692Z" fill="url(#paint18_radial)"/>
-							<path d="M630.5 692C626.79 715 546 799.167 515 825C489 846.667 465 841 465 841C465 841 447.5 864 436.5 863.5C414.023 862.478 366.5 841 378 783C379.567 775.095 409 766.5 409 766.5C413.495 742.152 472.432 710.788 505.5 687.335C516.571 679.483 516 667 530 669.5C530 669.5 523 661.5 530 644C535.561 630.097 530.5 586.5 532.5 547.5C535.283 493.239 556.309 464.519 597.5 447.5C651.027 425.384 640.84 627.89 630.5 692Z" fill="url(#paint19_radial)"/>
-							<path d="M630.5 692C626.79 715 546 799.167 515 825C489 846.667 465 841 465 841C465 841 447.5 864 436.5 863.5C414.023 862.478 366.5 841 378 783C379.567 775.095 409 766.5 409 766.5C413.495 742.152 472.432 710.788 505.5 687.335C516.571 679.483 516 667 530 669.5C530 669.5 523 661.5 530 644C535.561 630.097 530.5 586.5 532.5 547.5C535.283 493.239 556.309 464.519 597.5 447.5C651.027 425.384 640.84 627.89 630.5 692Z" fill="url(#paint20_radial)"/>
-							<path d="M630.5 692C626.79 715 546 799.167 515 825C489 846.667 465 841 465 841C465 841 447.5 864 436.5 863.5C414.023 862.478 366.5 841 378 783C379.567 775.095 409 766.5 409 766.5C413.495 742.152 472.432 710.788 505.5 687.335C516.571 679.483 516 667 530 669.5C530 669.5 523 661.5 530 644C535.561 630.097 530.5 586.5 532.5 547.5C535.283 493.239 556.309 464.519 597.5 447.5C651.027 425.384 640.84 627.89 630.5 692Z" fill="url(#paint21_radial)"/>
-							</g>
-							<path d="M606.5 444C576.5 433 523.5 486.5 526 547.5" stroke="#C1C4E0" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-							<g id="handleft">
-							<path d="M433 844.5C434.5 825 411.5 790 393.5 789C393.5 789 363 792.5 346 800.5C336.308 805.061 318.608 828.713 317 833C315 838.333 316.5 845.5 315.5 867C315.291 871.495 322.16 870.095 324.5 866C326.5 862.5 327.5 857.5 327.5 857.5V881.5C327.5 887.358 337.875 886 340 877.5C341 873.5 343 863 343 863C344.624 857.242 347 853 353 848C353 848 344 866.5 340.5 878.5C337.976 887.153 350.163 884.524 355 877C364 863 368.5 860 380 853C380 853 372.465 861.53 372 868.5C371 883.5 370 888.5 372 888.5C385 888.5 381.422 874.815 390 869C400.376 861.966 411 862 420.5 857.5C428.194 853.855 433 844.5 433 844.5Z" fill="url(#paint22_radial)"/>
-							<path opacity="0.5" d="M351 815C333.496 834 327.5 841.5 327.5 854.5" stroke="#E07151" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-							<path opacity="0.5" d="M367.5 829C363 832.5 357 840 354.5 845" stroke="#E07151" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-							<path opacity="0.5" d="M386.5 843.5C383 847 381 850 381 850" stroke="#E07151" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-							</g>
-							<path d="M490.305 335.801C537.479 355.534 533.996 406.302 490.305 427.541C454.283 445.052 382.238 446.37 355.722 401.842C336.356 369.322 355.722 327.888 376.749 327.888L361.725 316.289L463.789 269.26C472.884 295.754 476.542 312.292 490.305 335.801Z" fill="url(#paint23_linear)"/>
-							<path d="M378.75 334.603C387.731 343.551 393.663 350.241 397.262 363.12" stroke="#E07151" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-							<path id="necklace" opacity="0.5" d="M393.466 322.811C364.55 336.455 356.322 411.803 401.537 452.883C481.263 423.053 533.622 372.893 484.76 322.81" stroke="#473F58" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-							<path id="cat" d="M411.311 471.23C410.096 477.302 402.83 479.65 394.595 477.659C386.538 475.711 383.665 469.945 384.951 465.444C385.823 462.392 387.222 460.963 390.02 459.49C391.723 451.962 394.294 451.962 398.152 458.391C399.371 458.593 400.284 458.615 401.367 459.035C408.8 454.253 410.668 455.157 409.382 462.872C411.311 464.801 411.954 468.015 411.311 471.23Z" fill="#3B292C"/>
-							<path id="hair" d="M555.847 179.204C555.847 246.245 546.841 286.178 536.835 331.706C493.808 346.215 452.782 383.739 452.782 383.739C452.782 383.739 462.789 345.215 462.789 276.264L358.106 327.888C333.675 327.888 300.886 347.175 278.674 370.23C281.176 347.716 271.826 326.632 252 276C239.5 244.077 232.5 202 236.648 159.691C244.656 77.9922 307.192 -3.1132 399.249 0.0919694C508.317 3.8894 555.847 87.536 555.847 179.204Z" fill="url(#paint24_linear)"/>
-							<g id="face">
-							<path d="M490.5 193C485.353 243 469.5 287.79 443.5 307.5C413.5 330.242 375 346.6 361.5 343C351.759 340.402 335 326 304 297.5C283.178 278.357 283 250.5 276 213C274.308 203.934 272 192.047 272 184C272 118.83 325.102 60.0583 390 66C470.5 73.3702 496.92 130.637 490.5 193Z" fill="url(#paint25_radial)"/>
-							<path id="whiteleft" d="M321 220C321.643 224.5 318.865 232.682 306.5 230.5C298 229 288.84 219.359 289.34 209.359C289.611 203.94 293.626 198.884 301.361 202.112C310.34 205.859 320.071 213.5 321 220Z" fill="url(#paint26_radial)"/>
-							<path id="whiteright" d="M420.262 228.733C419.534 236.738 410.546 243.839 396.747 240.24C385.24 237.238 380.736 230.234 380.236 221.728C380.058 218.698 382.238 212.723 393.245 212.723C402.709 212.723 420.857 222.19 420.262 228.733Z" fill="url(#paint27_radial)"/>
-							<path id="eyeleft" d="M319.7 222.73C319.378 226.732 315.655 230.735 310.194 230.735C304.732 230.735 299.545 224.512 298.098 216.28C295.978 204.218 302.732 201.717 302.732 201.717C308.235 203.718 313.696 206.22 319.199 214.225C319.199 214.225 320.134 217.329 319.7 222.73Z" fill="url(#paint28_linear)"/>
-							<path id="eyeright" d="M419.572 230.244C418.49 236.248 414.889 241.927 407.429 241.927C399.968 241.927 394.056 236.248 392.92 226.918C391.798 217.704 396.422 215.249 396.422 215.249C403.426 214.248 410.5 214.5 416.5 219.5C418.5 220.655 420.451 225.365 419.572 230.244Z" fill="url(#paint28_linear)"/>
-							<path id="lidright" d="M378.236 220.637C388.049 206.806 410.256 211.632 422.264 229.143" stroke="#301111" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-							<path id="lidleft" d="M286.519 209.081C293.183 194.213 313.036 202.076 321.041 216.085" stroke="#301111" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-							<path id="eyebrow" d="M372.983 194.044C381.836 188.363 403.252 190.145 414.759 197.238" stroke="#301111" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-							<path d="M330.568 254C328.068 258.931 326.068 261.431 323.068 263.931" stroke="#E07151" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.6;"/>
-							<path id="mouth" d="M370.414 293.038C367.914 297.969 349.914 306.538 336.414 288.538" stroke="#E07151" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-							<path d="M555.6 161.371C558.813 213.843 546.838 282.883 546.838 282.883L477.298 226.232C437.774 205.719 417.761 177.702 403.252 125.169C373.734 164.694 341.326 184.637 301.188 192.211L308.193 180.704C287.128 196.469 254.296 209.46 236.7 210C236.7 210 234.5 190 236.7 160.499C242.679 80.321 305.5 -8.73647 410 0.999655C514.5 10.7358 551.383 92.4994 555.6 161.371Z" fill="url(#paint30_radial)"/>
-							<path d="M555.6 161.371C558.813 213.843 546.838 282.883 546.838 282.883L477.298 226.232C437.774 205.719 417.761 177.702 403.252 125.169C373.734 164.694 341.326 184.637 301.188 192.211L308.193 180.704C287.128 196.469 254.296 209.46 236.7 210C236.7 210 234.5 190 236.7 160.499C242.679 80.321 305.5 -8.73647 410 0.999655C514.5 10.7358 551.383 92.4994 555.6 161.371Z" fill="url(#paint31_radial)"/>
-							<path d="M555.6 161.371C558.813 213.843 546.838 282.883 546.838 282.883L477.298 226.232C437.774 205.719 417.761 177.702 403.252 125.169C373.734 164.694 341.326 184.637 301.188 192.211L308.193 180.704C287.128 196.469 254.296 209.46 236.7 210C236.7 210 234.5 190 236.7 160.499C242.679 80.321 305.5 -8.73647 410 0.999655C514.5 10.7358 551.383 92.4994 555.6 161.371Z" fill="url(#paint32_radial)"/>
-							<path d="M555.6 161.371C558.813 213.843 546.838 282.883 546.838 282.883L477.298 226.232C437.774 205.719 417.761 177.702 403.252 125.169C373.734 164.694 341.326 184.637 301.188 192.211L308.193 180.704C287.128 196.469 254.296 209.46 236.7 210C236.7 210 234.5 190 236.7 160.499C242.679 80.321 305.5 -8.73647 410 0.999655C514.5 10.7358 551.383 92.4994 555.6 161.371Z" fill="url(#paint33_diamond)"/>
-							<path d="M467.5 233C469.728 253.5 466.5 264 474 264C483 264 493 256 500.5 237C506.224 222.5 501.302 206.067 488.5 205C476.5 204 465.475 214.368 467.5 233Z" fill="url(#paint34_radial)"/>
-							<path d="M490.5 218.5C485.432 218.5 479 220.5 472.5 232" stroke="#E07151" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-							</g>
-							<defs>
-							<radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(189.5 1143) rotate(-51.9457) scale(406.387 485.419)">
-							<stop offset="0.279271" stop-color="#F2C1B3"/>
-							<stop offset="0.458796" stop-color="#EB9B82"/>
-							<stop offset="0.901042" stop-color="#EEAA96"/>
-							<stop offset="1" stop-color="#EB9B82"/>
-							</radialGradient>
-							<linearGradient id="paint1_linear" x1="586" y1="914" x2="772.5" y2="943" gradientUnits="userSpaceOnUse">
-							<stop stop-color="#C1C4E0"/>
-							<stop offset="0.192708" stop-color="#9D9FC4"/>
-							<stop offset="1" stop-color="#E8EBFB"/>
-							</linearGradient>
-							<linearGradient id="paint2_linear" x1="520.5" y1="736.5" x2="514" y2="1017" gradientUnits="userSpaceOnUse">
-							<stop stop-color="#473F58"/>
-							<stop offset="0.142172" stop-color="#3B292D"/>
-							<stop offset="0.59288" stop-color="#3B292D"/>
-							<stop offset="0.811942" stop-color="#553838"/>
-							</linearGradient>
-							<radialGradient id="paint3_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(217 793.5) rotate(22.7002) scale(301.885 238.879)">
-							<stop stop-color="#9A8F9A"/>
-							<stop offset="0.244277" stop-color="#B8B1BA"/>
-							<stop offset="0.749241" stop-color="#B8B1BA"/>
-							<stop offset="1" stop-color="#D5D1D6"/>
-							</radialGradient>
-							<linearGradient id="paint4_linear" x1="534.5" y1="1078" x2="444.5" y2="965.5" gradientUnits="userSpaceOnUse">
-							<stop stop-color="#B18C89"/>
-							<stop offset="0.9999" stop-color="#A2898C"/>
-							<stop offset="1" stop-color="#D3CED4" stop-opacity="0"/>
-							</linearGradient>
-							<linearGradient id="paint5_linear" x1="204" y1="847" x2="378" y2="1013" gradientUnits="userSpaceOnUse">
-							<stop offset="0.221892" stop-color="#B8B1BA"/>
-							<stop offset="0.847402" stop-color="#978A94"/>
-							<stop offset="1" stop-color="#A2888B"/>
-							</linearGradient>
-							<linearGradient id="paint6_linear" x1="289" y1="848.5" x2="383.5" y2="908" gradientUnits="userSpaceOnUse">
-							<stop stop-color="#B8B1BA"/>
-							<stop offset="0.234375" stop-color="#A79DA6"/>
-							<stop offset="1" stop-color="#978A94"/>
-							</linearGradient>
-							<radialGradient id="paint7_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(9.64448e-06 767) rotate(35.1939) scale(464.999 277.456)">
-							<stop offset="0.28021" stop-color="#A2939D"/>
-							<stop offset="0.462447" stop-color="#7A727D"/>
-							<stop offset="0.658136" stop-color="#7A727D"/>
-							<stop offset="0.864583" stop-color="#B48D89"/>
-							</radialGradient>
-							<linearGradient id="paint8_linear" x1="269.5" y1="874" x2="265" y2="883.5" gradientUnits="userSpaceOnUse">
-							<stop stop-color="#D5D1D6"/>
-							<stop offset="0.9999" stop-color="#D5D1D6"/>
-							<stop offset="1" stop-color="#B8B1BA" stop-opacity="0"/>
-							</linearGradient>
-							<radialGradient id="paint9_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(277 883) rotate(54.0903) scale(35.805 58.3241)">
-							<stop stop-color="#7B737E"/>
-							<stop offset="0.284961" stop-color="#7E757F"/>
-							<stop offset="0.285061" stop-color="#827780" stop-opacity="0"/>
-							<stop offset="0.999627" stop-color="#7E757F" stop-opacity="0"/>
-							</radialGradient>
-							<radialGradient id="paint10_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(190 715) rotate(-66.3991) scale(345.935 164.905)">
-							<stop offset="0.175688" stop-color="#E8EBFB"/>
-							<stop offset="0.462208" stop-color="#C1C4E0"/>
-							<stop offset="0.6875" stop-color="#9D9FC4"/>
-							<stop offset="1" stop-color="#C1C4E0"/>
-							</radialGradient>
-							<radialGradient id="paint11_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(229.5 683) rotate(-69.0071) scale(92.1141 58.9268)">
-							<stop offset="0.355952" stop-color="#E8EBFB"/>
-							<stop offset="1" stop-color="#E8EBFB" stop-opacity="0"/>
-							</radialGradient>
-							<linearGradient id="paint10_linear_245_979" x1="332.816" y1="337.83" x2="275.165" y2="647.892" gradientUnits="userSpaceOnUse">
-							<stop stop-color="#A7A8CB"/>
-							<stop offset="0.2673" stop-color="#C7CAE3"/>
-							<stop offset="1" stop-color="#9D9FC4"/>
-							</linearGradient>
-							<radialGradient id="paint11_radial_245_979" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(109 395) rotate(34.1338) scale(346.151 165.008)">
-							<stop offset="0.1756" stop-color="#E8EBFB"/>
-							<stop offset="0.4622" stop-color="#C1C4E0"/>
-							<stop offset="0.7773" stop-color="#9D9FC4"/>
-							</radialGradient>
-							<radialGradient id="paint12_radial_245_979" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(133 440) rotate(31.5257) scale(92.1715 58.9635)">
-							<stop offset="0.355952" stop-color="#E8EBFB"/>
-							<stop offset="1" stop-color="#E8EBFB" stop-opacity="0"/>
-							</radialGradient>
-							<radialGradient id="paint13_radial_245_979" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(77 468) rotate(166.57) scale(39.4201 21.3713)">
-							<stop stop-color="#C1C4E0"/>
-							<stop offset="1" stop-color="#C1C4E0" stop-opacity="0"/>
-							</radialGradient>
-							<radialGradient id="paint13_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(211.171 776.331) rotate(90.1673) scale(58.6695 55.0888)">
-							<stop offset="0.691469" stop-color="#F2C1B3"/>
-							<stop offset="1" stop-color="#EB9B82"/>
-							</radialGradient>
-							<radialGradient id="paint14_radial_245_979" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(108 394) rotate(-96.1437) scale(72.0797 55.1232)">
-							<stop offset="0.691469" stop-color="#F2C1B3"/>
-							<stop offset="1" stop-color="#EB9B82"/>
-							</radialGradient>
-							<radialGradient id="paint14_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(431 422) rotate(110.416) scale(407.324 499.781)">
-							<stop offset="0.343654" stop-color="#E8EBFB"/>
-							<stop offset="0.476396" stop-color="#9D9FC4"/>
-							<stop offset="1" stop-color="#C1C4E0"/>
-							</radialGradient>
-							<linearGradient id="paint15_linear" x1="411.5" y1="333" x2="413.5" y2="534" gradientUnits="userSpaceOnUse">
-							<stop stop-color="#9D9FC4"/>
-							<stop offset="0.638304" stop-color="#9D9FC4" stop-opacity="0"/>
-							</linearGradient>
-							<radialGradient id="paint16_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(509 593) rotate(27.646) scale(165.946 351.97)">
-							<stop offset="0.566511" stop-color="#E8EBFB"/>
-							<stop offset="0.801885" stop-color="#C1C4E0"/>
-							<stop offset="1" stop-color="#9D9FC4"/>
-							</radialGradient>
-							<radialGradient id="paint17_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(562.5 669.5) rotate(-0.818475) scale(35.0036 10.0488)">
-							<stop offset="0.526244" stop-color="#C1C4E0"/>
-							<stop offset="1" stop-color="#C1C4E0" stop-opacity="0"/>
-							</radialGradient>
-							<radialGradient id="paint18_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(577 670) rotate(-9.46233) scale(21.2897 16.0172)">
-							<stop offset="0.336097" stop-color="#C1C4E0"/>
-							<stop offset="1" stop-color="#C1C4E0" stop-opacity="0"/>
-							</radialGradient>
-							<radialGradient id="paint19_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(567 766) rotate(-44.0122) scale(82.0366 48.0172)">
-							<stop offset="0.459208" stop-color="#C1C4E0"/>
-							<stop offset="1" stop-color="#C1C4E0" stop-opacity="0"/>
-							</radialGradient>
-							<radialGradient id="paint20_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(446 831) rotate(78.8571) scale(33.6341 19.6865)">
-							<stop offset="0.392454" stop-color="#C1C4E0"/>
-							<stop offset="1" stop-color="#C1C4E0" stop-opacity="0"/>
-							</radialGradient>
-							<radialGradient id="paint21_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(654.5 616) rotate(-92.9108) scale(147.691 71.8588)">
-							<stop offset="0.459208" stop-color="#C1C4E0"/>
-							<stop offset="1" stop-color="#C1C4E0" stop-opacity="0"/>
-							</radialGradient>
-							<radialGradient id="paint22_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(358 844) rotate(-0.381975) scale(75.0017 59.2828)">
-							<stop offset="0.559566" stop-color="#F2C1B3"/>
-							<stop offset="1" stop-color="#EB9B82"/>
-							</radialGradient>
-							<linearGradient id="paint23_linear" x1="411.5" y1="272" x2="432.791" y2="434.654" gradientUnits="userSpaceOnUse">
-							<stop offset="0.473958" stop-color="#EB9B82"/>
-							<stop offset="0.776042" stop-color="#F2C1B3"/>
-							</linearGradient>
-							<linearGradient id="paint24_linear" x1="396.174" y1="0" x2="396.174" y2="532.424" gradientUnits="userSpaceOnUse">
-							<stop offset="0.572917" stop-color="#322421"/>
-							<stop offset="1" stop-color="#8A3B3B"/>
-							</linearGradient>
-							<radialGradient id="paint25_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(340.5 249) rotate(5.3837) scale(191.846 78.5643)">
-							<stop stop-color="#EEAC98"/>
-							<stop offset="0.526042" stop-color="#F2C1B3"/>
-							</radialGradient>
-							<radialGradient id="paint26_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(303.34 221.859) rotate(-96.3402) scale(22.6385 21.5903)">
-							<stop offset="0.541667" stop-color="white"/>
-							<stop offset="1" stop-color="#888695"/>
-							</radialGradient>
-							<radialGradient id="paint27_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(398.749 232.735) rotate(-76.7595) scale(17.4751 26.2357)">
-							<stop offset="0.6875" stop-color="white"/>
-							<stop offset="1" stop-color="#888695"/>
-							</radialGradient>
-							<linearGradient id="paint28_linear" x1="397.226" y1="215.938" x2="397.226" y2="243.676" gradientUnits="userSpaceOnUse">
-							<stop stop-color="#301111"/>
-							<stop offset="1" stop-color="#492823"/>
-							</linearGradient>
-							<linearGradient id="paint29_linear" x1="308.792" y1="202" x2="308.792" y2="231" gradientUnits="userSpaceOnUse">
-							<stop stop-color="#301111"/>
-							<stop offset="1" stop-color="#492823"/>
-							</linearGradient>
-							<radialGradient id="paint30_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(416.76 39.1169) rotate(100.208) scale(158.099 212.958)">
-							<stop offset="0.576449" stop-color="#825049"/>
-							<stop offset="1" stop-color="#322421"/>
-							</radialGradient>
-							<radialGradient id="paint31_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(414.259 -6.91181) rotate(98.3659) scale(120.355 189.986)">
-							<stop offset="0.773601" stop-color="#322421"/>
-							<stop offset="1" stop-color="#492823" stop-opacity="0"/>
-							</radialGradient>
-							<radialGradient id="paint32_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(396.748 151.687) rotate(92.8156) scale(183.336 196.237)">
-							<stop offset="0.348314" stop-color="#492823" stop-opacity="0"/>
-							<stop offset="0.912478" stop-color="#322421"/>
-							</radialGradient>
-							<radialGradient id="paint33_diamond" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(265.166 59.6297) rotate(26.4046) scale(79.8777 110.349)">
-							<stop stop-color="#825049"/>
-							<stop offset="1" stop-color="#825049" stop-opacity="0"/>
-							</radialGradient>
-							<radialGradient id="paint34_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(480.5 234) rotate(110.772) scale(31.0161 17.0568)">
-							<stop offset="0.270833" stop-color="#EC9C83"/>
-							<stop offset="0.655658" stop-color="#F2C1B3"/>
-							</radialGradient>
-							</defs>
-						</svg>
-					</div>
+				</div>
+				<div class="theme-switch-icon theme-switch-icon-dark">
+					<svg width="16" height="16" viewBox="0 -960 960 960" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Zm0-80q88 0 158-48.5T740-375q-20 5-40 8t-40 3q-123 0-209.5-86.5T364-660q0-20 3-40t8-40q-78 32-126.5 102T200-480q0 116 82 198t198 82Zm-10-270Z" fill="currentColor"></path>
+					</svg>
 				</div>
 			</div>
-			<div class="col-12 col-7-md is-vertical-align is-center">
-				<div class="row" style="margin:0;">
-					<div class="intro figma">
-						<div class="pill" style="transform: rotate(-1deg);">
-							I am...
-						</div>
-						<p class="drag">
-							A <b>product designer</b> with 6 years of experience building websites and apps
-							<span></span>
-						</p>
-						<div class="pill" style="transform: rotate(-1deg);">
-							I bring...
-						</div>
-						<p class="drag">
-							Expertise in financial products, payments, and conversion optimisation 📈
-							<span></span>
-						</p>
-						<div class="hover-cursor">
-							<span>and code!</span>
-						</div>
-					</div>
-				</div>
-			</div>
+		</button>
+	</div>
+
+    <div class="sidebar-intro">
+        <div class="avatar">
+            <svg style="color-scheme: only light;" viewBox="0 0 802 1196" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M73.5 1072C83.5 1144.5 159.5 1144 159.5 1144C168 1175.5 216.5 1211 291.5 1187.5C438.5 1192 552.5 1029.5 660.5 980.5C701.5 939.5 602 939.5 602 939.5C602 939.5 350.485 808.5 243.5 808.5C146.5 897.5 63.5 999.5 73.5 1072Z" fill="url(#paint0_radial)"/>
+                <path d="M250 963C229.791 981.73 198.893 1014.55 168.801 1072C162.515 1084 154 1104.5 158 1141" stroke="#E07151" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M522.277 1012C448.5 1067 363 1052 314 1121.5" stroke="#E07151" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M602.5 836.812C585.603 831.046 544.132 840.825 526 841.485C499.845 842.436 494.583 832.331 469.28 836.812C450.295 840.175 465.494 869.3 458 883.985C480.404 891.784 510.601 879.304 528.621 894.997C523.872 900.714 502.304 940.181 528.621 930.485C563.501 917.633 584.873 895.286 620.643 881.541C632.5 876.985 643.5 874.179 643.5 862.019C643.5 852.832 635.027 847.913 602.5 836.812Z" fill="#9D9FC4"/>
+                <g id="shoe">
+                <path d="M653 891C638 891 626.5 880.5 597 886.5C576.818 890.605 582.5 907.396 582.5 919.5C582.5 930 574.5 948 574.5 948C574.5 948 592.52 955.204 616 954.5C639.48 953.796 658 956 664.5 962.5C664.5 962.5 644 992 646.5 998.5C647.476 1001.04 650.495 1005.06 653 1004C666 998.5 692.822 972.62 724.5 962.5C743.216 956.521 754 957.5 776 952C789.797 948.551 802 942.384 802 926.5C802 914.5 783.5 907 746.5 892.5C727.28 884.968 715.625 880.638 695 881.5C678.198 882.202 669.816 891 653 891Z" fill="url(#paint1_linear)"/>
+                <path d="M761 949C731 944 711.5 935 670.5 959" stroke="#9D9FC4" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                </g>
+                <path d="M618.5 847C618.5 969.5 519 1016.5 519 1016.5C519 1016.5 519.008 964.584 486.5 922C419.175 833.809 246 815.5 199.5 839.5C240.461 801.27 272.5 768.822 307 739C326.631 722.031 340 707.5 340 693.5L581 726.5C581 726.5 618.5 779 618.5 847Z" fill="url(#paint2_linear)"/>
+                <path d="M527.5 900L251.5 785L118 907L373 1034.5L527.5 910V900Z" fill="url(#paint3_radial)"/>
+                <path d="M527.5 900L251.5 785L118 907L373 1034.5L527.5 910V900Z" fill="url(#paint4_linear)"/>
+                <path d="M212.5 846.5L443 952.5L368.5 1013L146 904.5L212.5 846.5Z" fill="url(#paint5_linear)"/>
+                <path d="M328.5 827L415 863.5L362 905L280 868L328.5 827Z" fill="url(#paint6_linear)"/>
+                <path d="M270 875L6.5 752L0.5 759L117.5 906.5L373 1034.5L380.5 1028.5L270 875Z" fill="url(#paint7_radial)"/>
+                <path d="M270 875L6.5 752L0.5 759L117.5 906.5L373 1034.5L380.5 1028.5L270 875Z" fill="url(#paint8_linear)"/>
+                <path d="M270 875L6.5 752L0.5 759L117.5 906.5L373 1034.5L380.5 1028.5L270 875Z" fill="url(#paint9_radial)"/>
+                <path id="armright" d="M264.24 645.49C223.093 645.49 233.379 534.265 250.738 520.121C250.738 520.121 257.244 489.473 264.24 450.043C271.312 410.182 268.74 370.321 331.746 339.46C374.707 318.418 381.893 645.49 264.24 645.49Z" fill="url(#paint12_radial)"/>
+                    
+                <path id="armright" d="M264.24 645.49C223.093 645.49 233.379 534.265 250.738 520.121C250.738 520.121 257.244 489.473 264.24 450.043C271.312 410.182 268.74 370.321 331.746 339.46C374.707 318.418 381.893 645.49 264.24 645.49Z" fill="url(#paint10_linear_245_979)"/>
+
+                <g id="forearm">
+                <path d="M275.812 644.846C216.663 655.6 197.376 609.54 122.798 537.479C97.5298 513.065 105.439 489.26 105.439 489.26C105.439 489.26 81.9504 470.056 82.2939 459.043C83.1146 432.734 122.964 414.989 155.586 403.752C168.182 399.414 180.66 437.184 180.66 437.184C216.664 437.184 213.449 475.759 250.738 520.12C300.886 566.41 297.95 640.821 275.812 644.846Z" fill="url(#paint11_radial_245_979)"/>
+                <path d="M281.5 640.5C224.967 660.951 197.376 609.54 122.797 537.479C97.5297 513.065 105.439 489.26 105.439 489.26C105.439 489.26 81.9504 470.056 82.2939 459.043C83.1146 432.734 122.964 414.989 155.586 403.752C168.182 399.414 180.66 437.184 180.66 437.184C216.664 437.184 213.449 475.759 250.738 520.121C300.886 566.41 303.188 632.654 281.5 640.5Z" fill="url(#paint12_radial_245_979)"/>
+                <path d="M281.5 640.5C224.967 660.951 197.376 609.54 122.797 537.479C97.5297 513.065 105.439 489.26 105.439 489.26C105.439 489.26 81.9504 470.056 82.2939 459.043C83.1146 432.734 122.964 414.989 155.586 403.752C168.182 399.414 180.66 437.184 180.66 437.184C216.664 437.184 213.449 475.759 250.738 520.121C300.886 566.41 303.188 632.654 281.5 640.5Z" fill="url(#paint13_radial_245_979)"/>
+                <path d="M181.946 446.185C181.946 473.83 145.942 498.904 112.511 494.403" stroke="#C1C4E0" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+
+                <g id="handright">
+                <path d="M48.2197 386.395C49.4654 391.38 58.4037 405.884 68.7934 419.183C78.9203 432.145 95.7961 459.253 104.882 460.436C123.245 462.827 139.751 453.345 152.204 437.828C156.465 432.519 158.104 427.013 156.873 412.754C155.958 402.141 155.986 392.994 153.659 387.68C148.823 376.64 152.942 369.161 152.373 365.178C151.804 361.195 142.729 361.374 138.872 373.536C136.291 381.671 138.563 393.271 136.075 393.532C131.157 394.05 126.955 386.525 124.727 379.965C119.488 364.534 113.503 341.096 109.94 337.533C106.377 333.97 101.788 335.901 100.939 339.462C99.6536 344.853 104.154 368.391 106.726 383.822C98.3677 370.32 84.7431 347.153 82.9377 343.961C81.1322 340.77 75.8655 339.462 73.2937 343.961C71.5756 346.967 72.6509 353.605 74.5796 360.677C71.365 355.587 71.2465 353.124 69.4364 351.676C66.2218 349.105 63.1655 351.206 61.7214 357.463C59.7525 365.993 73.9368 388.966 78.4373 403.753C66.9234 397.324 56.5777 379.606 53.363 378.68C50.1484 377.754 46.9344 381.252 48.2197 386.395Z" fill="url(#paint14_radial_245_979)"/>
+                <path opacity="0.5" d="M124.084 438.471C117.655 414.683 134.08 408.897 134.08 397.324" stroke="#E07151" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                <path opacity="0.5" d="M91.9379 394.109C91.938 390.895 82.2941 376.782 77.1505 364.938" stroke="#E07151" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                <path opacity="0.5" d="M83.0593 410.037C87.4368 397.968 108.011 396.581 108.011 388.323" stroke="#E07151" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                </g>
+                </g>
+                    
+                <path d="M625.559 473.187C610.538 521.751 576.86 584.958 559.349 640.492C546.361 681.682 543.431 731.168 523.327 737.052C441.275 761.067 362.226 743.556 336.21 702.531C322.885 681.518 333.164 675.866 328.705 659.004C315.717 609.878 287.529 588.46 281.176 536.928C276.673 500.405 301.688 439.367 301.688 439.367C286.099 359.392 306.672 330.46 414.039 324.031C463.944 321.042 511.319 339.805 551.844 371.324C592.37 402.844 633.444 447.698 625.559 473.187Z" fill="url(#paint14_radial)"/>
+                <path d="M625.559 473.187C610.538 521.751 576.86 584.958 559.349 640.492C546.361 681.682 543.431 731.168 523.327 737.052C441.275 761.067 362.226 743.556 336.21 702.531C322.885 681.518 333.164 675.866 328.705 659.004C315.717 609.878 287.529 588.46 281.176 536.928C276.673 500.405 301.688 439.367 301.688 439.367C286.099 359.392 306.672 330.46 414.039 324.031C463.944 321.042 511.319 339.805 551.844 371.324C592.37 402.844 633.444 447.698 625.559 473.187Z" fill="url(#paint15_linear)"/>
+                <g id="armleft">
+                <path d="M630.5 692C626.79 715 546 799.167 515 825C489 846.667 465 841 465 841C465 841 447.5 864 436.5 863.5C414.023 862.478 366.5 841 378 783C379.567 775.095 409 766.5 409 766.5C413.495 742.152 472.432 710.788 505.5 687.335C516.571 679.483 516 667 530 669.5C530 669.5 523 661.5 530 644C535.561 630.097 530.5 586.5 532.5 547.5C535.283 493.239 556.309 464.519 597.5 447.5C651.027 425.384 640.84 627.89 630.5 692Z" fill="url(#paint16_radial)"/>
+                <path d="M630.5 692C626.79 715 546 799.167 515 825C489 846.667 465 841 465 841C465 841 447.5 864 436.5 863.5C414.023 862.478 366.5 841 378 783C379.567 775.095 409 766.5 409 766.5C413.495 742.152 472.432 710.788 505.5 687.335C516.571 679.483 516 667 530 669.5C530 669.5 523 661.5 530 644C535.561 630.097 530.5 586.5 532.5 547.5C535.283 493.239 556.309 464.519 597.5 447.5C651.027 425.384 640.84 627.89 630.5 692Z" fill="url(#paint17_radial)"/>
+                <path d="M630.5 692C626.79 715 546 799.167 515 825C489 846.667 465 841 465 841C465 841 447.5 864 436.5 863.5C414.023 862.478 366.5 841 378 783C379.567 775.095 409 766.5 409 766.5C413.495 742.152 472.432 710.788 505.5 687.335C516.571 679.483 516 667 530 669.5C530 669.5 523 661.5 530 644C535.561 630.097 530.5 586.5 532.5 547.5C535.283 493.239 556.309 464.519 597.5 447.5C651.027 425.384 640.84 627.89 630.5 692Z" fill="url(#paint18_radial)"/>
+                <path d="M630.5 692C626.79 715 546 799.167 515 825C489 846.667 465 841 465 841C465 841 447.5 864 436.5 863.5C414.023 862.478 366.5 841 378 783C379.567 775.095 409 766.5 409 766.5C413.495 742.152 472.432 710.788 505.5 687.335C516.571 679.483 516 667 530 669.5C530 669.5 523 661.5 530 644C535.561 630.097 530.5 586.5 532.5 547.5C535.283 493.239 556.309 464.519 597.5 447.5C651.027 425.384 640.84 627.89 630.5 692Z" fill="url(#paint19_radial)"/>
+                <path d="M630.5 692C626.79 715 546 799.167 515 825C489 846.667 465 841 465 841C465 841 447.5 864 436.5 863.5C414.023 862.478 366.5 841 378 783C379.567 775.095 409 766.5 409 766.5C413.495 742.152 472.432 710.788 505.5 687.335C516.571 679.483 516 667 530 669.5C530 669.5 523 661.5 530 644C535.561 630.097 530.5 586.5 532.5 547.5C535.283 493.239 556.309 464.519 597.5 447.5C651.027 425.384 640.84 627.89 630.5 692Z" fill="url(#paint20_radial)"/>
+                <path d="M630.5 692C626.79 715 546 799.167 515 825C489 846.667 465 841 465 841C465 841 447.5 864 436.5 863.5C414.023 862.478 366.5 841 378 783C379.567 775.095 409 766.5 409 766.5C413.495 742.152 472.432 710.788 505.5 687.335C516.571 679.483 516 667 530 669.5C530 669.5 523 661.5 530 644C535.561 630.097 530.5 586.5 532.5 547.5C535.283 493.239 556.309 464.519 597.5 447.5C651.027 425.384 640.84 627.89 630.5 692Z" fill="url(#paint21_radial)"/>
+                </g>
+                <path d="M606.5 444C576.5 433 523.5 486.5 526 547.5" stroke="#C1C4E0" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                <g id="handleft">
+                <path d="M433 844.5C434.5 825 411.5 790 393.5 789C393.5 789 363 792.5 346 800.5C336.308 805.061 318.608 828.713 317 833C315 838.333 316.5 845.5 315.5 867C315.291 871.495 322.16 870.095 324.5 866C326.5 862.5 327.5 857.5 327.5 857.5V881.5C327.5 887.358 337.875 886 340 877.5C341 873.5 343 863 343 863C344.624 857.242 347 853 353 848C353 848 344 866.5 340.5 878.5C337.976 887.153 350.163 884.524 355 877C364 863 368.5 860 380 853C380 853 372.465 861.53 372 868.5C371 883.5 370 888.5 372 888.5C385 888.5 381.422 874.815 390 869C400.376 861.966 411 862 420.5 857.5C428.194 853.855 433 844.5 433 844.5Z" fill="url(#paint22_radial)"/>
+                <path opacity="0.5" d="M351 815C333.496 834 327.5 841.5 327.5 854.5" stroke="#E07151" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                <path opacity="0.5" d="M367.5 829C363 832.5 357 840 354.5 845" stroke="#E07151" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                <path opacity="0.5" d="M386.5 843.5C383 847 381 850 381 850" stroke="#E07151" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                </g>
+                <path d="M490.305 335.801C537.479 355.534 533.996 406.302 490.305 427.541C454.283 445.052 382.238 446.37 355.722 401.842C336.356 369.322 355.722 327.888 376.749 327.888L361.725 316.289L463.789 269.26C472.884 295.754 476.542 312.292 490.305 335.801Z" fill="url(#paint23_linear)"/>
+                <path d="M378.75 334.603C387.731 343.551 393.663 350.241 397.262 363.12" stroke="#E07151" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path id="necklace" opacity="0.5" d="M393.466 322.811C364.55 336.455 356.322 411.803 401.537 452.883C481.263 423.053 533.622 372.893 484.76 322.81" stroke="#473F58" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path id="cat" d="M411.311 471.23C410.096 477.302 402.83 479.65 394.595 477.659C386.538 475.711 383.665 469.945 384.951 465.444C385.823 462.392 387.222 460.963 390.02 459.49C391.723 451.962 394.294 451.962 398.152 458.391C399.371 458.593 400.284 458.615 401.367 459.035C408.8 454.253 410.668 455.157 409.382 462.872C411.311 464.801 411.954 468.015 411.311 471.23Z" fill="#3B292C"/>
+                <path id="hair" d="M555.847 179.204C555.847 246.245 546.841 286.178 536.835 331.706C493.808 346.215 452.782 383.739 452.782 383.739C452.782 383.739 462.789 345.215 462.789 276.264L358.106 327.888C333.675 327.888 300.886 347.175 278.674 370.23C281.176 347.716 271.826 326.632 252 276C239.5 244.077 232.5 202 236.648 159.691C244.656 77.9922 307.192 -3.1132 399.249 0.0919694C508.317 3.8894 555.847 87.536 555.847 179.204Z" fill="url(#paint24_linear)"/>
+                <g id="face">
+                <path d="M490.5 193C485.353 243 469.5 287.79 443.5 307.5C413.5 330.242 375 346.6 361.5 343C351.759 340.402 335 326 304 297.5C283.178 278.357 283 250.5 276 213C274.308 203.934 272 192.047 272 184C272 118.83 325.102 60.0583 390 66C470.5 73.3702 496.92 130.637 490.5 193Z" fill="url(#paint25_radial)"/>
+                <path id="whiteleft" d="M321 220C321.643 224.5 318.865 232.682 306.5 230.5C298 229 288.84 219.359 289.34 209.359C289.611 203.94 293.626 198.884 301.361 202.112C310.34 205.859 320.071 213.5 321 220Z" fill="url(#paint26_radial)"/>
+                <path id="whiteright" d="M420.262 228.733C419.534 236.738 410.546 243.839 396.747 240.24C385.24 237.238 380.736 230.234 380.236 221.728C380.058 218.698 382.238 212.723 393.245 212.723C402.709 212.723 420.857 222.19 420.262 228.733Z" fill="url(#paint27_radial)"/>
+                <path id="eyeleft" d="M319.7 222.73C319.378 226.732 315.655 230.735 310.194 230.735C304.732 230.735 299.545 224.512 298.098 216.28C295.978 204.218 302.732 201.717 302.732 201.717C308.235 203.718 313.696 206.22 319.199 214.225C319.199 214.225 320.134 217.329 319.7 222.73Z" fill="url(#paint28_linear)"/>
+                <path id="eyeright" d="M419.572 230.244C418.49 236.248 414.889 241.927 407.429 241.927C399.968 241.927 394.056 236.248 392.92 226.918C391.798 217.704 396.422 215.249 396.422 215.249C403.426 214.248 410.5 214.5 416.5 219.5C418.5 220.655 420.451 225.365 419.572 230.244Z" fill="url(#paint28_linear)"/>
+                <path id="lidright" d="M378.236 220.637C388.049 206.806 410.256 211.632 422.264 229.143" stroke="#301111" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path id="lidleft" d="M286.519 209.081C293.183 194.213 313.036 202.076 321.041 216.085" stroke="#301111" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path id="eyebrow" d="M372.983 194.044C381.836 188.363 403.252 190.145 414.759 197.238" stroke="#301111" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M330.568 254C328.068 258.931 326.068 261.431 323.068 263.931" stroke="#E07151" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.6;"/>
+                <path id="mouth" d="M370.414 293.038C367.914 297.969 349.914 306.538 336.414 288.538" stroke="#E07151" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M555.6 161.371C558.813 213.843 546.838 282.883 546.838 282.883L477.298 226.232C437.774 205.719 417.761 177.702 403.252 125.169C373.734 164.694 341.326 184.637 301.188 192.211L308.193 180.704C287.128 196.469 254.296 209.46 236.7 210C236.7 210 234.5 190 236.7 160.499C242.679 80.321 305.5 -8.73647 410 0.999655C514.5 10.7358 551.383 92.4994 555.6 161.371Z" fill="url(#paint30_radial)"/>
+                <path d="M555.6 161.371C558.813 213.843 546.838 282.883 546.838 282.883L477.298 226.232C437.774 205.719 417.761 177.702 403.252 125.169C373.734 164.694 341.326 184.637 301.188 192.211L308.193 180.704C287.128 196.469 254.296 209.46 236.7 210C236.7 210 234.5 190 236.7 160.499C242.679 80.321 305.5 -8.73647 410 0.999655C514.5 10.7358 551.383 92.4994 555.6 161.371Z" fill="url(#paint31_radial)"/>
+                <path d="M555.6 161.371C558.813 213.843 546.838 282.883 546.838 282.883L477.298 226.232C437.774 205.719 417.761 177.702 403.252 125.169C373.734 164.694 341.326 184.637 301.188 192.211L308.193 180.704C287.128 196.469 254.296 209.46 236.7 210C236.7 210 234.5 190 236.7 160.499C242.679 80.321 305.5 -8.73647 410 0.999655C514.5 10.7358 551.383 92.4994 555.6 161.371Z" fill="url(#paint32_radial)"/>
+                <path d="M555.6 161.371C558.813 213.843 546.838 282.883 546.838 282.883L477.298 226.232C437.774 205.719 417.761 177.702 403.252 125.169C373.734 164.694 341.326 184.637 301.188 192.211L308.193 180.704C287.128 196.469 254.296 209.46 236.7 210C236.7 210 234.5 190 236.7 160.499C242.679 80.321 305.5 -8.73647 410 0.999655C514.5 10.7358 551.383 92.4994 555.6 161.371Z" fill="url(#paint33_diamond)"/>
+                <path d="M467.5 233C469.728 253.5 466.5 264 474 264C483 264 493 256 500.5 237C506.224 222.5 501.302 206.067 488.5 205C476.5 204 465.475 214.368 467.5 233Z" fill="url(#paint34_radial)"/>
+                <path d="M490.5 218.5C485.432 218.5 479 220.5 472.5 232" stroke="#E07151" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                </g>
+                <defs>
+                <radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(189.5 1143) rotate(-51.9457) scale(406.387 485.419)">
+                <stop offset="0.279271" stop-color="#F2C1B3"/>
+                <stop offset="0.458796" stop-color="#EB9B82"/>
+                <stop offset="0.901042" stop-color="#EEAA96"/>
+                <stop offset="1" stop-color="#EB9B82"/>
+                </radialGradient>
+                <linearGradient id="paint1_linear" x1="586" y1="914" x2="772.5" y2="943" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#C1C4E0"/>
+                <stop offset="0.192708" stop-color="#9D9FC4"/>
+                <stop offset="1" stop-color="#E8EBFB"/>
+                </linearGradient>
+                <linearGradient id="paint2_linear" x1="520.5" y1="736.5" x2="514" y2="1017" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#473F58"/>
+                <stop offset="0.142172" stop-color="#3B292D"/>
+                <stop offset="0.59288" stop-color="#3B292D"/>
+                <stop offset="0.811942" stop-color="#553838"/>
+                </linearGradient>
+                <radialGradient id="paint3_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(217 793.5) rotate(22.7002) scale(301.885 238.879)">
+                <stop stop-color="#9A8F9A"/>
+                <stop offset="0.244277" stop-color="#B8B1BA"/>
+                <stop offset="0.749241" stop-color="#B8B1BA"/>
+                <stop offset="1" stop-color="#D5D1D6"/>
+                </radialGradient>
+                <linearGradient id="paint4_linear" x1="534.5" y1="1078" x2="444.5" y2="965.5" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#B18C89"/>
+                <stop offset="0.9999" stop-color="#A2898C"/>
+                <stop offset="1" stop-color="#D3CED4" stop-opacity="0"/>
+                </linearGradient>
+                <linearGradient id="paint5_linear" x1="204" y1="847" x2="378" y2="1013" gradientUnits="userSpaceOnUse">
+                <stop offset="0.221892" stop-color="#B8B1BA"/>
+                <stop offset="0.847402" stop-color="#978A94"/>
+                <stop offset="1" stop-color="#A2888B"/>
+                </linearGradient>
+                <linearGradient id="paint6_linear" x1="289" y1="848.5" x2="383.5" y2="908" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#B8B1BA"/>
+                <stop offset="0.234375" stop-color="#A79DA6"/>
+                <stop offset="1" stop-color="#978A94"/>
+                </linearGradient>
+                <radialGradient id="paint7_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(9.64448e-06 767) rotate(35.1939) scale(464.999 277.456)">
+                <stop offset="0.28021" stop-color="#A2939D"/>
+                <stop offset="0.462447" stop-color="#7A727D"/>
+                <stop offset="0.658136" stop-color="#7A727D"/>
+                <stop offset="0.864583" stop-color="#B48D89"/>
+                </radialGradient>
+                <linearGradient id="paint8_linear" x1="269.5" y1="874" x2="265" y2="883.5" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#D5D1D6"/>
+                <stop offset="0.9999" stop-color="#D5D1D6"/>
+                <stop offset="1" stop-color="#B8B1BA" stop-opacity="0"/>
+                </linearGradient>
+                <radialGradient id="paint9_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(277 883) rotate(54.0903) scale(35.805 58.3241)">
+                <stop stop-color="#7B737E"/>
+                <stop offset="0.284961" stop-color="#7E757F"/>
+                <stop offset="0.285061" stop-color="#827780" stop-opacity="0"/>
+                <stop offset="0.999627" stop-color="#7E757F" stop-opacity="0"/>
+                </radialGradient>
+                <radialGradient id="paint10_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(190 715) rotate(-66.3991) scale(345.935 164.905)">
+                <stop offset="0.175688" stop-color="#E8EBFB"/>
+                <stop offset="0.462208" stop-color="#C1C4E0"/>
+                <stop offset="0.6875" stop-color="#9D9FC4"/>
+                <stop offset="1" stop-color="#C1C4E0"/>
+                </radialGradient>
+                <radialGradient id="paint11_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(229.5 683) rotate(-69.0071) scale(92.1141 58.9268)">
+                <stop offset="0.355952" stop-color="#E8EBFB"/>
+                <stop offset="1" stop-color="#E8EBFB" stop-opacity="0"/>
+                </radialGradient>
+                <linearGradient id="paint10_linear_245_979" x1="332.816" y1="337.83" x2="275.165" y2="647.892" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#A7A8CB"/>
+                <stop offset="0.2673" stop-color="#C7CAE3"/>
+                <stop offset="1" stop-color="#9D9FC4"/>
+                </linearGradient>
+                <radialGradient id="paint11_radial_245_979" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(109 395) rotate(34.1338) scale(346.151 165.008)">
+                <stop offset="0.1756" stop-color="#E8EBFB"/>
+                <stop offset="0.4622" stop-color="#C1C4E0"/>
+                <stop offset="0.7773" stop-color="#9D9FC4"/>
+                </radialGradient>
+                <radialGradient id="paint12_radial_245_979" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(133 440) rotate(31.5257) scale(92.1715 58.9635)">
+                <stop offset="0.355952" stop-color="#E8EBFB"/>
+                <stop offset="1" stop-color="#E8EBFB" stop-opacity="0"/>
+                </radialGradient>
+                <radialGradient id="paint13_radial_245_979" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(77 468) rotate(166.57) scale(39.4201 21.3713)">
+                <stop stop-color="#C1C4E0"/>
+                <stop offset="1" stop-color="#C1C4E0" stop-opacity="0"/>
+                </radialGradient>
+                <radialGradient id="paint13_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(211.171 776.331) rotate(90.1673) scale(58.6695 55.0888)">
+                <stop offset="0.691469" stop-color="#F2C1B3"/>
+                <stop offset="1" stop-color="#EB9B82"/>
+                </radialGradient>
+                <radialGradient id="paint14_radial_245_979" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(108 394) rotate(-96.1437) scale(72.0797 55.1232)">
+                <stop offset="0.691469" stop-color="#F2C1B3"/>
+                <stop offset="1" stop-color="#EB9B82"/>
+                </radialGradient>
+                <radialGradient id="paint14_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(431 422) rotate(110.416) scale(407.324 499.781)">
+                <stop offset="0.343654" stop-color="#E8EBFB"/>
+                <stop offset="0.476396" stop-color="#9D9FC4"/>
+                <stop offset="1" stop-color="#C1C4E0"/>
+                </radialGradient>
+                <linearGradient id="paint15_linear" x1="411.5" y1="333" x2="413.5" y2="534" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#9D9FC4"/>
+                <stop offset="0.638304" stop-color="#9D9FC4" stop-opacity="0"/>
+                </linearGradient>
+                <radialGradient id="paint16_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(509 593) rotate(27.646) scale(165.946 351.97)">
+                <stop offset="0.566511" stop-color="#E8EBFB"/>
+                <stop offset="0.801885" stop-color="#C1C4E0"/>
+                <stop offset="1" stop-color="#9D9FC4"/>
+                </radialGradient>
+                <radialGradient id="paint17_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(562.5 669.5) rotate(-0.818475) scale(35.0036 10.0488)">
+                <stop offset="0.526244" stop-color="#C1C4E0"/>
+                <stop offset="1" stop-color="#C1C4E0" stop-opacity="0"/>
+                </radialGradient>
+                <radialGradient id="paint18_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(577 670) rotate(-9.46233) scale(21.2897 16.0172)">
+                <stop offset="0.336097" stop-color="#C1C4E0"/>
+                <stop offset="1" stop-color="#C1C4E0" stop-opacity="0"/>
+                </radialGradient>
+                <radialGradient id="paint19_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(567 766) rotate(-44.0122) scale(82.0366 48.0172)">
+                <stop offset="0.459208" stop-color="#C1C4E0"/>
+                <stop offset="1" stop-color="#C1C4E0" stop-opacity="0"/>
+                </radialGradient>
+                <radialGradient id="paint20_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(446 831) rotate(78.8571) scale(33.6341 19.6865)">
+                <stop offset="0.392454" stop-color="#C1C4E0"/>
+                <stop offset="1" stop-color="#C1C4E0" stop-opacity="0"/>
+                </radialGradient>
+                <radialGradient id="paint21_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(654.5 616) rotate(-92.9108) scale(147.691 71.8588)">
+                <stop offset="0.459208" stop-color="#C1C4E0"/>
+                <stop offset="1" stop-color="#C1C4E0" stop-opacity="0"/>
+                </radialGradient>
+                <radialGradient id="paint22_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(358 844) rotate(-0.381975) scale(75.0017 59.2828)">
+                <stop offset="0.559566" stop-color="#F2C1B3"/>
+                <stop offset="1" stop-color="#EB9B82"/>
+                </radialGradient>
+                <linearGradient id="paint23_linear" x1="411.5" y1="272" x2="432.791" y2="434.654" gradientUnits="userSpaceOnUse">
+                <stop offset="0.473958" stop-color="#EB9B82"/>
+                <stop offset="0.776042" stop-color="#F2C1B3"/>
+                </linearGradient>
+                <linearGradient id="paint24_linear" x1="396.174" y1="0" x2="396.174" y2="532.424" gradientUnits="userSpaceOnUse">
+                <stop offset="0.572917" stop-color="#322421"/>
+                <stop offset="1" stop-color="#8A3B3B"/>
+                </linearGradient>
+                <radialGradient id="paint25_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(340.5 249) rotate(5.3837) scale(191.846 78.5643)">
+                <stop stop-color="#EEAC98"/>
+                <stop offset="0.526042" stop-color="#F2C1B3"/>
+                </radialGradient>
+                <radialGradient id="paint26_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(303.34 221.859) rotate(-96.3402) scale(22.6385 21.5903)">
+                <stop offset="0.541667" stop-color="white"/>
+                <stop offset="1" stop-color="#888695"/>
+                </radialGradient>
+                <radialGradient id="paint27_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(398.749 232.735) rotate(-76.7595) scale(17.4751 26.2357)">
+                <stop offset="0.6875" stop-color="white"/>
+                <stop offset="1" stop-color="#888695"/>
+                </radialGradient>
+                <linearGradient id="paint28_linear" x1="397.226" y1="215.938" x2="397.226" y2="243.676" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#301111"/>
+                <stop offset="1" stop-color="#492823"/>
+                </linearGradient>
+                <linearGradient id="paint29_linear" x1="308.792" y1="202" x2="308.792" y2="231" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#301111"/>
+                <stop offset="1" stop-color="#492823"/>
+                </linearGradient>
+                <radialGradient id="paint30_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(416.76 39.1169) rotate(100.208) scale(158.099 212.958)">
+                <stop offset="0.576449" stop-color="#825049"/>
+                <stop offset="1" stop-color="#322421"/>
+                </radialGradient>
+                <radialGradient id="paint31_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(414.259 -6.91181) rotate(98.3659) scale(120.355 189.986)">
+                <stop offset="0.773601" stop-color="#322421"/>
+                <stop offset="1" stop-color="#492823" stop-opacity="0"/>
+                </radialGradient>
+                <radialGradient id="paint32_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(396.748 151.687) rotate(92.8156) scale(183.336 196.237)">
+                <stop offset="0.348314" stop-color="#492823" stop-opacity="0"/>
+                <stop offset="0.912478" stop-color="#322421"/>
+                </radialGradient>
+                <radialGradient id="paint33_diamond" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(265.166 59.6297) rotate(26.4046) scale(79.8777 110.349)">
+                <stop stop-color="#825049"/>
+                <stop offset="1" stop-color="#825049" stop-opacity="0"/>
+                </radialGradient>
+                <radialGradient id="paint34_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(480.5 234) rotate(110.772) scale(31.0161 17.0568)">
+                <stop offset="0.270833" stop-color="#EC9C83"/>
+                <stop offset="0.655658" stop-color="#F2C1B3"/>
+                </radialGradient>
+                </defs>
+            </svg>
+        </div>
+        <div class="intro">
+            <p><strong>Hi! I’m Suling.</strong> I’m a <span style="background-color:rgba(255, 12, 198, 0.2);">multi-disciplinary</span> product designer with over 6 years of experience shaping financial and consumer products. I thrive in <span style="background-color:rgba(36, 120, 255, 0.3);">complex</span>, messy situations and value bringing teams together to identify what matters and <span style="background-color:rgba(255, 183, 0, 0.2);">collaboratively solve problems</span>.</p>
+        </div>
+    </div>
+
+	<div class="sidebar-content">
+		<div class="sidebar-experience">
+			<h3>Experience</h3>
+			<ul class="experience-timeline">
+				<li>
+					<span class="experience-year">2024 - 2025</span>
+					<span class="experience-company">TikTok</span>
+				</li>
+				<li>
+					<span class="experience-year">2021 - 2023</span>
+					<span class="experience-company">Grab</span>
+				</li>
+				<li>
+					<span class="experience-year">2021</span>
+					<span class="experience-company">Beam</span>
+				</li>
+                <li>
+					<span class="experience-year">2017 - 2021</span>
+					<span class="experience-company">GoBear</span>
+				</li>
+			</ul>
+		</div>
+		
+		<div class="sidebar-actions" style="padding-bottom:2px;">
+			<a class="button linkedin-button" href="https://www.linkedin.com/in/suling-wong/" target="_blank">
+				LinkedIn
+				<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5.04901 8.064L4 7.01499L9.26491 1.74511H5.26776L5.2777 0.303345H11.7557V6.7863H10.304L10.3139 2.79411L5.04901 8.064Z" fill="var(--color-text-invert)"/>
+                </svg>                    
+			</a>
 		</div>
 	</div>
-</section>
+</aside>
 
-<section id="writing" class="writing is-vertical-align">
-	<div class="full-container center">
-		<div class="row">
-			<div class="col-1-md hide-sm hide-xs"></div>
-			<div class="solid col-12 col-12-md col-5-lg is-vertical-align">
-				<div class="row is-vertical-align">
-					<div class="col-12 col-12-md">
-						<h2>Things I write&nbsp;about</h2>
-					</div>
-	            </div>
-			</div>
-			<div class="space col-12 col-12-md col-6-lg is-center">
-				<div class="row" style="margin:0">
-					<a href="https://ricey.notion.site/Design-learnings-from-Lasek-3515d518d8914d4c9e6940272197778f" target="_blank" class="card col-12 col-6-md col-12-lg">
-						<h3 class="title">How I became an advocate for accessibility</h3>
-						<p class="is-vertical-align">
-							<i class="outgoing light" aria-hidden="true" style="margin:0 8px 0 0"></i> Notion
-						</p>
-	            	</a>
-					<a href="https://ricey.notion.site/Me-myself-and-AI-2705e67457b7800bba97da97850f5ea3" target="_blank" class="card col-12 col-6-md col-12-lg">
-						<h3 class="title">Attempting to fit AI into my day-to-day</h3>
-						<p class="is-vertical-align">
-							<i class="outgoing light" aria-hidden="true" style="margin:0 8px 0 0"></i> Notion
-						</p>
-	            	</a>
-	            </div>
-			</div>
-		</div>
-	</div>
-</section>
+<!-- Main Content -->
+<main class="main-content">
 
-<section id="work" class="work is-vertical-align">
-	<div class="container center">
-		<div class="row">
-			<div class="col-12 col-12-md col-12-lg">
-				<div class="row is-vertical-align" style="margin:0">
-					<h2 class="col-12">Work I think about</h2>
-				</div>
-				<div class="row is-vertical-align" style="margin-bottom:10px;">
-					<div class="card col-12 col-12-md" style="background-image:url(images/comingsoon.png);background-size:contain;">
-						<p class="year">2025</p>
-						<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 136 30" alt="TikTok" height="26" width="118" class="css-1pylepm-5e6d46e3--StyledLogoDark e1487oh22"><path fill="#25F4EE" d="M9.875 11.842v-1.119A9 9 0 0 0 8.7 10.64c-4.797-.006-8.7 3.9-8.7 8.708a8.7 8.7 0 0 0 3.718 7.134A8.68 8.68 0 0 1 1.38 20.55c0-4.737 3.794-8.598 8.495-8.707"></path><path fill="#25F4EE" d="M10.087 24.526c2.14 0 3.89-1.707 3.966-3.83l.007-18.968h3.462a7 7 0 0 1-.109-1.202h-4.727l-.006 18.968a3.98 3.98 0 0 1-3.967 3.83 3.9 3.9 0 0 1-1.846-.46 3.95 3.95 0 0 0 3.22 1.662m13.905-16.36V7.111a6.5 6.5 0 0 1-3.584-1.067 6.57 6.57 0 0 0 3.584 2.122"></path><path fill="#FE2C55" d="M20.41 6.044a6.54 6.54 0 0 1-1.617-4.316h-1.265a6.56 6.56 0 0 0 2.881 4.316M8.707 15.365a3.98 3.98 0 0 0-3.974 3.976c0 1.528.87 2.858 2.134 3.523a3.94 3.94 0 0 1-.754-2.321 3.98 3.98 0 0 1 3.973-3.976c.41 0 .805.07 1.176.185v-4.833a9 9 0 0 0-1.176-.083c-.07 0-.134.006-.204.006v3.708a4 4 0 0 0-1.175-.185"></path><path fill="#FE2C55" d="M23.992 8.166v3.676a11.25 11.25 0 0 1-6.579-2.116v9.622c0 4.8-3.903 8.713-8.706 8.713a8.67 8.67 0 0 1-4.99-1.579 8.7 8.7 0 0 0 6.37 2.781c4.797 0 8.706-3.906 8.706-8.714v-9.621a11.25 11.25 0 0 0 6.579 2.116v-4.73q-.718-.002-1.38-.148"></path><path fill="#000" d="M17.413 19.348V9.726a11.25 11.25 0 0 0 6.58 2.116V8.166a6.57 6.57 0 0 1-3.584-2.122 6.6 6.6 0 0 1-2.887-4.316h-3.463l-.006 18.968a3.98 3.98 0 0 1-3.967 3.83 3.99 3.99 0 0 1-3.225-1.656 3.99 3.99 0 0 1-2.134-3.523A3.98 3.98 0 0 1 8.7 15.372c.409 0 .805.07 1.176.185v-3.708c-4.702.103-8.496 3.964-8.496 8.701 0 2.29.888 4.373 2.338 5.933a8.67 8.67 0 0 0 4.989 1.58c4.797 0 8.706-3.913 8.706-8.715M30.048 8.179h14.775l-1.355 4.232h-3.832v15.644h-4.778V12.41l-4.804.006zm38.984 0h15.12l-1.354 4.232h-4.172v15.644h-4.784V12.41l-4.803.006zM45.73 14.502h4.733v13.553h-4.708zm6.617-6.374h4.733v9.257l4.689-4.61h5.647l-5.934 5.76 6.643 9.52h-5.213l-4.433-6.598-1.405 1.362v5.236h-4.733V8.128zm50.143 0h4.734v9.257l4.688-4.61h5.647l-5.934 5.76 6.643 9.52h-5.206l-4.433-6.598-1.405 1.362v5.236h-4.734zm-54.396 4.826a2.384 2.384 0 1 0-.002-4.771 2.384 2.384 0 0 0 .002 4.771"></path><path fill="#25F4EE" d="M83.545 19.942a8.11 8.11 0 0 1 7.473-8.087 9 9 0 0 0-.709-.026c-4.478 0-8.106 3.631-8.106 8.113s3.628 8.113 8.106 8.113c.21 0 .498-.013.71-.026-4.178-.326-7.475-3.823-7.475-8.087"></path><path fill="#FE2C55" d="M92.858 11.83c-.217 0-.505.012-.715.025a8.11 8.11 0 0 1 7.467 8.087 8.11 8.11 0 0 1-7.467 8.087c.21.02.498.026.715.026 4.478 0 8.106-3.631 8.106-8.113s-3.628-8.113-8.106-8.113"></path><path fill="#000" d="M91.58 23.887a3.94 3.94 0 0 1-3.94-3.945 3.94 3.94 0 1 1 7.882 0c0 2.18-1.77 3.945-3.941 3.945m0-12.058c-4.477 0-8.105 3.631-8.105 8.113s3.628 8.113 8.106 8.113 8.106-3.631 8.106-8.113-3.629-8.113-8.106-8.113"></path></svg>
-						<p style="color: #c6c6d6;">Coming soon</p>
-					</div>
-				</div>
-				<div class="row is-vertical-align" style="margin-bottom:10px;">
-					<button class="card col-12 col-12-md portfolio-card" style="background-image:url(images/topupandpay.png);background-size:contain; cursor: pointer;">
-						<p class="year">2022</p>
-						<img src="images/grab-logo.svg" style="height:24px;" alt="Grab logo">
-						<p style="color:blue;">Top Up and&nbsp;Pay&nbsp;→</p>
-					</button>
-				</div>
-				<div class="row is-vertical-align" style="margin-bottom:10px;position:relative;">
-					<button class="card col-12 col-12-md internal-tool-card" style="background-image:url(images/internaltoolredesign.png);background-size:contain; cursor: pointer;">
-						<p class="year">2021</p>
-						<img src="images/beam-logo.svg" style="height:24px;" alt="Beam logo">
-						<p style="color:blue;">Internal Tool Redesign&nbsp;→</p>
-					</button>
-					<div class="hover-cursor">
-						<span>preview!</span>
-					</div>
-				</div>
+	<!-- Past Work Section -->
+	<section class="content-section" id="work">
+        <div class="section-header hide-md hide-lg">
+            <svg class="section-icon" width="50" height="17" viewBox="0 0 50 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M0 3.48601e-07C3.91008 -0.000647484 7.47778 0.901596 10.0857 3.07174C12.4472 5.03701 13.8752 7.91994 14.1546 11.7125L16.1374 9.32161L18.06 10.8962L12.9982 17L7.54502 10.9339L9.40426 9.28486L11.6626 11.7966C11.4083 8.60203 10.2193 6.41408 8.48438 4.9703C6.48156 3.30384 3.56769 2.47535 0 2.47596V3.48601e-07Z" fill="currentColor"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M15.9914 3.48601e-07C19.9015 -0.000647484 23.4692 0.901596 26.0771 3.07174C28.4386 5.03701 29.8666 7.91994 30.146 11.7125L32.1289 9.32161L34.0514 10.8962L28.9896 17L23.5365 10.9339L25.3957 9.28486L27.654 11.7966C27.3998 8.60203 26.2108 6.41408 24.4758 4.9703C22.473 3.30384 19.5591 2.47535 15.9914 2.47596V3.48601e-07Z" fill="currentColor"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M31.94 3.48601e-07C35.8501 -0.000647484 39.4178 0.901596 42.0257 3.07174C44.3872 5.03701 45.8152 7.91994 46.0946 11.7125L48.0775 9.32161L50 10.8962L44.9382 17L39.4851 10.9339L41.3443 9.28486L43.6026 11.7966C43.3484 8.60203 42.1594 6.41408 40.4244 4.9703C38.4216 3.30384 35.5077 2.47535 31.94 2.47596V3.48601e-07Z" fill="currentColor"/>
+            </svg>
+            <h2>Work</h2>
+        </div>
+		<div class="section-content">
+			<div class="card-grid">
+				<button class="card grab-card" style="padding:0;" data-overlay="grab-overlay">
+                    <div class="work-card">
+					    <p class="work-year">Grab, 2022</p>
+                        <h3 class="card-title">Initiating and securing buy-in for an off-roadmap redesign of the GrabWallet payment experience that exceeded expectations</h3>
+                    </div>
+                    <img src="images/grabcase.png" alt="">
+                </button>
+				<button class="card beam-card" style="padding:0;" data-overlay="internal-tool-overlay">
+					<div class="work-card">
+                        <p class="work-year">Beam, 2021</p>
+                        <h3 class="card-title">Revamping the internal vehicle and user management platform to help the operations team scale and move fast</h3>
+                    </div>
+                    <img src="images/beamcase.png" alt="">
+                </button>
 			</div>
 		</div>
-	</div>
-</section>
+	</section>
 
-<section id="stuff" class="projects is-vertical-align">
-	<div class="container center">
-		<div class="row">
-			<div class="col-1-md hide-lg hide-sm hide-xs"></div>
-			<div class="col-12 col-11-md col-12-lg">
-				<div class="row" style="margin:0">
-					<div class="col-5 is-vertical-align remove-top">
-						<h2 class="col-12 sticky" style="text-wrap: pretty;">Projects I care&nbsp;about...</h2>
-					</div>
-					<div class="col-7">
-						<div class="row" style="margin:0">
-							<a href="https://codepen.io/ricey/full/MWKVYmz" target="blank_" class="card col-12">
-								<div class="row is-vertical-align" style="margin:0">
-									<div class="col-12 is-center">
-										<video width="240" height="320" autoplay loop muted playsinline style="width:100%;height:auto;max-height:320px">
-											<source src="images/parallax.mp4" type="video/mp4">
-											<!--[if lt IE 9]><img src="images/parallaxfallback.png" width="320" height="320"><![endif]-->
-										</video>
-									</div>
-									<div class="col-12">
-										<h3 class="title">Parallax illustration<i class="outgoing" aria-hidden="true"></i></h3>
-										<p>Using the vanilla Tilt.js library and custom css, I recreated the swift playground parallax effect on the web with my own illustrations.</p>
-									</div>
-								</div>
-							</a>
-							<a href="https://codepen.io/ricey/pen/zxOPBqq" target="blank_" class="card col-12">
-								<div class="row is-vertical-align" style="margin:0">
-									<div class="col-12 is-center">
-										<video width="240" height="320" autoplay loop muted playsinline style="width:100%;height:auto;max-height:320px">
-											<source src="images/bookmark.mp4" type="video/mp4">
-											<!--[if lt IE 9]><img src="images/parallaxfallback.png" width="320" height="320"><![endif]-->
-										</video>
-									</div>
-									<div class="col-12">
-										<h3 class="title">Bookmarking animation<i class="outgoing" aria-hidden="true"></i></h3>
-										<p>An animation I coded for TikTok's recharge site that increased retention for logged in users by encouraging them to save the page.</p>
-									</div>
-								</div>
-							</a>
-						</div>
-					</div>
-				</div>
+
+	<!-- Writing Section -->
+	<section class="content-section" id="writing">
+		<div class="section-header">
+			<svg class="section-icon" width="50" height="17" viewBox="0 0 50 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path fill-rule="evenodd" clip-rule="evenodd" d="M0 3.48601e-07C3.91008 -0.000647484 7.47778 0.901596 10.0857 3.07174C12.4472 5.03701 13.8752 7.91994 14.1546 11.7125L16.1374 9.32161L18.06 10.8962L12.9982 17L7.54502 10.9339L9.40426 9.28486L11.6626 11.7966C11.4083 8.60203 10.2193 6.41408 8.48438 4.9703C6.48156 3.30384 3.56769 2.47535 0 2.47596V3.48601e-07Z" fill="currentColor"/>
+				<path fill-rule="evenodd" clip-rule="evenodd" d="M15.9914 3.48601e-07C19.9015 -0.000647484 23.4692 0.901596 26.0771 3.07174C28.4386 5.03701 29.8666 7.91994 30.146 11.7125L32.1289 9.32161L34.0514 10.8962L28.9896 17L23.5365 10.9339L25.3957 9.28486L27.654 11.7966C27.3998 8.60203 26.2108 6.41408 24.4758 4.9703C22.473 3.30384 19.5591 2.47535 15.9914 2.47596V3.48601e-07Z" fill="currentColor"/>
+				<path fill-rule="evenodd" clip-rule="evenodd" d="M31.94 3.48601e-07C35.8501 -0.000647484 39.4178 0.901596 42.0257 3.07174C44.3872 5.03701 45.8152 7.91994 46.0946 11.7125L48.0775 9.32161L50 10.8962L44.9382 17L39.4851 10.9339L41.3443 9.28486L43.6026 11.7966C43.3484 8.60203 42.1594 6.41408 40.4244 4.9703C38.4216 3.30384 35.5077 2.47535 31.94 2.47596V3.48601e-07Z" fill="currentColor"/>
+			</svg>
+			<h2>Writing</h2>
+		</div>
+		<div class="section-content">
+			<div class="card-grid">
+                <div class="card-writing">
+                    <a href="https://ricey.notion.site/Design-learnings-from-Lasek-3515d518d8914d4c9e6940272197778f" target="_blank">
+                        <p class="work-year">May 2019</p>
+                        <div class="card-meta">
+                            <svg class="document" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right:10px;vertical-align:middle;flex-shrink:0;">
+                                <path d="M8 13H16V11H8V13ZM8 16H16V14H8V16ZM8 19H13V17H8V19ZM6 22C5.45 22 4.97917 21.8042 4.5875 21.4125C4.19583 21.0208 4 20.55 4 20V4C4 3.45 4.19583 2.97917 4.5875 2.5875C4.97917 2.19583 5.45 2 6 2H14L20 8V20C20 20.55 19.8042 21.0208 19.4125 21.4125C19.0208 21.8042 18.55 22 18 22H6ZM13 9V4H6V20H18V9H13Z" fill="var(--color-text-primary)"/>
+                            </svg>  
+                            <div>                        
+                                <h3 class="card-title" style="margin-bottom:0;vertical-align:middle;">How I became an advocate for accessibility</h3>&nbsp;<svg class="outbound" width="9" height="20" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1.03977 8.79545L0 7.75L6.30114 1.4375H1.47159L1.48295 0H8.78409V7.30682H7.33523L7.34659 2.47727L1.03977 8.79545Z" fill="var(--color-text-primary)"/>
+                                </svg>    
+                            </div>                        
+                        </div>
+                    </a>
+                    <a href="https://ricey.notion.site/Me-myself-and-AI-2705e67457b7800bba97da97850f5ea3" target="_blank">
+                        <p class="work-year">Nov 2025</p>
+                        <div class="card-meta">
+                            <svg class="document" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right:10px;vertical-align:middle;flex-shrink:0;">
+                                <path d="M8 13H16V11H8V13ZM8 16H16V14H8V16ZM8 19H13V17H8V19ZM6 22C5.45 22 4.97917 21.8042 4.5875 21.4125C4.19583 21.0208 4 20.55 4 20V4C4 3.45 4.19583 2.97917 4.5875 2.5875C4.97917 2.19583 5.45 2 6 2H14L20 8V20C20 20.55 19.8042 21.0208 19.4125 21.4125C19.0208 21.8042 18.55 22 18 22H6ZM13 9V4H6V20H18V9H13Z" fill="var(--color-text-primary)"/>
+                            </svg>
+                            <div>
+                                <h3 class="card-title" style="margin-bottom:0;vertical-align:middle;">Attempting to fit AI into my day-to-day</h3>&nbsp;<svg class="outbound" width="9" height="20" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1.03977 8.79545L0 7.75L6.30114 1.4375H1.47159L1.48295 0H8.78409V7.30682H7.33523L7.34659 2.47727L1.03977 8.79545Z" fill="var(--color-text-primary)"/>
+                                </svg>   
+                            </div>                         
+                        </div>
+                    </a>
+                </div>
 			</div>
 		</div>
-	</div>
-</section>
+	</section>
 
-<section id="contact" class="contact is-vertical-align">
-	<div class="container">
-		<div class="row">
-			<div class="col-1-md hide-lg hide-sm hide-xs"></div>
-			<div class="col-12 col-11-md col-12-lg">
-				<div class="row is-center">
-					<div class="col-7">
-						<h2>
-							...And that's it!
-						</h2>
-						<p>You might've reached the end but&nbsp;you can still <i>reach out</i> &nbsp;:)</p>
-						<p>
-							<a class="fun button linkedin" href="https://www.linkedin.com/in/suling-wong/" target="_blank">To LinkedIn!<i class="outgoing light"></i></a>
-						</p>
+	<!-- Other Stuff Section -->
+	<section class="content-section" id="stuff">
+		<div class="section-header">
+			<svg class="section-icon" width="50" height="17" viewBox="0 0 50 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path fill-rule="evenodd" clip-rule="evenodd" d="M0 3.48601e-07C3.91008 -0.000647484 7.47778 0.901596 10.0857 3.07174C12.4472 5.03701 13.8752 7.91994 14.1546 11.7125L16.1374 9.32161L18.06 10.8962L12.9982 17L7.54502 10.9339L9.40426 9.28486L11.6626 11.7966C11.4083 8.60203 10.2193 6.41408 8.48438 4.9703C6.48156 3.30384 3.56769 2.47535 0 2.47596V3.48601e-07Z" fill="currentColor"/>
+				<path fill-rule="evenodd" clip-rule="evenodd" d="M15.9914 3.48601e-07C19.9015 -0.000647484 23.4692 0.901596 26.0771 3.07174C28.4386 5.03701 29.8666 7.91994 30.146 11.7125L32.1289 9.32161L34.0514 10.8962L28.9896 17L23.5365 10.9339L25.3957 9.28486L27.654 11.7966C27.3998 8.60203 26.2108 6.41408 24.4758 4.9703C22.473 3.30384 19.5591 2.47535 15.9914 2.47596V3.48601e-07Z" fill="currentColor"/>
+				<path fill-rule="evenodd" clip-rule="evenodd" d="M31.94 3.48601e-07C35.8501 -0.000647484 39.4178 0.901596 42.0257 3.07174C44.3872 5.03701 45.8152 7.91994 46.0946 11.7125L48.0775 9.32161L50 10.8962L44.9382 17L39.4851 10.9339L41.3443 9.28486L43.6026 11.7966C43.3484 8.60203 42.1594 6.41408 40.4244 4.9703C38.4216 3.30384 35.5077 2.47535 31.94 2.47596V3.48601e-07Z" fill="currentColor"/>
+			</svg>
+			<h2>Other Stuff</h2>
+		</div>
+		<div class="section-content">
+			<div class="card-grid">
+				<a href="https://codepen.io/ricey/full/MWKVYmz" target="_blank" class="card card-other">
+					<div class="card-body">
+						<p class="work-year">Art + code</p>
+						<h3 class="card-title">Parallax effect illustration using the vanilla tilt.js library, custom css, and my own illustrations</h3>&nbsp;<svg class="outbound" width="9" height="20" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1.03977 8.79545L0 7.75L6.30114 1.4375H1.47159L1.48295 0H8.78409V7.30682H7.33523L7.34659 2.47727L1.03977 8.79545Z" fill="var(--color-text-primary)"/>
+                        </svg>   
 					</div>
-					<div class="col-5" style="position: relative;">
-						<div class="cursor">
-							<span>See ya!</span>
-						</div>
-						<svg class="exit is-center" width="396" height="416" viewBox="0 0 396 416" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path d="M396 97.701C396 47.4497 357.712 5.47513 307.673 0.868306V0.868306C270.541 -2.55016 238.5 26.6764 238.5 63.9651V242.5L396 286V97.701Z" fill="#c8cde0"/>
-							<path d="M396 167V286L203 416L0 356.5L396 167Z" fill="url(#paint0_linear)"/>
-							<defs>
-							<linearGradient id="paint0_linear" x1="362.5" y1="167" x2="277.5" y2="477" gradientUnits="userSpaceOnUse">
-							<stop stop-color="#c8cde0"/>
-							<stop offset="0.329846" stop-color="#474f65"/>
-							<stop offset="1" stop-color="#2c2c2c" stop-opacity="0"/>
-							</linearGradient>
-							</defs>
-						</svg>
+                    <div class="card-media">
+						<video width="240" height="320" autoplay loop muted playsinline style="width:100%;height:auto;max-height:320px">
+							<source src="images/parallax.mp4" type="video/mp4">
+						</video>
 					</div>
-				</div>
+				</a>
+				<a href="https://codepen.io/ricey/pen/zxOPBqq" target="_blank" class="card card-other">
+					<div class="card-body">
+						<p class="work-year">Code</p>
+						<h3 class="card-title">Bookmarking animation for TikTok's recharge site that increased retention for logged in users by encouraging them to save the page</h3>&nbsp;<svg class="outbound" width="9" height="20" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1.03977 8.79545L0 7.75L6.30114 1.4375H1.47159L1.48295 0H8.78409V7.30682H7.33523L7.34659 2.47727L1.03977 8.79545Z" fill="var(--color-text-primary)"/>
+                        </svg>   
+					</div>
+                    <div class="card-media">
+						<video width="240" height="320" autoplay loop muted playsinline style="width:100%;height:auto;max-height:320px">
+							<source src="images/bookmark.mp4" type="video/mp4">
+						</video>
+					</div>
+				</a>
 			</div>
 		</div>
+        <div class="section-content">
+            <p class="end-text" style="padding-top:40px;opacity:0.3;font-size:1.2rem;">That's all for now!</p>
+		</div>
+	</section>
+</main>
+
+<!-- Grab Overlay -->
+<div id="grab-overlay" class="project-overlay">
+	<div class="project-overlay-backdrop"></div>
+	<div class="project-overlay-content" tabindex="-1" style="overflow-y:hidden;">
+		<div class="project-overlay-nav">
+			<div class="project-overlay-nav-left">
+				<button class="project-overlay-prev" aria-label="Previous case study" title="Previous case study" tabindex="4">
+					<svg width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M8.28033 14.2197C8.57322 14.5126 8.57322 14.9873 8.28033 15.2802C7.98744 15.5731 7.51268 15.5731 7.21978 15.2802L0.219783 8.28022C-0.0731104 7.98732 -0.0731104 7.51256 0.219783 7.21967L7.21978 0.21967C7.51268 -0.0732233 7.98744 -0.0732233 8.28033 0.21967C8.57322 0.512563 8.57322 0.987324 8.28033 1.28022L1.8106 7.74994L8.28033 14.2197Z" fill="currentColor"/>
+					</svg> 
+				</button>
+				<button class="project-overlay-next" aria-label="Next case study" title="Next case study" tabindex="3">
+					<svg width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M0.21967 14.2197C-0.0732233 14.5126 -0.0732233 14.9873 0.21967 15.2802C0.512563 15.5731 0.987324 15.5731 1.28022 15.2802L8.28022 8.28022C8.57311 7.98732 8.57311 7.51256 8.28022 7.21967L1.28022 0.21967C0.987324 -0.0732233 0.512563 -0.0732233 0.21967 0.21967C-0.0732233 0.512563 -0.0732233 0.987324 0.21967 1.28022L6.6894 7.74994L0.21967 14.2197Z" fill="currentColor"/>
+					</svg>
+				</button>
+			</div>
+			<div class="project-overlay-nav-right">
+				<a class="project-overlay-link" href="grabwallet.html" target="_blank" rel="noopener noreferrer" aria-label="Open case study in new tab" title="Open in new tab" tabindex="2">
+					<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M6.75 1.5C7.16421 1.5 7.5 1.83579 7.5 2.25C7.5 2.66421 7.16421 3 6.75 3H3C2.17157 3 1.5 3.67157 1.5 4.5V15C1.5 15.8284 2.17157 16.5 3 16.5H13.5C14.3284 16.5 15 15.8284 15 15V11.25C15 10.8358 15.3358 10.5 15.75 10.5C16.1642 10.5 16.5 10.8358 16.5 11.25V15C16.5 16.6569 15.1569 18 13.5 18H3C1.34315 18 0 16.6569 0 15V4.5C0 2.84315 1.34315 1.5 3 1.5H6.75Z" fill="currentColor"/>
+						<path d="M17.25 0C17.6642 0 18 0.335786 18 0.75V8.25C18 8.66421 17.6642 9 17.25 9C16.8358 9 16.5 8.66421 16.5 8.25V2.56055L10.2803 8.78027C9.98738 9.07317 9.51262 9.07317 9.21973 8.78027C8.92683 8.48738 8.92683 8.01262 9.21973 7.71973L15.4395 1.5H9.75C9.33579 1.5 9 1.16421 9 0.75C9 0.335786 9.33579 0 9.75 0H17.25Z" fill="currentColor"/>
+					</svg>
+				</a>
+				<button class="project-overlay-close" aria-label="Close overlay" title="Close overlay" tabindex="1">
+					<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M14.2197 0.219649C14.5126 -0.0732021 14.9873 -0.0732304 15.2802 0.219649C15.5731 0.512531 15.5731 0.987313 15.2802 1.2802L8.81049 7.74992L15.2197 14.1591C15.5122 14.452 15.5124 14.9269 15.2197 15.2196C14.9269 15.5124 14.452 15.5122 14.1591 15.2196L7.74994 8.81047L1.34076 15.2196C1.04786 15.5122 0.573016 15.5124 0.280217 15.2196C-0.012579 14.9269 -0.0123841 14.452 0.280217 14.1591L6.6894 7.74992L0.21967 1.2802C-0.0732233 0.987302 -0.0732233 0.512542 0.21967 0.219649C0.512567 -0.073202 0.987338 -0.0732304 1.28022 0.219649L7.74994 6.68938L14.2197 0.219649Z" fill="currentColor"/>
+					</svg>
+				</button>
+			</div>
+		</div>
+		<div class="project-overlay-loader">
+			<div class="project-overlay-loader-spinner"></div>
+		</div>
+		<iframe id="grab-iframe" data-src="grabwallet.html" width="100%" height="100%" frameborder="0" tabindex="5"></iframe>
 	</div>
-</section>
+</div>
 
-<script type="text/javascript">
-const makeNavLinksSmooth = ( ) => {
-	const navLinks = document.querySelectorAll( '.nav-link' );
+<script>
+(function() {
+	const themeToggle = document.querySelector('.theme-toggle');
+	const root = document.documentElement;
 
-	for ( let n in navLinks ) {
-    if ( navLinks.hasOwnProperty( n ) ) {
-      navLinks[ n ].addEventListener( 'click', e => {
-        e.preventDefault( );
-        document.querySelector( navLinks[ n ].hash )
-          .scrollIntoView( {behavior: "smooth"} );
-      } );
-    }
-  }
-}
+	function setTheme(theme, isManual = false) {
+		root.setAttribute('data-theme', theme);
+		localStorage.setItem('theme', theme);
+		if (isManual) {
+			localStorage.setItem('theme-manual', 'true');
+		} else {
+			// Clear manual flag when using system preference
+			localStorage.removeItem('theme-manual');
+		}
+	}
 
-const spyScrolling = ( ) => {
-  const sections = document.querySelectorAll( 'section[id]' );
+	function getSystemTheme() {
+		return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+	}
 
-  window.onscroll = ( ) => {
-    const scrollPos = document.documentElement.scrollTop || document.body.scrollTop;
+	function toggleTheme(e) {
+		if (e) {
+			e.preventDefault();
+			e.stopPropagation();
+		}
+		// Always read the current actual theme from the DOM
+		const currentTheme = root.getAttribute('data-theme') || 'light';
+		const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+		setTheme(newTheme, true);
+	}
 
-    for ( let s in sections )
-      if ( sections.hasOwnProperty( s ) && sections[ s ].offsetTop <= scrollPos+window.innerHeight/2 ) {
-        const id = sections[ s ].id;
-        document.querySelector( '.active' ).classList.remove( 'active' );
-        document.querySelector( `a[href*=${ id }]` ).parentNode.classList.add( 'active' );
+	// Check if user has manually set a theme preference
+	const isManualTheme = localStorage.getItem('theme-manual') === 'true';
+	const savedTheme = localStorage.getItem('theme');
 
-        setTimeout(function() {
-        document.querySelector( `a[href*=${ id }]` ).parentNode.scrollIntoView( {behavior: "smooth", inline: "end"} );
-         }, 640);
+	// Load theme: use saved preference if manually set, otherwise use system preference
+	let initialTheme;
+	if (isManualTheme && savedTheme) {
+		initialTheme = savedTheme;
+	} else {
+		initialTheme = getSystemTheme();
+	}
 
-      }
-  } 
-}
+	// Set initial theme immediately (before any user interaction)
+	setTheme(initialTheme, isManualTheme);
 
-makeNavLinksSmooth( );
-spyScrolling( );
+	// Listen for system theme changes (only if user hasn't manually set preference)
+	if (!isManualTheme) {
+		const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+		mediaQuery.addEventListener('change', (e) => {
+			// Only update if user hasn't manually set preference
+			if (localStorage.getItem('theme-manual') !== 'true') {
+				const newTheme = e.matches ? 'dark' : 'light';
+				setTheme(newTheme, false);
+			}
+		});
+	}
 
-	document.addEventListener('DOMContentLoaded', function() {
-            const svg = document.querySelector('svg');
-            let mouseX = 0;
-            let mouseY = 0;
-            
-            document.addEventListener('mousemove', function(e) {
-                const rect = svg.getBoundingClientRect();
-                const centerX = rect.left + rect.width / 2;
-                const centerY = rect.top + rect.height / 2;
-                
-                mouseX = (e.clientX - centerX) * 0.008;
-                mouseY = (e.clientY - centerY) * 0.008;
-                
-                svg.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
-            });
-            
-            // Mobile navbar scroll behavior
-            const nav = document.querySelector('.nav');
-            let lastScrollTop = 0;
-            
-            function handleNavbarScroll() {
-                // Only apply this behavior on mobile screens (max-width: 899px)
-                if (window.innerWidth > 899) return;
-                
-                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                const scrollDirection = scrollTop > lastScrollTop ? 'down' : 'up';
-                const documentHeight = document.documentElement.scrollHeight;
-                const windowHeight = window.innerHeight;
-                const distanceFromBottom = documentHeight - (scrollTop + windowHeight);
-                
-                // Show navbar if:
-                // 1. User is within top 400px of page, OR
-                // 2. User is within 200px from bottom of page, OR
-                // 3. User is scrolling up
-                const isInTopSection = scrollTop <= 400;
-                const isInBottomSection = distanceFromBottom <= 200;
-                const isScrollingUp = scrollDirection === 'up';
-                
-                if (isInTopSection || isInBottomSection || isScrollingUp) {
-                    nav.classList.remove('hidden');
-                } else {
-                    nav.classList.add('hidden');
-                }
-                
-                lastScrollTop = scrollTop;
-            }
-            
-            // Throttle scroll events for better performance
-            let scrollTimeout;
-            window.addEventListener('scroll', function() {
-                if (scrollTimeout) {
-                    clearTimeout(scrollTimeout);
-                }
-                scrollTimeout = setTimeout(handleNavbarScroll, 10);
-            });
-            
-            // Handle window resize
-            window.addEventListener('resize', function() {
-                // Reset navbar state on resize
-                if (window.innerWidth > 899) {
-                    nav.classList.remove('hidden');
-                } else {
-                    handleNavbarScroll();
-                }
-            });
-            
-            // Desktop navbar drag and drop functionality
-            let isDragging = false;
-            let hasDragged = false;
-            let dragOffset = { x: 0, y: 0 };
-            let initialPosition = { x: 0, y: 0 };
-            
-            function makeNavbarDraggable() {
-                // Only enable dragging on desktop screens
-                if (window.innerWidth <= 899) return;
-                
-                nav.addEventListener('mousedown', function(e) {
-                    isDragging = true;
-                    nav.classList.add('dragging');
-                    
-                    const rect = nav.getBoundingClientRect();
-                    dragOffset.x = e.clientX - rect.left;
-                    dragOffset.y = e.clientY - rect.top;
-                    
-                    initialPosition.x = rect.left;
-                    initialPosition.y = rect.top;
-                    
-                    e.preventDefault();
-                });
-                
-                document.addEventListener('mousemove', function(e) {
-                    if (!isDragging) return;
-                    
-                    const newX = e.clientX - dragOffset.x;
-                    const newY = e.clientY - dragOffset.y;
-                    
-                    // Check if we've moved enough to consider it a drag
-                    const distance = Math.sqrt(
-                        Math.pow(newX - initialPosition.x, 2) + 
-                        Math.pow(newY - initialPosition.y, 2)
-                    );
-                    
-                    if (distance > 5) {
-                        hasDragged = true;
-                    }
-                    
-                    // Constrain to viewport bounds
-                    const maxX = window.innerWidth - nav.offsetWidth;
-                    const maxY = window.innerHeight - nav.offsetHeight;
-                    
-                    const constrainedX = Math.max(0, Math.min(newX, maxX));
-                    const constrainedY = Math.max(0, Math.min(newY, maxY));
-                    
-                    nav.style.left = constrainedX + 'px';
-                    nav.style.top = constrainedY + 'px';
-                    nav.style.transform = 'none';
-                });
-                
-                document.addEventListener('mouseup', function(e) {
-                    if (isDragging) {
-                        isDragging = false;
-                        nav.classList.remove('dragging');
-                        
-                        // If we dragged, prevent link navigation
-                        if (hasDragged) {
-                            e.preventDefault();
-                        }
-                        
-                        hasDragged = false;
-                    }
-                });
-            }
-            
-            // Initialize drag functionality
-            makeNavbarDraggable();
-            
-            // Re-initialize on window resize
-            window.addEventListener('resize', function() {
-                makeNavbarDraggable();
-            });
-            
-            // Internal Tool Overlay functionality
-            const internalToolCard = document.querySelector('.internal-tool-card');
-            const overlay = document.getElementById('internal-tool-overlay');
-            const overlayBackdrop = document.querySelector('.project-overlay-backdrop');
-            const overlayCloseButton = document.querySelector('.project-overlay-close');
-            let previouslyFocusedElement = null;
-            
-            // Open overlay when card is clicked
-            if (internalToolCard) {
-                internalToolCard.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    previouslyFocusedElement = document.activeElement;
-                    overlay.classList.add('show');
-                    document.body.style.overflow = 'hidden'; // Prevent background scrolling
-                });
-            }
-            
-            // Close overlay when close button is clicked
-            if (overlayCloseButton) {
-                overlayCloseButton.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    closeOverlay();
-                });
-            }
-            
-            // Close overlay when backdrop is clicked
-            if (overlayBackdrop) {
-                overlayBackdrop.addEventListener('click', function(e) {
-                    if (e.target === overlayBackdrop) {
-                        closeOverlay();
-                    }
-                });
-            }
-            
-            // Close overlay when clicking outside the content area
-            if (overlay) {
-                overlay.addEventListener('click', function(e) {
-                    if (e.target === overlay) {
-                        closeOverlay();
-                    }
-                });
-            }
-            
-            // Close overlay with Escape key
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && overlay.classList.contains('show')) {
-                    closeOverlay();
-                }
-                
-                // Prevent Tab from reaching background elements when overlay is open
-                if (e.key === 'Tab' && overlay.classList.contains('show')) {
-                    const focusableElements = overlay.querySelectorAll(
-                        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-                    );
-                    const firstFocusable = focusableElements[0];
-                    const lastFocusable = focusableElements[focusableElements.length - 1];
-                    
-                    // If focus is not within the overlay, force it to the first element
-                    if (!overlay.contains(document.activeElement)) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        firstFocusable.focus();
-                    }
-                }
-            });
-            
-            // Focus trap for keyboard navigation
-            overlay.addEventListener('keydown', function(e) {
-                if (e.key === 'Tab') {
-                    const focusableElements = overlay.querySelectorAll(
-                        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-                    );
-                    const firstFocusable = focusableElements[0];
-                    const lastFocusable = focusableElements[focusableElements.length - 1];
-                    
-                    if (e.shiftKey) {
-                        // Shift + Tab
-                        if (document.activeElement === firstFocusable) {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            lastFocusable.focus();
-                        }
-                    } else {
-                        // Tab
-                        if (document.activeElement === lastFocusable) {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            firstFocusable.focus();
-                        }
-                    }
-                }
-            });
-            
-            function closeOverlay() {
-                overlay.classList.remove('show');
-                document.body.style.overflow = ''; // Restore scrolling
-                // Restore focus to the previously focused element
-                if (previouslyFocusedElement) {
-                    previouslyFocusedElement.focus();
-                    previouslyFocusedElement = null;
-                }
-            }
-            
-            // Portfolio Overlay functionality
-            const portfolioCard = document.querySelector('.portfolio-card');
-            const portfolioOverlay = document.getElementById('portfolio-overlay');
-            const portfolioOverlayBackdrop = portfolioOverlay.querySelector('.project-overlay-backdrop');
-            const portfolioOverlayCloseButton = portfolioOverlay.querySelector('.project-overlay-close');
-            let portfolioPreviouslyFocusedElement = null;
-            
-            // Open portfolio overlay when card is clicked
-            if (portfolioCard) {
-                portfolioCard.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    portfolioPreviouslyFocusedElement = document.activeElement;
-                    portfolioOverlay.classList.add('show');
-                    document.body.style.overflow = 'hidden'; // Prevent background scrolling
-                });
-            }
-            
-            // Close portfolio overlay when close button is clicked
-            if (portfolioOverlayCloseButton) {
-                portfolioOverlayCloseButton.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    closePortfolioOverlay();
-                });
-            }
-            
-            // Close portfolio overlay when backdrop is clicked
-            if (portfolioOverlayBackdrop) {
-                portfolioOverlayBackdrop.addEventListener('click', function(e) {
-                    if (e.target === portfolioOverlayBackdrop) {
-                        closePortfolioOverlay();
-                    }
-                });
-            }
-            
-            // Close portfolio overlay when clicking outside the content area
-            if (portfolioOverlay) {
-                portfolioOverlay.addEventListener('click', function(e) {
-                    if (e.target === portfolioOverlay) {
-                        closePortfolioOverlay();
-                    }
-                });
-            }
-            
-            // Close portfolio overlay with Escape key
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && portfolioOverlay.classList.contains('show')) {
-                    closePortfolioOverlay();
-                }
-                
-                // Prevent Tab from reaching background elements when portfolio overlay is open
-                if (e.key === 'Tab' && portfolioOverlay.classList.contains('show')) {
-                    const focusableElements = portfolioOverlay.querySelectorAll(
-                        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-                    );
-                    const firstFocusable = focusableElements[0];
-                    const lastFocusable = focusableElements[focusableElements.length - 1];
-                    
-                    // If focus is not within the overlay, force it to the first element
-                    if (!portfolioOverlay.contains(document.activeElement)) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        firstFocusable.focus();
-                    }
-                }
-            });
-            
-            // Focus trap for portfolio overlay keyboard navigation
-            portfolioOverlay.addEventListener('keydown', function(e) {
-                if (e.key === 'Tab') {
-                    const focusableElements = portfolioOverlay.querySelectorAll(
-                        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-                    );
-                    const firstFocusable = focusableElements[0];
-                    const lastFocusable = focusableElements[focusableElements.length - 1];
-                    
-                    if (e.shiftKey) {
-                        // Shift + Tab
-                        if (document.activeElement === firstFocusable) {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            lastFocusable.focus();
-                        }
-                    } else {
-                        // Tab
-                        if (document.activeElement === lastFocusable) {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            firstFocusable.focus();
-                        }
-                    }
-                }
-            });
-            
-            function closePortfolioOverlay() {
-                portfolioOverlay.classList.remove('show');
-                document.body.style.overflow = ''; // Restore scrolling
-                // Restore focus to the previously focused element
-                if (portfolioPreviouslyFocusedElement) {
-                    portfolioPreviouslyFocusedElement.focus();
-                    portfolioPreviouslyFocusedElement = null;
-                }
-            }
-        });
-        
-        // Load iframe content after page has fully loaded
-        window.addEventListener('load', function() {
-            const portfolioIframe = document.getElementById('portfolio-iframe');
-            if (portfolioIframe && portfolioIframe.dataset.src) {
-                portfolioIframe.src = portfolioIframe.dataset.src;
-            }
-        });
+	// Add event listener for manual toggle
+	if (themeToggle) {
+		themeToggle.addEventListener('click', toggleTheme);
+	}
+})();
+
+// Shared overlay navigation system
+(function() {
+	const OVERLAYS = ['grab-overlay', 'internal-tool-overlay'];
+	let currentOverlayIndex = -1;
+	let previouslyFocusedElement = null;
+
+	function getCurrentOverlay() {
+		if (currentOverlayIndex === -1) return null;
+		return document.getElementById(OVERLAYS[currentOverlayIndex]);
+	}
+
+	function updateNavigationButtons(overlay) {
+		if (!overlay) return;
+		const prevBtn = overlay.querySelector('.project-overlay-prev');
+		const nextBtn = overlay.querySelector('.project-overlay-next');
+		
+		if (prevBtn) {
+			prevBtn.disabled = currentOverlayIndex === 0;
+		}
+		if (nextBtn) {
+			nextBtn.disabled = currentOverlayIndex === OVERLAYS.length - 1;
+		}
+	}
+
+	function switchOverlay(targetIndex) {
+		const currentOverlay = getCurrentOverlay();
+		const targetOverlay = document.getElementById(OVERLAYS[targetIndex]);
+		
+		if (!targetOverlay) return;
+		
+		// Close current overlay
+		if (currentOverlay) {
+			currentOverlay.classList.remove('show');
+		}
+		
+		// Open target overlay
+		currentOverlayIndex = targetIndex;
+		targetOverlay.classList.add('show');
+		updateNavigationButtons(targetOverlay);
+		
+		// Load iframe for Grab overlay if needed
+		if (OVERLAYS[targetIndex] === 'grab-overlay') {
+			loadGrabIframe();
+		}
+		
+		// Focus close button
+		const closeBtn = targetOverlay.querySelector('.project-overlay-close');
+		if (closeBtn) {
+			setTimeout(() => closeBtn.focus(), 100);
+		}
+	}
+	
+	function loadGrabIframe() {
+		const grabOverlay = document.getElementById('grab-overlay');
+		if (!grabOverlay) return;
+		
+		const iframe = grabOverlay.querySelector('iframe');
+		const loader = grabOverlay.querySelector('.project-overlay-loader');
+		
+		if (iframe) {
+			const iframeSrc = iframe.dataset.src || 'grabwallet.html';
+			if (!iframe.src || iframe.src === 'about:blank') {
+				if (loader) loader.classList.add('show');
+				iframe.classList.add('loading');
+				iframe.src = iframeSrc;
+				
+				iframe.addEventListener('load', function() {
+					if (loader) loader.classList.remove('show');
+					iframe.classList.remove('loading');
+				}, { once: true });
+				
+				// Fallback: hide loader after timeout in case load event doesn't fire
+				setTimeout(function() {
+					if (loader && loader.classList.contains('show')) {
+						loader.classList.remove('show');
+						iframe.classList.remove('loading');
+					}
+				}, 5000);
+			}
+		}
+	}
+
+	function navigateToNext() {
+		if (currentOverlayIndex < OVERLAYS.length - 1) {
+			switchOverlay(currentOverlayIndex + 1);
+		}
+	}
+
+	function navigateToPrev() {
+		if (currentOverlayIndex > 0) {
+			switchOverlay(currentOverlayIndex - 1);
+		}
+	}
+
+	function openOverlay(overlayId) {
+		const overlay = document.getElementById(overlayId);
+		if (!overlay) return;
+		
+		const index = OVERLAYS.indexOf(overlayId);
+		if (index === -1) return;
+		
+		previouslyFocusedElement = document.activeElement;
+		currentOverlayIndex = index;
+		overlay.classList.add('show');
+		document.body.style.overflow = 'hidden';
+		
+		// Hide main content from screen readers
+		const mainContent = document.querySelector('.main-content');
+		if (mainContent) {
+			mainContent.setAttribute('aria-hidden', 'true');
+		}
+		
+		updateNavigationButtons(overlay);
+		
+		// Load iframe for Grab overlay if needed
+		if (overlayId === 'grab-overlay') {
+			loadGrabIframe();
+		}
+		
+		// Focus close button
+		const closeBtn = overlay.querySelector('.project-overlay-close');
+		if (closeBtn) {
+			setTimeout(() => closeBtn.focus(), 100);
+		}
+	}
+
+	function closeAllOverlays() {
+		OVERLAYS.forEach(id => {
+			const overlay = document.getElementById(id);
+			if (overlay) {
+				overlay.classList.remove('show');
+			}
+		});
+		currentOverlayIndex = -1;
+		document.body.style.overflow = '';
+		
+		// Restore main content accessibility
+		const mainContent = document.querySelector('.main-content');
+		if (mainContent) {
+			mainContent.removeAttribute('aria-hidden');
+		}
+		
+		// Restore focus
+		if (previouslyFocusedElement) {
+			previouslyFocusedElement.focus();
+			previouslyFocusedElement = null;
+		}
+	}
+
+	// Set up navigation buttons for all overlays
+	function setupNavigation() {
+		OVERLAYS.forEach(id => {
+			const overlay = document.getElementById(id);
+			if (!overlay) return;
+			
+			const prevBtn = overlay.querySelector('.project-overlay-prev');
+			const nextBtn = overlay.querySelector('.project-overlay-next');
+			
+			if (prevBtn) {
+				prevBtn.addEventListener('click', function(e) {
+					e.preventDefault();
+					e.stopPropagation();
+					navigateToPrev();
+				});
+			}
+			
+			if (nextBtn) {
+				nextBtn.addEventListener('click', function(e) {
+					e.preventDefault();
+					e.stopPropagation();
+					navigateToNext();
+				});
+			}
+		});
+	}
+
+	// Keyboard navigation
+	function handleKeyboardNavigation(e) {
+		const currentOverlay = getCurrentOverlay();
+		if (!currentOverlay || !currentOverlay.classList.contains('show')) {
+			return;
+		}
+
+		// Arrow keys for navigation
+		if (e.key === 'ArrowLeft') {
+			e.preventDefault();
+			navigateToPrev();
+		} else if (e.key === 'ArrowRight') {
+			e.preventDefault();
+			navigateToNext();
+		} else if (e.key === 'Escape') {
+			e.preventDefault();
+			closeAllOverlays();
+		}
+	}
+
+	// Initialize navigation on DOM ready
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', function() {
+			setupNavigation();
+			document.addEventListener('keydown', handleKeyboardNavigation);
+		});
+	} else {
+		setupNavigation();
+		document.addEventListener('keydown', handleKeyboardNavigation);
+	}
+
+	// Expose functions globally for overlay-specific scripts
+	window.overlayNavigation = {
+		open: openOverlay,
+		close: closeAllOverlays
+	};
+})();
+
+// Grab Overlay functionality
+(function() {
+	const grabCard = document.querySelector('.grab-card');
+	const overlay = document.getElementById('grab-overlay');
+	if (!overlay) {
+		console.error('Overlay element not found');
+		return;
+	}
+	const overlayBackdrop = overlay.querySelector('.project-overlay-backdrop');
+	const overlayClose = overlay.querySelector('.project-overlay-close');
+	const iframe = overlay.querySelector('iframe');
+	const loader = overlay.querySelector('.project-overlay-loader');
+
+	function openGrabOverlay() {
+		if (!overlay) {
+			console.error('Overlay not found');
+			return;
+		}
+		
+		// Use shared navigation system
+		if (window.overlayNavigation) {
+			window.overlayNavigation.open('grab-overlay');
+		}
+
+		// Load iframe if not already loaded
+		if (iframe) {
+			const iframeSrc = iframe.dataset.src || 'grabwallet.html';
+			if (!iframe.src || iframe.src === 'about:blank') {
+				if (loader) loader.classList.add('show');
+				iframe.classList.add('loading');
+				iframe.src = iframeSrc;
+				
+				iframe.addEventListener('load', function() {
+					if (loader) loader.classList.remove('show');
+					iframe.classList.remove('loading');
+				}, { once: true });
+				
+				// Fallback: hide loader after timeout in case load event doesn't fire
+				setTimeout(function() {
+					if (loader && loader.classList.contains('show')) {
+						loader.classList.remove('show');
+						iframe.classList.remove('loading');
+					}
+				}, 5000);
+			}
+		}
+	}
+
+	function closeGrabOverlay() {
+		if (window.overlayNavigation) {
+			window.overlayNavigation.close();
+		}
+	}
+
+	// Open overlay when card is clicked
+	if (grabCard) {
+		grabCard.addEventListener('click', function(e) {
+			// Don't open if clicking on interactive elements inside (but allow the button itself)
+			const clickedElement = e.target;
+			// Only prevent if clicking on a nested button/link, not the card button itself
+			if (clickedElement !== grabCard && clickedElement.closest('a, button:not(.grab-card)')) {
+				return;
+			}
+			e.preventDefault();
+			openGrabOverlay();
+		});
+	}
+
+	// Close overlay handlers
+	if (overlayClose) {
+		overlayClose.addEventListener('click', function(e) {
+			e.preventDefault();
+			e.stopPropagation();
+			closeGrabOverlay();
+		});
+	}
+
+	if (overlayBackdrop) {
+		overlayBackdrop.addEventListener('click', function(e) {
+			if (e.target === overlayBackdrop) {
+				closeGrabOverlay();
+			}
+		});
+	}
+
+	// Escape key and arrow keys are handled by shared navigation system
+	
+	// Focus trap for Tab key
+	document.addEventListener('keydown', function(e) {
+		if (e.key === 'Tab' && overlay && overlay.classList.contains('show')) {
+			const focusableSelectors = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"]), iframe';
+			const focusableElements = Array.from(overlay.querySelectorAll(focusableSelectors)).filter(el => {
+				return el.offsetParent !== null && !el.disabled;
+			});
+
+			if (focusableElements.length === 0) return;
+
+			const activeElement = document.activeElement;
+			const activeIndex = focusableElements.indexOf(activeElement);
+
+			// Check if focus is within overlay
+			if (!overlay.contains(activeElement) || activeIndex === -1) {
+				e.preventDefault();
+				focusableElements[0].focus();
+				return;
+			}
+
+			// Handle tabbing at boundaries
+			if (!e.shiftKey) {
+				// Forward tab
+				if (activeIndex === focusableElements.length - 1) {
+					e.preventDefault();
+					focusableElements[0].focus();
+				}
+			} else {
+				// Backward tab
+				if (activeIndex === 0) {
+					e.preventDefault();
+					focusableElements[focusableElements.length - 1].focus();
+				}
+			}
+		}
+	});
+})();
+
+// Internal Tool Overlay functionality
+(function() {
+	function initOverlay() {
+		const beamCard = document.querySelector('.beam-card');
+		const overlay = document.getElementById('internal-tool-overlay');
+		if (!overlay) {
+			console.error('Internal tool overlay not found');
+			return;
+		}
+		if (!beamCard) {
+			console.error('Beam card not found');
+			return;
+		}
+		const overlayBackdrop = overlay.querySelector('.project-overlay-backdrop');
+		const overlayClose = overlay.querySelector('.project-overlay-close');
+
+	function openBeamOverlay() {
+		if (!overlay) {
+			console.error('Overlay not found');
+			return;
+		}
+		
+		// Use shared navigation system
+		if (window.overlayNavigation) {
+			window.overlayNavigation.open('internal-tool-overlay');
+		}
+	}
+
+	function closeBeamOverlay() {
+		if (window.overlayNavigation) {
+			window.overlayNavigation.close();
+		}
+	}
+
+	// Open overlay when card is clicked
+	if (beamCard) {
+		beamCard.addEventListener('click', function(e) {
+			// Don't open if clicking on interactive elements inside (but allow the button itself)
+			const clickedElement = e.target;
+			// Only prevent if clicking on a nested button/link, not the card button itself
+			if (clickedElement !== beamCard && clickedElement.closest('a, button:not(.beam-card)')) {
+				return;
+			}
+			e.preventDefault();
+			e.stopPropagation();
+			openBeamOverlay();
+		});
+	}
+
+	// Close overlay handlers
+	if (overlayClose) {
+		overlayClose.addEventListener('click', function(e) {
+			e.preventDefault();
+			e.stopPropagation();
+			closeBeamOverlay();
+		});
+	}
+
+	if (overlayBackdrop) {
+		overlayBackdrop.addEventListener('click', function(e) {
+			if (e.target === overlayBackdrop) {
+				closeBeamOverlay();
+			}
+		});
+	}
+
+	// Escape key and arrow keys are handled by shared navigation system
+	
+	// Focus trap for Tab key
+	document.addEventListener('keydown', function(e) {
+		if (e.key === 'Tab' && overlay && overlay.classList.contains('show')) {
+			const focusableSelectors = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+			const focusableElements = Array.from(overlay.querySelectorAll(focusableSelectors)).filter(el => {
+				return el.offsetParent !== null && !el.disabled;
+			});
+
+			if (focusableElements.length === 0) return;
+
+			const activeElement = document.activeElement;
+			const activeIndex = focusableElements.indexOf(activeElement);
+
+			// Check if focus is within overlay
+			if (!overlay.contains(activeElement) || activeIndex === -1) {
+				e.preventDefault();
+				focusableElements[0].focus();
+				return;
+			}
+
+			// Handle tabbing at boundaries
+			if (!e.shiftKey) {
+				// Forward tab
+				if (activeIndex === focusableElements.length - 1) {
+					e.preventDefault();
+					focusableElements[0].focus();
+				}
+			} else {
+				// Backward tab
+				if (activeIndex === 0) {
+					e.preventDefault();
+					focusableElements[focusableElements.length - 1].focus();
+				}
+			}
+		}
+	});
+	}
+
+	// Initialize when DOM is ready
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', initOverlay);
+	} else {
+		// DOM already loaded
+		initOverlay();
+	}
+
+	// Initialize when DOM is ready
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', initOverlay);
+	} else {
+		// DOM already loaded
+		initOverlay();
+	}
+})();
 </script>
 
 <!-- Internal Tool Overlay -->
 <div id="internal-tool-overlay" class="project-overlay">
-	<div class="project-overlay-backdrop">
-		<button class="project-overlay-close" aria-label="Close overlay">
-			<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-				<path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-			</svg>
-		</button>
-	</div>
-	<div class="project-overlay-content" tabindex="-1">
-		<div class="project-overlay-tags">
-			<span class="project-tag">#Enterprise software</span>
-			<span class="project-tag">#Dashboards</span>
+<style>
+.project-overlay-content {
+    background: var(--color-background-primary);
+}
+
+[data-theme="dark"] .project-overlay-content {
+    background: var(--color-background-secondary);
+}
+
+.project-overlay section.hero {
+    background: var(--color-background-secondary);
+}
+
+[data-theme="dark"] .project-overlay section.hero {
+    background: var(--color-background-primary);
+}
+
+.project-overlay section.hero {
+    position: relative;
+    margin-bottom: 40px;
+    padding-top: 60px;
+    padding-bottom: 20px;
+}
+
+.project-overlay section.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: linear-gradient(rgba(238, 238, 238, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(238, 238, 238, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.project-meta-item {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	margin-bottom: 40px;
+}
+
+.project-meta-item .h1 {
+	margin: 0;
+	font-size: 4rem;
+    font-family: var(--font-bg);
+	color: var(--color-text-primary);
+	font-weight: 600;
+	line-height: 1;
+	max-width: 24ch;
+}
+
+.project-meta-item h2 {
+	margin: 0;
+	text-transform: none;
+	font-size: 1.4rem;
+	color: var(--color-text-primary);
+	opacity: 0.5;
+	font-weight: 400;
+}
+
+.project-meta-item p {
+	margin: 0;
+    font-family: var(--font-inter);
+    font-size: 1.4rem;
+    color: var(--color-text-primary);
+    line-height: 1.6;
+}
+
+.project-feature {
+	display: flex;
+	flex-direction: row;
+	background: var(--color-background-secondary);
+	padding: 10px;
+	margin-bottom: 60px;
+	align-items: center;
+    border-radius: 8px;
+}
+
+[data-theme="dark"] .project-feature {
+    background: var(--color-background-primary);
+}
+
+.project-feature img, .project-feature video {
+    border-radius: 4px;
+}
+
+.project-section .project-feature {
+	flex-direction: column !important;
+	align-items: start !important;
+}
+
+.project-feature img {
+	overflow: hidden;
+	width: 100%;
+	height: auto;
+	display: block;
+}
+
+.project-feature-content {
+	margin: 10px;
+	margin-top: 14px;
+}
+
+.project-feature-content span {
+	display: inline-block;
+	width: 20px;
+}
+
+.project-feature-content h3 {
+	display: inline-block;
+	margin: 0;
+	margin-left: 10px;
+	margin-bottom: 8px;
+	font-size: 1.4rem;
+	font-weight: 600;
+	line-height: 1.2;
+	color: var(--color-text-primary);
+}
+
+.project-feature-content p {
+	margin: 0;
+	margin-left: 30px;
+	font-size: 1.4rem;
+	max-width: 80%;
+	opacity: 0.8;
+}
+
+.project-overlay-footer {
+	padding: 40px 40px 60px;
+	background: var(--color-background-secondary);
+	text-align: center;
+	margin-bottom: 60px;
+}
+
+.project-overlay-footer p {
+	padding-left: 40px;
+	padding-right: 40px;
+}
+
+@media (max-width: 899px) {
+
+    .project-overlay section.hero {
+        padding-top: 40px;
+        padding-bottom: 20px;
+    }
+
+	.project-meta-item {
+		margin-bottom: 20px;
+		gap: 8px;
+	}
+
+	.project-feature {
+		margin-bottom: 40px;
+		flex-direction: column;
+	}
+
+	.project-feature-content {
+		margin: 0;
+		margin-top: 12px;
+		margin-bottom: 0;
+	}
+
+	.project-feature-content h3 {
+		margin-left: 2px;
+		font-size: 1.4rem !important;
+		margin-bottom: 8px !important;
+	}
+
+	.project-feature-content p {
+		margin-left: 0;
+		max-width: 100%;
+		line-height: 1.4;
+	}
+
+	.project-overlay-footer {
+		margin-bottom: 40px;
+	}
+
+	.project-overlay-footer p {
+		padding-left: 0;
+		padding-right: 0;
+	}
+}
+
+</style>
+	<div class="project-overlay-backdrop"></div>
+	<div class="project-overlay-content" tabindex="-1" style="overflow-y:auto;">
+		<div class="project-overlay-nav">
+			<div class="project-overlay-nav-left">
+				<button class="project-overlay-prev" aria-label="Previous case study" title="Previous case study" tabindex="4">
+					<svg width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M8.28033 14.2197C8.57322 14.5126 8.57322 14.9873 8.28033 15.2802C7.98744 15.5731 7.51268 15.5731 7.21978 15.2802L0.219783 8.28022C-0.0731104 7.98732 -0.0731104 7.51256 0.219783 7.21967L7.21978 0.21967C7.51268 -0.0732233 7.98744 -0.0732233 8.28033 0.21967C8.57322 0.512563 8.57322 0.987324 8.28033 1.28022L1.8106 7.74994L8.28033 14.2197Z" fill="currentColor"/>
+					</svg> 
+				</button>
+				<button class="project-overlay-next" aria-label="Next case study" title="Next case study" tabindex="3">
+					<svg width="9" height="16" viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M0.21967 14.2197C-0.0732233 14.5126 -0.0732233 14.9873 0.21967 15.2802C0.512563 15.5731 0.987324 15.5731 1.28022 15.2802L8.28022 8.28022C8.57311 7.98732 8.57311 7.51256 8.28022 7.21967L1.28022 0.21967C0.987324 -0.0732233 0.512563 -0.0732233 0.21967 0.21967C-0.0732233 0.512563 -0.0732233 0.987324 0.21967 1.28022L6.6894 7.74994L0.21967 14.2197Z" fill="currentColor"/>
+					</svg>
+				</button>
+			</div>
+			<div class="project-overlay-nav-right">
+				<button class="project-overlay-close" aria-label="Close overlay" title="Close overlay" tabindex="1">
+					<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M14.2197 0.219649C14.5126 -0.0732021 14.9873 -0.0732304 15.2802 0.219649C15.5731 0.512531 15.5731 0.987313 15.2802 1.2802L8.81049 7.74992L15.2197 14.1591C15.5122 14.452 15.5124 14.9269 15.2197 15.2196C14.9269 15.5124 14.452 15.5122 14.1591 15.2196L7.74994 8.81047L1.34076 15.2196C1.04786 15.5122 0.573016 15.5124 0.280217 15.2196C-0.012579 14.9269 -0.0123841 14.452 0.280217 14.1591L6.6894 7.74992L0.21967 1.2802C-0.0732233 0.987302 -0.0732233 0.512542 0.21967 0.219649C0.512567 -0.073202 0.987338 -0.0732304 1.28022 0.219649L7.74994 6.68938L14.2197 0.219649Z" fill="currentColor"/>
+					</svg>
+				</button>
+			</div>
 		</div>
+        <section class="hero">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-12-md project-meta-item">
+                        <h2>About</h2> 
+                        <p class="h1">Revamping Beam's Vehicle🛴 and User🚴 Management Tool</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-6-md project-meta-item">
+                        <h2>Role</h2> 
+                        <p>Sole designer</p>
+                    </div>
+                    <div class="col-12 col-6-md project-meta-item">
+                        <h2>Period</h2> 
+                        <p>Jun - Jul 2021</p>
+                    </div>
+                    <div class="col-12 col-6-md project-meta-item">
+                        <h2>Challenge</h2> 
+                        <p style="display:flex;gap:8px;margin-bottom:8px;">
+                            <span style="width:22px;height:22px;background:rgba(200, 200, 200, 0.1);display:flex;flex-shrink:0;align-items:center;justify-content:center;border-radius:4px;font-size:1.3rem;font-weight:500;">1</span>
+                            <span style="max-width:400px;">No PRD or success metrics to guide the design output.</span>
+                        </p>
+                        <p style="display:flex;gap:8px;">
+                            <span style="width:22px;height:22px;background:rgba(200, 200, 200, 0.1);display:flex;flex-shrink:0;align-items:center;justify-content:center;border-radius:4px;font-size:1.3rem;font-weight:500;">2</span>
+                            <span>Limited time and development resources which required me to identify high-impact issues while planning for future enhancements.</span>
+                        </p>
+                    </div>
+                    <div class="col-12 col-6-md project-meta-item">
+                        <h2>Impact</h2> 
+                        <p style="display:flex;gap:8px;margin-bottom:8px;">
+                            <span style="width:22px;height:22px;background:rgba(200, 200, 200, 0.1);display:flex;flex-shrink:0;align-items:center;justify-content:center;border-radius:4px;font-size:1.3rem;font-weight:500;">1</span>
+                            <span style="max-width:400px;">Reduction in time spent by Ops on low agency tasks by reducing unnecessary steps and context-switching.</span>
+                        </p>
+                        <p style="display:flex;gap:8px;">
+                            <span style="width:22px;height:22px;background:rgba(200, 200, 200, 0.1);display:flex;flex-shrink:0;align-items:center;justify-content:center;border-radius:4px;font-size:1.3rem;font-weight:500;">2</span>
+                            <span>Prioritised and redesigned core screens and flows within a month for a growing ops team.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
 		<div class="container">
 			<div class="row">
-				<div class="col-12 col-12-md project-meta-item">
-					<h2>About</h2> 
-					<p class="h1">Redesigned Beam's Vehicle🛴 and User🚴 Management Tool</p>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-12 col-12-md project-feature">
-					<div class="toggle text-center">
-						<style>
-							.switch {
-								display: inline-flex;
-								align-items: center;
-								background: #f0f0f7;
-								padding: 4px;
-								position: relative;
-								user-select: none;
-								transition: background 0.2s;
-								width: 100%;
-							}
-							.switch button {
-								border: none;
-								background: none;
-								padding: 12px 24px;
-								font-size: 1.4rem;
-								font-weight: 500;
-								color: #444;
-								cursor: pointer;
-								transition: color 0.2s;
-								position: relative;
-								min-width: 100px;
-								width: 100%;
-								z-index: 2;
-							}
-							.switch button.active {
-								color: #fff !important;
-							}
-							.switch button:hover {
-								transform: none;
-								color: blue;
-							}
-							.switch-slider {
-								position: absolute;
-								top: 4px;
-								bottom: 4px;
-								width: 50%;
-								background: #2c2c2c;
-								transition: left 0.2s ease-out;
-								z-index: 1;
-								-webkit-clip-path: polygon(0% 0%, calc(100% - 6px) 0%, 100% 6px, 100% 0%, 100% 100%, 0% 100%);
-    clip-path: polygon(0% 0%, calc(100% - 6px) 0%, 100% 6px, 100% 0%, 100% 100%, 0% 100%);
-							}
-							@media (max-width: 600px) {
-								.switch {
-									width: 100%;
-								}
-							}
-						</style>
-						<div class="switch" style="margin-bottom:10px;">
-							<div class="switch-slider" id="beforeAfterSlider"></div>
-							<button id="beforeBtn" type="button" class="switch-btn active" style="z-index:2;">Before</button>
-							<button id="afterBtn" type="button" class="switch-btn" style="z-index:2;">After</button>
-						</div>
-						<div id="beforeAfterImages" style="width:100%;margin:0 auto;">
-							<img id="beforeImage" src="images/userbefore.png" alt="Before redesign placeholder" style="width:100%;display:block;">
-							<img id="afterImage" src="images/userlookup.png" alt="After redesign placeholder" style="width:100%;display:none;">
-						</div>
-					</div>
-					<script>
-						(function() {
-							const beforeBtn = document.getElementById('beforeBtn');
-							const afterBtn = document.getElementById('afterBtn');
-							const beforeImage = document.getElementById('beforeImage');
-							const afterImage = document.getElementById('afterImage');
-							const slider = document.getElementById('beforeAfterSlider');
-							beforeBtn.addEventListener('click', function() {
-								beforeImage.style.display = 'block';
-								afterImage.style.display = 'none';
-								beforeBtn.classList.add('active');
-								afterBtn.classList.remove('active');
-								slider.style.left = '4px';
-							});
-							afterBtn.addEventListener('click', function() {
-								beforeImage.style.display = 'none';
-								afterImage.style.display = 'block';
-								afterBtn.classList.add('active');
-								beforeBtn.classList.remove('active');
-								slider.style.left = 'calc(50% - 4px)';
-							});
-							// Set initial state
-							beforeBtn.classList.add('active');
-							afterBtn.classList.remove('active');
-							slider.style.left = '4px';
-						})();
-					</script>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-12 col-6-md project-meta-item">
-					<h2>Role</h2> 
-					<p>Sole designer. Used Ant's design system as the foundations for the UI.</p>
-				</div>
-				<div class="col-12 col-6-md project-meta-item">
-					<h2>Period</h2> 
-					<p>Jun - Jul 2021</p>
-				</div>
-				<div class="col-12 col-6-md project-meta-item">
-					<h2>Challenge</h2> 
-					<p>The ops team submitted numerous feature requests and improvements, but with limited time and development resources, I focused on prioritising high-impact issues while planning for future enhancements.</p>
-				</div>
-				<div class="col-12 col-6-md project-meta-item">
-					<h2>Impact</h2> 
-					<p>Prioritised and redesigned core screens and flows within a month for a 20+ and growing ops team.</p><p>No event tracking implemented as the tool served a small team, but steps required for commonly-used actions have been significantly reduced.</p>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-12 col-12-md">
-					<hr style="margin-top:0;">
-				</div>
-			</div>
-		</div>
-
-		<div class="container">
-			<div class="row">
-				<div class="col-12 col-12-md">
-					<h2 class="project-section">Preview: Refunds</h2>
-					<div class="project-feature" style="margin-bottom:10px;">
-						<div class="col-12 col-8-md">
-							<img src="images/refundflow1.png" alt="Before and after of the refund UI">
-						</div>
-						<div class="col-12 col-4-md">
-							<div class="project-feature-content">
-								<h3 style="margin-left:0;margin-bottom:2px;font-size:2.4rem;">Before</h3>
-								<p style="margin-bottom:0;margin-left:0;max-width:100%;">The original design was just an open input field which the ops team was fine with as they only needed to be able to modify the refund amount. But it wasn’t efficient.</p>
-							</div>
-						</div>
-					</div>
-					<div class="project-feature" style="margin-bottom:10px;">
-						<div class="col-12 col-8-md">
-							<img src="images/refundflow2.png" alt="Before and after of the refund UI">
-						</div>
-						<div class="col-12 col-4-md">
-							<div class="project-feature-content">
-								<h3 style="margin-left:0;margin-bottom:2px;font-size:2.4rem;">After</h3>
-								<p style="margin-bottom:0;margin-left:0;max-width:100%;">As most refunds were predictable - either the full fare or just the fines, I surfaced these as options which also helped with error prevention from entering the wrong amount.</p>
-							</div>
-						</div>
-					</div>
-				</div>
 				<div class="col-12 col-12-md project-section">
+                    <h2>Previews</h2>
 					<div class="project-feature">
-						<div class="project-feature-content" style="margin-top:0;margin-bottom:0;">
-							<span>▶️</span><h3>Refund Prototype</h3>
-						</div>
 						<video controls width="240" height="320" style="width:100%;height:auto;">
 							<source src="images/beamtoolrefund.mp4" type="video/mp4">
 							<!--[if lt IE 9]><img src="images/beamtoolrefund.png" width="320" height="320"><![endif]-->
 						</video>
+                        <div class="project-feature-content">
+							<span>💸</span><h3>Refunds</h3></span>
+							<p>I redesigned the refunds flow to allow Ops to refund trips as Beam credits or to riders' original payment method. While an open field would have been acceptable, I felt that more could be done to make it more efficient, eventually ending up with a design that's optimised for the most common Ops use-cases.</p>
+						</div>
 					</div>	
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-12 col-12-md">
-					<hr style="margin-top:0;">
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-12 col-12-md project-section">
-					<h2>Preview: Dashboards</h2>
 					<div class="project-feature">
 						<img src="images/userlookup.png" alt="User Lookup Interface">
 						<div class="project-feature-content">
 							<span>🕵️</span><h3>User Lookup</h3></span>
-							<p>While the most frequent action taken on this page is 'Refund', the ops team often referred to supporting info about the user to decide if they should be refunded. Hence, I opted to surface important information so that ops do not have to go back and forth between multiple tabs for the information they need.</p>
+							<p>As the Ops team often switched between multiple platforms to gather supporting info about a Rider in order to decide if they should be refunded, I redesigned the User Lookup to surface their trip and transaction history from Mixpanel and Redash to reduce the number of platforms Ops had to access for their day-to-day operations.</p>
 						</div>
 					</div>
 					<div class="project-feature">
 						<img src="images/vehicle.png" alt="Vehicle Management Interface">
 						<div class="project-feature-content">
 							<span>🛴</span><h3>Vehicle Management</h3>
-							<p>A key consideration in this redesign was deciding what information and actions to group together as we had planned to add many more features in future. A potential solution was to allow ops to reorder sections themselves if we did get to that point.</p>
+							<p>As we were planning to scale the Operations team and expand the capability of the Ops tool, the information architecture was a key consideration in the redesign. I was able to take on a product role helping to prioritise and scope requirements, future-proof pages and features, and organising Ops requests and feedback.</p>
 						</div>
 					</div>
 					<div class="project-feature">
 						<img src="images/mapfilter.png" alt="Map Filters and Markers">
 						<div class="project-feature-content">
 							<span>📍</span><h3>Map Filters and Markers</h3>
-							<p>Used by ops team to dive into problematic zones or vehicles. It's a lot of information and controls which could get overwhelming. So I had to pinpoint the filters our ops team were actually using to decide the level of control that was necessary to display.</p>
+							<p>I approached the redesign by consolidating the key tasks-to-be-done, resulting in the legend-centric approach as it was the Ops priority to keep inoperable vehicles off the road, and keep the operating vehicles well-distributed. I also wanted to avoid overwhelming Ops with overly granular controls, so I had to pinpoint the filters our ops team were actually using to decide the level of control that was necessary to display as we did not track usage previously.</p>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="container">
-			<div class="row">
-				<div class="col-12 col-12-md project-section project-overlay-footer">
-					<h2>There's more...</h2>
-					<p style="margin:0 auto 20px;max-width:560px;">Let me take you through the before/afters, iterations, and decision making process if you're looking to work with me!</p>
-					<p style="margin:0 auto;">
-						<a class="fun button linkedin" href="https://www.linkedin.com/in/suling-wong/" target="_blank">To LinkedIn!<i class="outgoing light"></i></a>
-					</p>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-<!-- Portfolio Overlay -->
-<div id="portfolio-overlay" class="project-overlay">
-	<div class="project-overlay-backdrop">
-		<button class="project-overlay-close" aria-label="Close overlay">
-			<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-				<path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-			</svg>
-		</button>
-	</div>
-	<div class="project-overlay-content" tabindex="-1" style="overflow-y:hidden;">
-		<iframe id="portfolio-iframe" data-src="grabwallet.html" width="100%" height="100%" frameborder="0"></iframe>
 	</div>
 </div>
 
 </body>
+</html>
+
+
