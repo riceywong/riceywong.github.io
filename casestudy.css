@@ -152,7 +152,7 @@ p.portfolio-label {
     .project-feature.card-row {
 		flex-direction: row;
 		align-items: center;
-		gap: 20px;
+		gap: 40px;
 	}
 }
 
@@ -203,6 +203,8 @@ p.portfolio-label {
 }
 
 .col-6-md {
+	display: flex;
+	flex-direction: column;
 	-ms-flex: 0 0 calc((100% / (12/6)) - 12px);
     flex: 0 0 calc((100% / (12 / 6)) - 12px);
     max-width: calc((100% / (12 / 6)) - 12px);
