@@ -111,15 +111,34 @@ p.portfolio-content {
 	}
 }
 
-.portfolio-label i {
-	text-decoration: underline;
-	text-decoration-style: dotted;
-	text-decoration-thickness: 5px;
+.numbering {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 12px;
+	margin-bottom: 12px;
 }
-p.portfolio-label {
-	font-size: 2.4rem;
-	font-weight: 200;
-	max-width: 80ch;
+.numbering>span {
+	width: 40px;
+	height: 40px;
+	background:rgba(0, 0, 0, 0.05);
+	display: flex;
+	flex-shrink: 0;
+	align-items: center;
+	justify-content: center;
+	border-radius: 4px;
+	font-size: 2rem;
+	font-weight: 500;
+}
+@media (max-width: 899px) {
+	.numbering>span {
+		font-size: 1.6rem;
+		font-weight: 600;
+		border-radius: 8px;
+	}
+	.numbering>h3 {
+		font-size: 1.6rem;
+	}
 }
 
 .project-container {
