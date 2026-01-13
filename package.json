@@ -1,0 +1,16 @@
+{
+  "name": "riceywong-portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio website with React Grab integration",
+  "scripts": {
+    "dev": "npx @react-grab/cursor@latest & npx http-server . -p 3000 -o",
+    "start": "npx http-server . -p 3000 -o"
+  },
+  "devDependencies": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
+
+
+

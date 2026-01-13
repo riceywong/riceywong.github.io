@@ -1,0 +1,541 @@
+/* Feedback Form Styles - Pure shadcn/ui */
+
+/* Reset and Base Styles */
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	background: hsl(0 0% 100%);
+	color: hsl(222.2 84% 4.9%);
+	line-height: 1.5;
+}
+
+/* CSS Variables for shadcn/ui design tokens */
+:root {
+	--background: 0 0% 100%;
+	--foreground: 222.2 84% 4.9%;
+	--card: 0 0% 100%;
+	--card-foreground: 222.2 84% 4.9%;
+	--popover: 0 0% 100%;
+	--popover-foreground: 222.2 84% 4.9%;
+	--primary: 221.2 83.2% 53.3%;
+	--primary-foreground: 210 40% 98%;
+	--secondary: 210 40% 96.1%;
+	--secondary-foreground: 222.2 47.4% 11.2%;
+	--muted: 210 40% 96.1%;
+	--muted-foreground: 215.4 16.3% 46.9%;
+	--accent: 210 40% 96.1%;
+	--accent-foreground: 222.2 47.4% 11.2%;
+	--destructive: 0 84.2% 60.2%;
+	--destructive-foreground: 210 40% 98%;
+	--border: 214.3 31.8% 91.4%;
+	--input: 214.3 31.8% 91.4%;
+	--ring: 221.2 83.2% 53.3%;
+	--radius: 0.5rem;
+}
+
+/* Navigation */
+.feedback-nav {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 50;
+	background: hsl(var(--background));
+	border-bottom: 1px solid hsl(var(--border));
+	padding: 1rem 0;
+}
+
+.feedback-nav-container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 1.5rem;
+	display: flex;
+	align-items: center;
+	gap: 1.5rem;
+}
+
+.feedback-nav-link {
+	font-size: 0.875rem;
+	font-weight: 500;
+	color: hsl(var(--foreground));
+	text-decoration: none;
+	transition: color 0.2s;
+}
+
+.feedback-nav-link:hover {
+	color: hsl(var(--primary));
+}
+
+/* Section Styling */
+.feedback-section {
+	min-height: 100vh;
+	padding: 120px 1.5rem 80px;
+	background: hsl(var(--background));
+}
+
+.feedback-container {
+	max-width: 600px;
+	margin: 0 auto;
+}
+
+@media screen and (max-width: 640px) {
+	.feedback-section {
+		padding: 100px 1rem 60px;
+	}
+}
+
+/* Card Container */
+.feedback-card {
+	background: hsl(var(--card));
+	border: 1px solid hsl(var(--border));
+	border-radius: var(--radius);
+	padding: 2rem;
+	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+@media screen and (max-width: 640px) {
+	.feedback-card {
+		padding: 1.5rem;
+	}
+}
+
+/* Typography */
+.feedback-title {
+	font-size: 2rem;
+	font-weight: 600;
+	line-height: 1.2;
+	margin: 0 0 0.5rem 0;
+	color: hsl(var(--foreground));
+	letter-spacing: -0.025em;
+}
+
+.feedback-subtitle {
+	font-size: 0.875rem;
+	color: hsl(var(--muted-foreground));
+	margin: 0 0 2rem 0;
+	line-height: 1.5;
+}
+
+@media screen and (max-width: 640px) {
+	.feedback-title {
+		font-size: 1.5rem;
+	}
+	.feedback-subtitle {
+		font-size: 0.8125rem;
+	}
+}
+
+/* Form Groups */
+.form-group {
+	margin-bottom: 1.5rem;
+}
+
+.form-label {
+	display: block;
+	font-size: 0.875rem;
+	font-weight: 500;
+	margin-bottom: 0.5rem;
+	color: hsl(var(--foreground));
+	line-height: 1.5;
+}
+
+.required {
+	color: hsl(var(--destructive));
+}
+
+/* Input Styling (shadcn/ui pattern) */
+.form-input,
+.form-textarea {
+	display: flex;
+	width: 100%;
+	border-radius: calc(var(--radius) - 2px);
+	border: 1px solid hsl(var(--input));
+	background: hsl(var(--background));
+	padding: 0.5rem 0.75rem;
+	font-size: 0.875rem;
+	line-height: 1.5;
+	color: hsl(var(--foreground));
+	transition: all 0.2s;
+	box-sizing: border-box;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+	outline: none;
+	ring: 2px;
+	ring-color: hsl(var(--ring));
+	border-color: hsl(var(--ring));
+	box-shadow: 0 0 0 2px hsl(var(--ring) / 0.2);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+	color: hsl(var(--muted-foreground));
+}
+
+.form-input:disabled,
+.form-textarea:disabled {
+	cursor: not-allowed;
+	opacity: 0.5;
+}
+
+.form-input[aria-invalid="true"],
+.form-textarea[aria-invalid="true"] {
+	border-color: hsl(var(--destructive));
+}
+
+.form-input[aria-invalid="true"]:focus,
+.form-textarea[aria-invalid="true"]:focus {
+	border-color: hsl(var(--destructive));
+	ring-color: hsl(var(--destructive));
+	box-shadow: 0 0 0 2px hsl(var(--destructive) / 0.2);
+}
+
+.form-textarea {
+	min-height: 120px;
+	resize: vertical;
+	font-family: inherit;
+}
+
+/* File Input Styling */
+.form-file-input {
+	width: 100%;
+	padding: 0.5rem;
+	font-size: 0.875rem;
+	border: 1px dashed hsl(var(--border));
+	border-radius: calc(var(--radius) - 2px);
+	background: hsl(var(--background));
+	cursor: pointer;
+	transition: all 0.2s;
+}
+
+.form-file-input:hover {
+	border-color: hsl(var(--ring));
+	background: hsl(var(--accent));
+}
+
+.form-file-input:focus {
+	outline: none;
+	ring: 2px;
+	ring-color: hsl(var(--ring));
+	border-color: hsl(var(--ring));
+	box-shadow: 0 0 0 2px hsl(var(--ring) / 0.2);
+}
+
+.form-help-text {
+	font-size: 0.75rem;
+	color: hsl(var(--muted-foreground));
+	margin-top: 0.5rem;
+}
+
+/* Character Counter */
+.char-counter-wrapper {
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 0.25rem;
+}
+
+.char-counter {
+	font-size: 0.75rem;
+	color: hsl(var(--muted-foreground));
+	transition: color 0.2s;
+}
+
+.char-counter.warning {
+	color: #f59e0b;
+}
+
+.char-counter.error {
+	color: hsl(var(--destructive));
+}
+
+/* Error Messages */
+.field-error,
+.error-message {
+	font-size: 0.875rem;
+	color: hsl(var(--destructive));
+	margin-top: 0.5rem;
+	display: block;
+}
+
+.error-message {
+	background: hsl(var(--destructive) / 0.1);
+	border: 1px solid hsl(var(--destructive));
+	border-radius: calc(var(--radius) - 2px);
+	padding: 0.75rem;
+	margin-bottom: 1rem;
+}
+
+/* Image Preview */
+.image-preview-container {
+	margin-top: 1rem;
+}
+
+.image-preview-wrapper {
+	position: relative;
+	display: inline-block;
+	margin-bottom: 0.5rem;
+}
+
+#image-preview {
+	max-width: 200px;
+	max-height: 200px;
+	border-radius: calc(var(--radius) - 2px);
+	border: 1px solid hsl(var(--border));
+	object-fit: cover;
+}
+
+.remove-image-btn {
+	position: absolute;
+	top: -8px;
+	right: -8px;
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	background: hsl(var(--destructive));
+	color: white;
+	border: none;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+	transition: all 0.2s;
+}
+
+.remove-image-btn:hover {
+	background: hsl(var(--destructive) / 0.9);
+	transform: scale(1.1);
+}
+
+.remove-image-btn:focus {
+	outline: none;
+	ring: 2px;
+	ring-color: hsl(var(--destructive));
+	box-shadow: 0 0 0 2px hsl(var(--destructive) / 0.2);
+}
+
+.image-info {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+	font-size: 0.75rem;
+	color: hsl(var(--muted-foreground));
+}
+
+/* Upload Progress */
+.upload-progress {
+	margin-top: 1rem;
+}
+
+.progress-bar {
+	width: 100%;
+	height: 8px;
+	background: hsl(var(--muted));
+	border-radius: 4px;
+	overflow: hidden;
+	margin-bottom: 0.5rem;
+}
+
+.progress-fill {
+	height: 100%;
+	background: hsl(var(--primary));
+	transition: width 0.3s ease;
+	width: 0%;
+}
+
+.progress-text {
+	font-size: 0.75rem;
+	color: hsl(var(--muted-foreground));
+}
+
+/* Submit Button (shadcn/ui pattern) */
+.submit-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	border-radius: calc(var(--radius) - 2px);
+	background: hsl(var(--primary));
+	color: hsl(var(--primary-foreground));
+	font-size: 0.875rem;
+	font-weight: 500;
+	padding: 0.625rem 1.25rem;
+	border: none;
+	cursor: pointer;
+	transition: all 0.2s;
+	width: 100%;
+	min-height: 44px;
+}
+
+.submit-btn:hover:not(:disabled) {
+	background: hsl(var(--primary) / 0.9);
+}
+
+.submit-btn:focus {
+	outline: none;
+	ring: 2px;
+	ring-color: hsl(var(--ring));
+	box-shadow: 0 0 0 2px hsl(var(--ring) / 0.2);
+}
+
+.submit-btn:disabled {
+	cursor: not-allowed;
+	opacity: 0.5;
+}
+
+.submit-spinner {
+	display: inline-flex;
+	align-items: center;
+}
+
+.spinner {
+	animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+/* Thank You Card */
+.thank-you-card {
+	background: hsl(var(--card));
+	border: 1px solid hsl(var(--border));
+	border-radius: var(--radius);
+	padding: 3rem 2rem;
+	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+	text-align: center;
+	animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.thank-you-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
+}
+
+.success-icon {
+	color: hsl(var(--primary));
+	margin-bottom: 0.5rem;
+}
+
+.thank-you-title {
+	font-size: 1.5rem;
+	font-weight: 600;
+	margin: 0;
+	color: hsl(var(--foreground));
+	letter-spacing: -0.025em;
+}
+
+.thank-you-message {
+	font-size: 0.875rem;
+	color: hsl(var(--muted-foreground));
+	margin: 0;
+	line-height: 1.5;
+}
+
+.thank-you-link {
+	display: inline-block;
+	margin-top: 1rem;
+	padding: 0.625rem 1.25rem;
+	border-radius: calc(var(--radius) - 2px);
+	background: hsl(var(--primary));
+	color: hsl(var(--primary-foreground));
+	text-decoration: none;
+	font-size: 0.875rem;
+	font-weight: 500;
+	transition: all 0.2s;
+}
+
+.thank-you-link:hover {
+	background: hsl(var(--primary) / 0.9);
+}
+
+.thank-you-link:focus {
+	outline: none;
+	ring: 2px;
+	ring-color: hsl(var(--ring));
+	box-shadow: 0 0 0 2px hsl(var(--ring) / 0.2);
+}
+
+@media screen and (max-width: 640px) {
+	.thank-you-card {
+		padding: 2rem 1.5rem;
+	}
+	.thank-you-title {
+		font-size: 1.25rem;
+	}
+}
+
+/* Form Fade Out Animation */
+.feedback-card.fade-out {
+	animation: fadeOut 0.3s ease-out forwards;
+}
+
+@keyframes fadeOut {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+		transform: translateY(-10px);
+	}
+}
+
+/* Accessibility */
+.skip-link {
+	position: absolute;
+	left: -9999px;
+	top: 0;
+	z-index: 999;
+	padding: 1rem;
+	background: hsl(var(--primary));
+	color: hsl(var(--primary-foreground));
+	text-decoration: none;
+}
+
+.skip-link:focus {
+	left: 0;
+}
+
+/* Mobile Optimizations */
+@media screen and (max-width: 640px) {
+	.form-input,
+	.form-textarea,
+	.form-file-input {
+		font-size: 16px; /* Prevents zoom on iOS */
+	}
+	
+	.submit-btn {
+		min-height: 48px; /* Larger touch target */
+	}
+	
+	.feedback-nav-container {
+		padding: 0 1rem;
+	}
+}
+
