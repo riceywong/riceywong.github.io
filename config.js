@@ -7,3 +7,9 @@ const SUPABASE_CONFIG = {
 	anonKey: 'YOUR_SUPABASE_ANON_KEY_HERE'
 };
 
+
+
+
+
+
+

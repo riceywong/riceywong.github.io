@@ -550,3 +550,9 @@ function resetForm() {
 	issueInput.setAttribute('aria-invalid', 'false');
 }
 
+
+
+
+
+
+

@@ -16,3 +16,9 @@ const SUPABASE_CONFIG = {
 // Security Note: The anon key is safe to use client-side. It's designed for public access.
 // Never use the "service_role" key in client-side code - it has admin privileges.
 
+
+
+
+
+
+

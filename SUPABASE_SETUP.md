@@ -245,3 +245,9 @@ For Supabase-specific issues, check:
 - [Supabase Discord](https://discord.supabase.com)
 - [Supabase GitHub](https://github.com/supabase/supabase)
 
+
+
+
+
+
+
