@@ -227,7 +227,246 @@
                         </div>
                     </div>
                 </div>
-            </div>
+
+                <!-- Grab Projects -->
+                <div class="portfolio-card" data-company="grab" data-overlay="grab-overlay">
+                    <div class="row is-vertical-align" style="margin:0;">
+                        <div class="card col-12 col-12-md drag" style="cursor: pointer;"><span></span>
+                            <div class="pills-container">
+                                <div class="company-pill">Grab</div>
+                                <div class="status-pill">
+                                    <div class="status-icon" aria-hidden="true">&lt;/&gt;</div>
+                                    <div class="status-text">Launched 2022</div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin:0;">
+                                <div class="col-12 col-11-md">
+                                    <p class="title">About</p>
+                                    <p class="desc">Getting buy-in to improve the GrabWallet payment experience</p>
+                                    <p class="title">Impact</p>
+                                    <p class="desc2">Time taken to complete payment using the GrabWallet while having an insufficient balance was reduced from ~24s to ~3s. Overall top-up attempt rates for rides increased by 34%, 
+                                        while the food vertical increased by 17%.</p>
+                                    <p class="desc3">Read case →</p>
+                                </div>
+                                <div class="col-12 col-12-md project-feature">
+                                    <div class="toggle text-center">
+                                        <div class="switch">
+                                            <div class="switch-slider" id="grabSlider"></div>
+                                            <button id="grabBeforeBtn" type="button" class="switch-btn active" style="z-index:2;">Before</button>
+                                            <button id="grabAfterBtn" type="button" class="switch-btn" style="z-index:2;">After</button>
+                                        </div>
+                                        <div id="grabBeforeAfterImages" style="width:100%;margin:0 auto;">
+                                            <img id="grabBeforeImage" src="images/grabwalletbefore.png" alt="Before Grab project" style="width:100%;display:block;">
+                                            <img id="grabAfterImage" src="images/grabafter.png" alt="After Grab project" style="width:100%;display:none;">
+                                        </div>
+                                    </div>
+                                    <script>
+                                        (function() {
+                                            const beforeBtn = document.getElementById('grabBeforeBtn');
+                                            const afterBtn = document.getElementById('grabAfterBtn');
+                                            const beforeImage = document.getElementById('grabBeforeImage');
+                                            const afterImage = document.getElementById('grabAfterImage');
+                                            const slider = document.getElementById('grabSlider');
+                                            beforeBtn.addEventListener('click', function() {
+                                                beforeImage.style.display = 'block';
+                                                afterImage.style.display = 'none';
+                                                beforeBtn.classList.add('active');
+                                                afterBtn.classList.remove('active');
+                                                slider.style.left = '0px';
+                                            });
+                                            afterBtn.addEventListener('click', function() {
+                                                beforeImage.style.display = 'none';
+                                                afterImage.style.display = 'block';
+                                                afterBtn.classList.add('active');
+                                                beforeBtn.classList.remove('active');
+                                                slider.style.left = 'calc(50% - 0px)';
+                                            });
+                                            beforeBtn.classList.add('active');
+                                            afterBtn.classList.remove('active');
+                                            slider.style.left = '0px';
+                                        })();
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Beam Projects -->
+                <div class="portfolio-card" data-company="beam" data-overlay="beam-overlay">
+                    <div class="row is-vertical-align" style="margin:0;">
+                        <div class="card col-12 col-12-md drag" style="cursor: pointer;"><span></span>
+                            <div class="pills-container">
+                                <div class="company-pill">Beam</div>
+                                <div class="status-pill">
+                                    <div class="status-icon" aria-hidden="true">&lt;/&gt;</div>
+                                    <div class="status-text">Launched 2021</div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin:0;">
+                                <div class="col-12 col-11-md">
+                                    <p class="title">About</p>
+                                    <p class="desc">Optimising the refund flow to improve Ops efficiency</p>
+                                    <p class="title">Impact</p>
+                                    <p class="desc2">Refunds are processed more efficiently by the Ops team without needing to access Adyen to initiate refunds to customers&#39; cards. This resulted in less time spent initiating refunds and onboarding support staff to new platforms.</p>
+                                    <p class="desc3">Read excerpt →</p>
+                                </div>
+                                <div class="col-12 col-12-md project-feature">
+                                    <div class="toggle text-center">
+                                        <div class="switch">
+                                            <div class="switch-slider" id="beamSlider"></div>
+                                            <button id="beamBeforeBtn" type="button" class="switch-btn active" style="z-index:2;">Before</button>
+                                            <button id="beamAfterBtn" type="button" class="switch-btn" style="z-index:2;">After</button>
+                                        </div>
+                                        <div id="beamBeforeAfterImages" style="width:100%;margin:0 auto;">
+                                            <img id="beamBeforeImage" src="images/refundmodalbefore.png" alt="Before redesign placeholder" style="width:100%;display:block;">
+                                            <video id="beamAfterImage" controls="" width="240" height="320" style="width:100%;height:auto;display:none;">
+                                                <source src="images/beamtoolrefund.mp4" type="video/mp4">
+                                                <!--[if lt IE 9]><img src="images/beamtoolrefund.png" width="320" height="320"><![endif]-->
+                                            </video>
+                                        </div>
+                                    </div>
+                                    <script>
+                                        (function() {
+                                            const beforeBtn = document.getElementById('beamBeforeBtn');
+                                            const afterBtn = document.getElementById('beamAfterBtn');
+                                            const beforeImage = document.getElementById('beamBeforeImage');
+                                            const afterImage = document.getElementById('beamAfterImage');
+                                            const slider = document.getElementById('beamSlider');
+                                            beforeBtn.addEventListener('click', function() {
+                                                beforeImage.style.display = 'block';
+                                                afterImage.style.display = 'none';
+                                                beforeBtn.classList.add('active');
+                                                afterBtn.classList.remove('active');
+                                                slider.style.left = '0px';
+                                            });
+                                            afterBtn.addEventListener('click', function() {
+                                                beforeImage.style.display = 'none';
+                                                afterImage.style.display = 'block';
+                                                afterBtn.classList.add('active');
+                                                beforeBtn.classList.remove('active');
+                                                slider.style.left = 'calc(50% - 0px)';
+                                            });
+                                            beforeBtn.classList.add('active');
+                                            afterBtn.classList.remove('active');
+                                            slider.style.left = '0px';
+                                        })();
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+				<br>
+                <svg width="50" height="17" viewBox="0 0 50 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0 3.48601e-07C3.91008 -0.000647484 7.47778 0.901596 10.0857 3.07174C12.4472 5.03701 13.8752 7.91994 14.1546 11.7125L16.1374 9.32161L18.06 10.8962L12.9982 17L7.54502 10.9339L9.40426 9.28486L11.6626 11.7966C11.4083 8.60203 10.2193 6.41408 8.48438 4.9703C6.48156 3.30384 3.56769 2.47535 0 2.47596V3.48601e-07Z" fill="white"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M15.9914 3.48601e-07C19.9015 -0.000647484 23.4692 0.901596 26.0771 3.07174C28.4386 5.03701 29.8666 7.91994 30.146 11.7125L32.1289 9.32161L34.0514 10.8962L28.9896 17L23.5365 10.9339L25.3957 9.28486L27.654 11.7966C27.3998 8.60203 26.2108 6.41408 24.4758 4.9703C22.473 3.30384 19.5591 2.47535 15.9914 2.47596V3.48601e-07Z" fill="white"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M31.94 3.48601e-07C35.8501 -0.000647484 39.4178 0.901596 42.0257 3.07174C44.3872 5.03701 45.8152 7.91994 46.0946 11.7125L48.0775 9.32161L50 10.8962L44.9382 17L39.4851 10.9339L41.3443 9.28486L43.6026 11.7966C43.3484 8.60203 42.1594 6.41408 40.4244 4.9703C38.4216 3.30384 35.5077 2.47535 31.94 2.47596V3.48601e-07Z" fill="white"/>
+                </svg>
+                <h2 class="portfolio-label">Other projects</h2>
+
+                <div class="portfolio-card" data-company="beam">
+                    <div class="row is-vertical-align" style="margin:0;">
+                        <div class="card col-12 col-12-md" style="transform:none;">
+                            <div class="pills-container">
+                                <div class="company-pill">Grab</div>
+                                <div class="status-pill">
+                                    <div class="status-icon" aria-hidden="true">&lt;/&gt;</div>
+                                    <div class="status-text">Presented in 2022</div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin:0;">
+                                <div class="col-12 col-11-md">
+                                    <p class="title">About</p>
+                                    <p class="desc">Raised awareness and advocated for accessibility among design and engineering teams</p>
+                                    <p class="title">Impact</p>
+                                    <p class="desc2">My efforts in identifying, resolving, and sharing about critical accessibility issues across the Grab app helped increase organisational awareness and contributed to the formation of the accessibility team. I also led the accessibility testing of the Grab app and transport booking funnel with visually-impaired users using VoiceOver.</p>
+                                </div>
+                                <div class="col-12 col-12-md project-feature">
+                                    <div class="toggle text-center">
+                                        <video controls="" autoplay="" loop="" muted="" playsinline="" width="240" height="320" style="width:100%;height:auto;">
+                                            <source src="images/accessibilityatgrab.mp4" type="video/mp4">
+                                            <!--[if lt IE 9]><img src="images/accessibilityatgrab.png" width="100%" height="auto"><![endif]-->
+                                        </video>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card" data-company="beam">
+                    <div class="row is-vertical-align" style="margin:0;">
+                        <div class="card col-12 col-12-md" style="transform:none;">
+                            <div class="pills-container">
+                                <div class="company-pill">Grab</div>
+                                <div class="status-pill">
+                                    <div class="status-icon" aria-hidden="true">&lt;/&gt;</div>
+                                    <div class="status-text">Ran in 2022-2023</div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin:0;">
+                                <div class="col-12 col-11-md">
+                                    <p class="title">About</p>
+                                    <p class="desc">Drove discovery, ran retrospectives, and planned team bonding activities</p>
+                                    <p class="title">Impact</p>
+                                    <p class="desc2">Helped the team stay united and maintain productivity during a challenging period of shifting product priorities, project cancellations, and uncertainty.</p>
+                                </div>
+                                <div class="col-12 col-12-md project-feature">
+                                    <div class="toggle text-center">
+                                        <img src="images/jams.png" style="width:100%;" alt="Examples of design and discovery jams I've run">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <div class="row is-vertical-align" style="margin:0;">
+                        <div class="card col-12 col-12-md" style="transform:none;">
+                            <div class="pills-container">
+                                <div class="company-pill">Personal</div>
+                                <div class="status-pill" style="padding-left:8px">
+                                    <div class="status-text">Ongoing</div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin:0;">
+                                <div class="col-6-md">
+                                    <p class="title">About</p>
+                                    <p class="desc">Rapid prototyping using Claude Code & Cursor</p>
+                                    <p class="title">Goal</p>
+                                    <p class="desc2">Experimenting with various models, MCPs, and planning mode to make vibe-prototyping more efficient.</p>
+                                </div>
+                                <div class="col-12 col-6-md project-feature">
+                                    <div class="toggle text-center">
+                                        <video controls="" autoplay="" loop="" muted="" playsinline="" width="240" height="320" style="width:100%;height:auto;">
+                                        <source src="images/prototypeexample1.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <br><br class="hide-xs">
+                <svg width="50" height="17" viewBox="0 0 50 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0 3.48601e-07C3.91008 -0.000647484 7.47778 0.901596 10.0857 3.07174C12.4472 5.03701 13.8752 7.91994 14.1546 11.7125L16.1374 9.32161L18.06 10.8962L12.9982 17L7.54502 10.9339L9.40426 9.28486L11.6626 11.7966C11.4083 8.60203 10.2193 6.41408 8.48438 4.9703C6.48156 3.30384 3.56769 2.47535 0 2.47596V3.48601e-07Z" fill="white"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M15.9914 3.48601e-07C19.9015 -0.000647484 23.4692 0.901596 26.0771 3.07174C28.4386 5.03701 29.8666 7.91994 30.146 11.7125L32.1289 9.32161L34.0514 10.8962L28.9896 17L23.5365 10.9339L25.3957 9.28486L27.654 11.7966C27.3998 8.60203 26.2108 6.41408 24.4758 4.9703C22.473 3.30384 19.5591 2.47535 15.9914 2.47596V3.48601e-07Z" fill="white"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M31.94 3.48601e-07C35.8501 -0.000647484 39.4178 0.901596 42.0257 3.07174C44.3872 5.03701 45.8152 7.91994 46.0946 11.7125L48.0775 9.32161L50 10.8962L44.9382 17L39.4851 10.9339L41.3443 9.28486L43.6026 11.7966C43.3484 8.60203 42.1594 6.41408 40.4244 4.9703C38.4216 3.30384 35.5077 2.47535 31.94 2.47596V3.48601e-07Z" fill="white"/>
+                </svg>
+                <h2 class="portfolio-label">About Suling</h2>
+                <p class="portfolio-label">I started out in marketing where I worked directly with clients and customers to solve problems in hacky ways.</p>
+                <p class="portfolio-label">This experience led me to become a designer, where I could have a more direct impact on the product by <span style="background-color:rgb(0 74 255 / 50%);">identifying and solving problems</span> more effectively.</p>
+                <p class="portfolio-label">I'm currently a Senior Product Designer with <span style="background-color:rgb(226 0 172 / 50%);">6 years of experience</span> building and optimising consumer products and internal tools.</p>
+                <p class="portfolio-label" style="margin-bottom: 100px;">I pride myself in my ability to adapt, having worked independently as the sole designer tackling complex workflows at Beam, <span style="background-color:rgb(255 89 0 / 50%);">leading discovery in mature problem spaces</span> at Grab, and advocating for design quality at TikTok.</p>
+                <div class="cursor" style="top:unset;bottom:20px;right:100px;color:white;">
+                    <span>Talk soon!</span>
+                </div>
+			</div>
+
 
             <div class="portfolio-card">
                 <div class="normal-pill">Collaboration style</div>
