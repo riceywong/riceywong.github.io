@@ -11,6 +11,13 @@ body {
 		font-size: 1.4rem;
 	}
 }
+a {
+	color: blue;
+	text-decoration: underline dotted;
+}
+a:hover {
+	text-decoration: underline solid;
+}
 
 .sidebar {
 	width: 240px;
@@ -271,7 +278,7 @@ section.portfolio-section {
 	grid-gap:40px;
 }
 @media screen and (max-width: 1099px) {
-	.grid {
+	.grid:not(.grid.card) {
 		display: flex;
 		flex-direction: column;
 		gap: 50px;
@@ -567,9 +574,11 @@ section.portfolio-section {
 }
 @media (max-width: 899px) {
 	.polaroid2 {
+		width: 40% !important;
+		min-width: 180px;
 		position: relative !important;
-		bottom: -30px !important;
-		left: 50% !important;
+		bottom: -40px !important;
+		left: 40% !important;
         transform: rotate(5deg) translateX(-50%) !important;
     }
 	.graba11y {
@@ -581,24 +590,20 @@ section.portfolio-section {
 		width: 500px !important;
 	}
 }
-.numbering span {
-	display: inline-block;
-	padding: 0;
-	position: relative;
-	text-align: center;
-	min-width: 20px;
-	flex-shrink: 0;
-	color: rgba(0, 0, 0, 0.2);
+.numbering {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	gap: 8px;
 }
-
-.numbering span:after {
-	content: '';
-	display: block;
-	position: absolute;
-	top: 24px;
-	left: 50%;
-	height: calc(100% - 24px);
-	border-left: 1px solid rgba(0, 0, 0, 0.2);
+.numbering div {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	max-width: 250px;
+}
+.numbering p {
+	text-align: center;
 }
 
 .end-text {
