@@ -283,9 +283,23 @@ body {
 
 .section-header h2 {
 	font-size: 2rem;
-	font-weight: 600;
+	font-weight: 400;
 	color: var(--color-text-primary);
 	margin: 0;
+	width: 100%;
+	overflow: hidden;
+}
+.section-header h2::after {
+    background-color: var(--color-text-primary);
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 100%;
+    opacity: 0.1;
+	left: 0.5em;
+	margin-right: -50%;
 }
 
 .card-grid {
