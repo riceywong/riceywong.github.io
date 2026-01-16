@@ -119,10 +119,9 @@ a:hover {
 	color: white;
 	margin: 0;
 	text-transform: none;
-}
-h1.portfolio-label {
-	font-size: 6rem;
-	margin-bottom: 80px;
+	@media (max-width: 899px) {
+		font-size: 2.4rem;
+	}
 }
 .h2-label, .h2-label-grid {
 	display: flex;
@@ -146,35 +145,6 @@ h1.portfolio-label {
 		margin-bottom: 44px;
 	}
 }
-.portfolio-label i {
-	text-decoration: underline;
-	text-decoration-style: dotted;
-	text-decoration-thickness: 5px;
-}
-p.portfolio-label {
-	font-size: 2.4rem;
-	font-weight: 200;
-	max-width: 80ch;
-}
-@media screen and (max-width: 899px) {
-	.portfolio-label {
-		font-size: 2.4rem;
-	}
-	h1.portfolio-label {
-		font-size: 3.2rem;
-		margin-bottom: 40px;
-	}
-	p.portfolio-label {
-		font-size: 1.6rem;
-		margin-bottom: 20px;
-	}
-	.portfolio-label i {
-		text-decoration: underline;
-		text-decoration-style: dotted;
-		text-decoration-thickness: 2px;
-	}
-}
-
 
 .figmaleft {
 	color-scheme: only light;
@@ -218,17 +188,18 @@ p.portfolio-label {
     background-position: left top;
     background-size: auto 32px;
 	border-bottom: 1px solid #d8d8d8;
-}
-@media screen and (max-width: 1099px) {
-	.figmaleft, .figmaright {
-		display: none;
-		}
-	.figmacenter {
+	@media (max-width: 899px) {
 		position: relative;
 		height: 19px;
 		background-position: left top;
 		background-size: auto 19px;
 	}
+}
+@media screen and (max-width: 1099px) {
+	.figmaleft, .figmaright {
+		display: none;
+		}
+	.figmacenter 
 }
 @media screen and (max-width: 899px) {
 	.figmaleft, .figmaright {
@@ -263,12 +234,15 @@ section.portfolio-section {
 		margin-right: auto;
 	}
 	.portfolio-section {
-		margin-top: 20px;
+		margin-top: 80px;
 	}
 }
 @media screen and (max-width: 899px) {
 	section.portfolio-section {
 		margin-left: auto;
+	}
+	.portfolio-section {
+		margin-top: 20px;
 	}
 }
 
@@ -276,17 +250,13 @@ section.portfolio-section {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	grid-gap:40px;
-}
-@media screen and (max-width: 1099px) {
-	.grid:not(.grid.card) {
+	@media (max-width: 1099px) {
 		display: flex;
 		flex-direction: column;
 		gap: 50px;
 	}
 }
 
-
-/* Portfolio Card Container */
 .portfolio-card {
 	opacity: 1;
 	display: block;
@@ -307,15 +277,11 @@ section.portfolio-section {
 	padding: 60px;
 	border-radius: 1px !important;
 	transition: transform 100ms ease-out;
-}
-@media (min-width: 600px) and (max-width: 1099px) {
-	.portfolio-card .card, .portfolio-card .card-row {
+	@media (min-width: 600px) and (max-width: 1099px) {
 		padding: 40px;
 		margin-bottom: 40px;
 	}
-}
-@media screen and (max-width: 599px) {
-	.portfolio-card .card, .portfolio-card .card-row {
+	@media (max-width: 599px) {
 		padding: 20px;
 		margin-bottom: 20px;
 	}
@@ -363,6 +329,10 @@ section.portfolio-section {
 @media screen and (max-width: 1099px) {
 	.grid .portfolio-card .card {
 		margin: 0 20px;
+	}
+	.full-container:not(.grid)>div {
+		margin-left: 20px;
+		margin-right: 20px;
 	}
 	.container {
 		width: 100%;
@@ -445,17 +415,11 @@ section.portfolio-section {
 
 .portfolio-card .card:hover {
 	transform: scale(1.01);
-}
-
-/* Mobile Styles */
-@media screen and (max-width: 899px) {
-	.portfolio-card .card:hover {
+	@media (max-width: 899px) {
 		transform: none;
 	}
-
 }
 
-/* Before/After Toggle Switch Styles */
 .portfolio-card .switch {
 	display: inline-flex;
 	align-items: center;
