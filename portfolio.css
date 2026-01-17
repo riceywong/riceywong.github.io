@@ -140,7 +140,7 @@ a:hover {
 		margin-top: 44px;
 		margin-bottom: 14px;
 	}
-	.h2-label svg {
+	.h2-label svg, .h2-label-grid svg {
 		width: 20px;
 	}
 	.h2-label-grid {
