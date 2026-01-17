@@ -140,6 +140,9 @@ a:hover {
 		margin-top: 44px;
 		margin-bottom: 14px;
 	}
+	.h2-label svg {
+		width: 20px;
+	}
 	.h2-label-grid {
 		margin-top: 44px;
 		margin-bottom: 44px;
@@ -403,7 +406,6 @@ section.portfolio-section {
 .status-text {
 	font-size: 1.2rem;
 }
-
 
 .portfolio-card .card .title, .overlay-title {
 	opacity: 0.4;
