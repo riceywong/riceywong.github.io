@@ -568,9 +568,6 @@ section.portfolio-section {
 	gap: 20px;
 	max-width: 250px;
 }
-.numbering p {
-	text-align: center;
-}
 
 .end-text {
     overflow: hidden;
