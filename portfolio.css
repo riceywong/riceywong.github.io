@@ -286,7 +286,7 @@ section.portfolio-section {
 	}
 	@media (max-width: 599px) {
 		padding: 20px;
-		margin-bottom: 20px;
+		margin-bottom: 28px;
 	}
 }
 
@@ -329,6 +329,9 @@ section.portfolio-section {
     justify-content: space-between;
 	padding: 0;
 }
+.full-container {
+	margin-bottom: 30px;
+}
 @media screen and (max-width: 1099px) {
 	.grid .portfolio-card .card {
 		margin: 0 20px;
@@ -342,6 +345,7 @@ section.portfolio-section {
 	}
 	.full-container {
 		max-width: 800px;
+		margin-top: 30px;
 	}
 }
 
