@@ -18,6 +18,9 @@ a {
 a:hover {
 	text-decoration: underline solid;
 }
+a:-webkit-any-link:focus-visible {
+    outline-offset: 1px;
+}
 p {
 	font-family: "Inter", "Bricolage Grotesque", sans-serif;;
 }
@@ -266,7 +269,6 @@ section.portfolio-section {
 	opacity: 1;
 	display: block;
 }
-
 .portfolio-card.hidden {
 	display: none !important;
 	opacity: 0;
@@ -545,4 +547,23 @@ section.portfolio-section {
 .end-text::after {
 	left: 0.5em;
 	margin-right: -50%;
+}
+
+@media (min-width: 900px) {
+	.normal-pill:hover {
+		color: #80CAFF;
+		cursor: move;
+	}
+	.normal-pill:hover + .card, .normal-pill:hover + .card-row {
+		outline: 1.5px solid #0B99FF;
+	}
+	.drag:hover {
+		outline: 1.5px solid #0B99FF;
+	}
+	.drag::before, .drag::after, .drag span::before, .drag span::after {
+		outline: 1.5px solid #0B99FF;
+	}
+	.hidden-emoji {
+		cursor: move;
+	}
 }

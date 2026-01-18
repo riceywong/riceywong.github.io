@@ -291,9 +291,11 @@
 
         <!-- About -->
         <div class="container">
-            <div id="about-me" class="portfolio-card">
-                <h2 class="normal-pill">About me</h2>
-                <div class="card-row col-12 col-12-md" style="transform:none;">
+            <div style="position:relative;">
+                <div class="hidden-emoji hide-xs hide-sm" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:4rem;z-index:0;">👋</div>
+                <div id="about-me" class="portfolio-card" style="position:relative;z-index:1;">
+                    <h2 class="normal-pill">About me</h2>
+                <div class="card-row col-12 col-12-md" style="transform:none;position:relative;z-index:1;">
                     <div>
                         <p>I started out in marketing where I worked directly with clients and customers to solve problems in hacky ways. This experience led me to become a designer, where I could have a more direct impact on the product by <span style="background-color:rgba(255, 208, 0, 0.5);">identifying and solving problems</span> more effectively.</p>
                         <p style="margin:0;">I thrive in <span style="background-color:rgba(255, 208, 0, 0.5);">complex and dynamic environments</span>, having worked independently as the sole designer tackling complex workflows at Beam, leading discovery in mature problem spaces at Grab, and advocating for design quality at TikTok.</p>
@@ -304,6 +306,7 @@
                             <span>Hello!</span>
                         </div>
                     </div>
+                </div>
                 </div>
             </div>
 
@@ -661,9 +664,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         updateNavButtons(overlayId);
-
-        const closeBtn = overlay.querySelector('.project-overlay-close');
-        if (closeBtn) closeBtn.focus();
     }
 
     const caseStudyCards = document.querySelectorAll('.portfolio-card[data-overlay] .card');
@@ -976,7 +976,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Drag functionality for cards on desktop
     const isMobileDevice = () => window.innerWidth <= 899 || 'ontouchstart' in window;
     
-    const draggableCards = document.querySelectorAll('.portfolio-card');
+    const draggableCards = document.querySelectorAll('.portfolio-card, .hidden-emoji');
     
     draggableCards.forEach(card => {
         let isDragging = false;
@@ -1001,7 +1001,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 initialY = 0;
             }
             
-            card.style.position = 'relative';
+            const computedPosition = window.getComputedStyle(card).position;
+            if (computedPosition === 'static') {
+                card.style.position = 'relative';
+            }
             card.style.zIndex = '100';
             e.preventDefault();
         });
