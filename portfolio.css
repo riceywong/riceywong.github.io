@@ -49,16 +49,13 @@ a:hover {
 .sidebar-heading {
 	font-size: 1.4rem;
 	font-weight: 600;
-	margin-bottom: 12px;
+	margin-bottom: 4px;
 	text-box-trim: trim-both;
 }
 @media (max-width: 899px) {
 	.sidebar-header {
 		margin-top: 2px;
 		padding: 16px 20px;
-	}
-	.sidebar-heading {
-		margin-bottom: 4px;
 	}
 }
 .sidebar-header span {
@@ -322,6 +319,10 @@ section.portfolio-section {
 		max-width: 100%;
 		width: auto !important;
 	}
+}
+.portfolio-card[data-overlay] .card,
+.portfolio-card[data-overlay] .card * {
+	cursor: pointer !important;
 }
 .grid .portfolio-card .card {
 	display: flex;
