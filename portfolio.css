@@ -5,7 +5,6 @@ body {
 	background: #444;
 	font-family: "Bricolage Grotesque", sans-serif;
 	font-size: 1.6rem;
-	overscroll-behavior: none;
 }
 @media (max-width: 899px) {
 	body {
@@ -18,6 +17,9 @@ a {
 }
 a:hover {
 	text-decoration: underline solid;
+}
+p {
+	font-family: "Inter", "Bricolage Grotesque", sans-serif;;
 }
 
 .sidebar {
@@ -32,7 +34,7 @@ a:hover {
 	top: 0;
 	height: 100vh;
 	overflow-y: auto;
-    z-index: 1;
+    z-index: 1000;
 }
 @media (max-width: 899px) {
 	.sidebar {
@@ -41,16 +43,16 @@ a:hover {
 		height: auto;
 	}
 }
-.sidebar-header {
-	border-bottom: 1px solid rgba(0,0,0,0.05);
-	padding: 16px;
-	margin-top: 34px;
-}
 .sidebar-heading {
 	font-size: 1.4rem;
 	font-weight: 600;
 	margin-bottom: 4px;
 	text-box-trim: trim-both;
+}
+.sidebar-header {
+	border-bottom: 1px solid rgba(0,0,0,0.05);
+	padding: 16px;
+	margin-top: 34px;
 }
 @media (max-width: 899px) {
 	.sidebar-header {
@@ -58,10 +60,11 @@ a:hover {
 		padding: 16px 20px;
 	}
 }
-.sidebar-header span {
+.sidebar-header p {
 	font-size: 1.2rem;
 	font-weight: 400;
 	opacity: 0.5;
+	margin-bottom: 0;
 	text-box-trim: trim-both;
 }
 .sidebar-tabs {
@@ -96,7 +99,7 @@ a:hover {
 	flex-direction: column;
 	border-bottom: 1px solid rgba(0,0,0,0.05);
 	padding: 16px;
-	gap: 12px;
+	gap: 10px;
 }
 @media (max-width: 899px) {
 	.sidebar-content {
@@ -104,7 +107,7 @@ a:hover {
 	}
 }
 .sidebar-content p {
-	font-size: 1.4rem;
+	font-size: 1.3rem;
 	margin: 0;
 	text-box-trim: trim-both;
 }
@@ -150,7 +153,7 @@ a:hover {
 .figmaleft {
 	color-scheme: only light;
 	position: fixed;
-	z-index: 110;
+	z-index: 1100;
 	top: 0;
 	left: 0;
 	height: 100%;
@@ -164,7 +167,7 @@ a:hover {
 .figmaright {
 	color-scheme: only light;
 	position: fixed;
-	z-index: 110;
+	z-index: 1100;
 	top: 0;
 	right: 0;
 	height: 100%;
@@ -178,7 +181,7 @@ a:hover {
 .figmacenter {
 	color-scheme: only light;
 	position: fixed;
-	z-index: 100;
+	z-index: 1001;
 	top: 0;
 	left: 0;
 	height: 32px;
@@ -241,6 +244,7 @@ section.portfolio-section {
 @media screen and (max-width: 899px) {
 	section.portfolio-section {
 		margin-left: auto;
+		overflow-x: hidden;
 	}
 	.portfolio-section {
 		margin-top: 20px;
@@ -278,6 +282,7 @@ section.portfolio-section {
 	padding: 60px;
 	border-radius: 1px !important;
 	transition: transform 100ms ease-out;
+	z-index: 1;
 	@media (min-width: 600px) and (max-width: 1099px) {
 		padding: 40px;
 		margin-bottom: 30px;
@@ -332,7 +337,7 @@ section.portfolio-section {
 	padding: 0;
 }
 .full-container {
-	margin-bottom: 30px;
+	margin-bottom: 28px;
 }
 @media screen and (max-width: 1099px) {
 	.grid .portfolio-card .card {
@@ -437,46 +442,6 @@ section.portfolio-section {
 	width: 100%;
 }
 
-.portfolio-card .switch button {
-	border: none;
-	background: none;
-	padding: 12px 24px;
-	font-size: 1.4rem;
-	font-weight: 600;
-	color: #2c2c2c;
-	cursor: pointer;
-	transition: color 0.2s;
-	position: relative;
-	min-width: 100px;
-	width: 100%;
-	z-index: 2;
-}
-
-.portfolio-card .switch button.active {
-	color: #fff !important;
-}
-
-.portfolio-card .switch button:hover {
-	transform: none;
-}
-
-.portfolio-card .switch button:not(.active):hover {
-	transform: none;
-	color: blue;
-	background-color: #eff2ff;
-}
-
-.portfolio-card .switch-slider {
-	position: absolute;
-	top: 0px;
-	bottom: 0px;
-	width: 50%;
-	background: #2c2c2c;
-	transition: left 0.2s ease-out;
-	z-index: 1;
-	border-radius: 1px;
-}
-
 .portfolio-card .project-feature {
 	display: flex;
 	flex-direction: column;
@@ -484,27 +449,6 @@ section.portfolio-section {
 	padding: 0;
 	margin-bottom: 0;
 	align-items: center;
-}
-
-.portfolio-card .toggle {
-	width: 100%;
-	background: white;
-	border: 2px solid #2c2c2c;
-    padding: 2px 2px 2px 2px;
-	border-radius: 2px;
-}
-
-.portfolio-card .toggle img {
-	overflow: hidden;
-	width: 100%;
-	height: auto;
-	display: block;
-}
-
-@media (max-width: 600px) {
-	.portfolio-card .switch {
-		width: 100%;
-	}
 }
 
 .cursor {
