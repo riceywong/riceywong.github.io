@@ -5,6 +5,7 @@ body {
 	background: #444;
 	font-family: "Bricolage Grotesque", sans-serif;
 	font-size: 1.6rem;
+	overscroll-behavior: none;
 }
 @media (max-width: 899px) {
 	body {
@@ -282,7 +283,7 @@ section.portfolio-section {
 	transition: transform 100ms ease-out;
 	@media (min-width: 600px) and (max-width: 1099px) {
 		padding: 40px;
-		margin-bottom: 40px;
+		margin-bottom: 30px;
 	}
 	@media (max-width: 599px) {
 		padding: 20px;
