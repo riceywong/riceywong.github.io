@@ -477,6 +477,8 @@ section.portfolio-section {
 .improv {
 	margin: -40px auto -60px;
 	min-height: 400px;
+	border-top-left-radius: 12px;
+	border-top-right-radius: 12px;
 }
 @media (max-width: 1099px) {
 	.improv {
