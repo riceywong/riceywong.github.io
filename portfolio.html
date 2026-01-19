@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet" href="chota.css?v=0.3">
 	<link rel="stylesheet" href="style.css?v=0.3">
-	<link rel="stylesheet" href="portfolio.css?v=0.2">
+	<link rel="stylesheet" href="portfolio.css?v=0.1">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&amp;display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
 	<link rel="shortcut icon" href="images/favicon.ico">
@@ -921,11 +921,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (targetElement && isSectionVisible(targetElement)) {
                     e.preventDefault();
                     const isMobile = window.innerWidth <= 899;
-                    let offsetTop = targetElement.offsetTop;
+                    
+                    // Use getBoundingClientRect for accurate position (not affected by positioned parents or transforms)
+                    const rect = targetElement.getBoundingClientRect();
+                    let offsetTop = rect.top + window.scrollY - 80;
                     
                     // Add mobile-specific offset to position section higher on screen
                     if (isMobile) {
-                        offsetTop = offsetTop + 240; // Adjust this value as needed
+                        offsetTop = offsetTop + 60; // Adjust this value as needed
                     }
                     
                     window.scrollTo({
@@ -936,42 +939,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-
-    // Back to top bar visibility based on scroll (mobile only)
-    const backToTopBar = document.querySelector('.backtotop');
-    if (backToTopBar) {
-        function isMobile() {
-            return window.innerWidth <= 899;
-        }
-
-        function updateBackToTopVisibility() {
-            // Only apply scroll-based visibility on mobile
-            if (!isMobile()) {
-                backToTopBar.classList.remove('show');
-                return;
-            }
-
-            const scrollPosition = window.scrollY || window.pageYOffset || 0;
-            if (scrollPosition >= 400) {
-                backToTopBar.classList.add('show');
-            } else {
-                backToTopBar.classList.remove('show');
-            }
-        }
-
-        // Check on scroll
-        window.addEventListener('scroll', function() {
-            updateBackToTopVisibility();
-        }, { passive: true });
-
-        // Check on resize (to handle orientation changes)
-        window.addEventListener('resize', function() {
-            updateBackToTopVisibility();
-        }, { passive: true });
-
-        // Check on page load
-        updateBackToTopVisibility();
-    }
 
     // Drag functionality for cards on desktop
     const isMobileDevice = () => window.innerWidth <= 899 || 'ontouchstart' in window;
