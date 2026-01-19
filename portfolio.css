@@ -474,6 +474,15 @@ section.portfolio-section {
 	border-radius:6px;
 	box-shadow:-10px -21px 47px rgba(0, 0, 0, 0.05);
 }
+.improv {
+	margin: -40px auto -60px;
+	min-height: 400px;
+}
+@media (max-width: 1099px) {
+	.improv {
+		margin: -20px auto -40px;
+	}
+}
 @media (max-width: 899px) {
 	.jam1 {
 		transform: rotate(-5deg) translate(-50px, -80px);
@@ -488,6 +497,10 @@ section.portfolio-section {
 	}
 	.jam2 {
 		transform: rotate(-5deg) translate(30px, 20px);
+	}
+	.improv {
+		margin: -20px auto -20px;
+		min-height: 380px;
 	}
 }
 @media (max-width: 899px) {
