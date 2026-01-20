@@ -569,6 +569,15 @@ section.portfolio-section {
 		color: #80CAFF;
 		cursor: move;
 	}
+	.card:not(.drag), .card-row:not(.drag) {
+		cursor: move;
+	}
+	.portfolio-card:hover>.normal-pill {
+		color: #80CAFF;
+	}
+	.portfolio-card:hover>.card:not(.drag), .portfolio-card:hover>.card-row:not(.drag) {
+		outline: 1.5px solid #0B99FF;
+	}
 	.normal-pill:hover + .card, .normal-pill:hover + .card-row {
 		outline: 1.5px solid #0B99FF;
 	}
