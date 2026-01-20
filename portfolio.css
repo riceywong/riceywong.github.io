@@ -304,11 +304,12 @@ section.portfolio-section {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	gap: 20px;
+	gap: 40px;
 }
 @media screen and (max-width: 599px) {
 	.portfolio-card .card-row {
 		flex-direction: column;
+		gap: 20px;
 	}
 	.portfolio-card .card-row>div {
 		width: 100% !important;
@@ -511,16 +512,14 @@ section.portfolio-section {
 	}
 }
 @media (max-width: 899px) {
+	.polaroid1 {
+		margin-bottom: -30px;
+	}
 	.polaroid2 {
-		width: 40% !important;
-		min-width: 180px;
-		position: relative !important;
-		bottom: -40px !important;
-		left: 40% !important;
-        transform: rotate(5deg) translateX(-50%) !important;
+		display: none;
     }
 	.graba11y {
-		transform: rotate(-5deg) translate(0, 20px) !important;
+		transform: rotate(-5deg) translate(22px, 36px) !important;
 	}
 }
 @media (max-width: 1099px) {
