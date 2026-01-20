@@ -25,6 +25,11 @@ p {
 	font-family: "Inter", "Bricolage Grotesque", sans-serif;;
 }
 
+@media (max-width: 1889px) {
+	.widescreen {
+		max-width: 1000px;
+	}
+}
 .sidebar {
 	width: 240px;
 	background-color: white;
