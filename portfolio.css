@@ -498,6 +498,17 @@ section.portfolio-section {
 	.jam2 {
 		transform: rotate(-5deg) translate(60px, 60px);
 	}
+	.polaroid1 {
+		margin-bottom: -30px;
+	}
+	.polaroid2 {
+		display: none;
+    }
+	.graba11y {
+		transform: rotate(-5deg) translate(72px, 50px) !important;
+        transform-origin: bottom;
+        margin-bottom: -40px;
+	}
 }
 @media (max-width: 599px) {
 	.jam1 {
@@ -510,16 +521,11 @@ section.portfolio-section {
 		margin: -20px auto -20px;
 		min-height: 380px;
 	}
-}
-@media (max-width: 899px) {
-	.polaroid1 {
-		margin-bottom: -30px;
-	}
-	.polaroid2 {
-		display: none;
-    }
 	.graba11y {
-		transform: rotate(-5deg) translate(22px, 36px) !important;
+        margin-bottom: -10px;
+        bottom: 24px;
+        left: -20px;
+        position: relative;
 	}
 }
 @media (max-width: 1099px) {
