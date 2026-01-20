@@ -33,6 +33,11 @@ section.top::before {
     pointer-events: none;
     z-index: 0;
 }
+@media (max-width: 1513px) {
+	.container.wrap {
+		max-width: 940px;
+	}
+}
 
 h1.overlay-title {
 	font-size: 4.8rem;
