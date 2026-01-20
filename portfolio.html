@@ -25,146 +25,8 @@
 </head>
 <body>
 
-<style>
-    .project-overlay-content {
-        background: none;
-        max-height: calc(100vh - env(safe-area-inset-top, 0) - env(safe-area-inset-bottom, 0) - 20px) !important;
-    }
-    .project-overlay-nav {
-        width: 100%;
-        background-color: white;
-        border-radius: 13px 13px 0 0;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 8px;
-        z-index: 1002;
-        border-bottom: 1px solid #e6e6e6;
-    }
-    .project-overlay-nav .project-overlay-close {
-        background: transparent !important;
-        position: unset;
-        top: auto;
-        right: auto;
-        width: 40px;
-        height: 40px;
-        clip-path: none;
-        border-radius: 6px;
-    }
-    .project-overlay-link,.project-overlay-prev,.project-overlay-next {
-        width: 40px;
-        height: 40px;
-        padding: 0;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        text-decoration: none;
-        border-radius: 6px;
-        background: transparent;
-        cursor: pointer;
-    }
-    .project-overlay-nav-left {
-        display: flex;
-        align-items: center;
-    }
-    .project-overlay-nav-right {
-        display: flex;
-        align-items: center;
-    }
-    .project-overlay-prev svg,
-    .project-overlay-next svg {
-        width: 16px;
-        height: 16px;
-    }
-    .project-overlay-prev:disabled,
-    .project-overlay-next:disabled {
-        opacity: 0.4;
-        cursor: not-allowed;
-    }
-    .project-overlay-link:hover, .project-overlay-close:hover,.project-overlay-prev:hover,.project-overlay-next:hover {
-        background: #f5f5f5 !important;
-        transform: none;
-        transition: all 0.2s 
-        ease;;
-    }
-    .link {
-        color:#2c2c2c;
-        padding:4px 8px;
-        border-radius: 2px;
-    }
-    .link:hover {
-        background-color: #f0f0f0;
-        color: black;
-    }
-@media (max-width: 899px) {
-    .project-overlay-content {
-        max-height: calc(100vh - env(safe-area-inset-top, 0) - env(safe-area-inset-bottom, 0) - 10px) !important;
-    }
-    .project-overlay-nav {
-        padding: 4px;
-    }
-    iframe {
-        height: calc(100vh - 60px);
-    }
-    .link:hover {
-        background-color: unset;
-    }
-    .project-overlay-close svg {
-        width: unset;
-        height: unset;
-    }
-}
-    /* Loading state styles */
-    .project-overlay-loader {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: white;
-        border-radius: 13px 13px 0 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 1001;
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.2s ease, visibility 0.2s ease;
-        pointer-events: none;
-    }
-    .project-overlay-loader.show {
-        opacity: 1;
-        visibility: visible;
-    }
-    .project-overlay-loader-spinner {
-        width: 40px;
-        height: 40px;
-        border: 3px solid #e6e6e6;
-        border-top-color: #999;
-        border-radius: 50%;
-        animation: spin 0.8s linear infinite;
-    }
-    @keyframes spin {
-        to { transform: rotate(360deg); }
-    }
-    .project-overlay-content {
-        position: relative;
-    }
-    .project-overlay-content iframe {
-        position: relative;
-        z-index: 1002;
-        opacity: 1;
-        transition: opacity 0.2s ease;
-        background: white;
-    }
-    .project-overlay-content iframe.loading {
-        opacity: 0;
-    }
-</style>
 
-<!-- Main Content -->
-
-<div class="figmaright hide-xs"></div>
+<div class="figmaright"></div>
 <div class="figmacenter"></div>
 
 <aside class="sidebar">
@@ -375,7 +237,143 @@
     </div>
 </section>
 
-<!-- Portfolio Overlays -->
+
+<style>
+    .project-overlay-content {
+        background: none;
+        max-height: calc(100vh - env(safe-area-inset-top, 0) - env(safe-area-inset-bottom, 0) - 20px) !important;
+    }
+    .project-overlay-nav {
+        width: 100%;
+        background-color: white;
+        border-radius: 13px 13px 0 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px;
+        z-index: 1002;
+        border-bottom: 1px solid #e6e6e6;
+    }
+    .project-overlay-nav .project-overlay-close {
+        background: transparent !important;
+        position: unset;
+        top: auto;
+        right: auto;
+        width: 40px;
+        height: 40px;
+        clip-path: none;
+        border-radius: 6px;
+    }
+    .project-overlay-link,.project-overlay-prev,.project-overlay-next {
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        border-radius: 6px;
+        background: transparent;
+        cursor: pointer;
+    }
+    .project-overlay-nav-left {
+        display: flex;
+        align-items: center;
+    }
+    .project-overlay-nav-right {
+        display: flex;
+        align-items: center;
+    }
+    .project-overlay-prev svg,
+    .project-overlay-next svg {
+        width: 16px;
+        height: 16px;
+    }
+    .project-overlay-prev:disabled,
+    .project-overlay-next:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+    }
+    .project-overlay-link:hover, .project-overlay-close:hover,.project-overlay-prev:hover,.project-overlay-next:hover {
+        background: #f5f5f5 !important;
+        transform: none;
+        transition: all 0.2s 
+        ease;;
+    }
+    .link {
+        color:#2c2c2c;
+        padding:4px 8px;
+        border-radius: 2px;
+    }
+    .link:hover {
+        background-color: #f0f0f0;
+        color: black;
+    }
+@media (max-width: 899px) {
+    .project-overlay-content {
+        max-height: calc(100vh - env(safe-area-inset-top, 0) - env(safe-area-inset-bottom, 0) - 10px) !important;
+    }
+    .project-overlay-nav {
+        padding: 4px;
+    }
+    iframe {
+        height: calc(100vh - 60px);
+    }
+    .link:hover {
+        background-color: unset;
+    }
+    .project-overlay-close svg {
+        width: unset;
+        height: unset;
+    }
+}
+    /* Loading state styles */
+    .project-overlay-loader {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: white;
+        border-radius: 13px 13px 0 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1001;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.2s ease, visibility 0.2s ease;
+        pointer-events: none;
+    }
+    .project-overlay-loader.show {
+        opacity: 1;
+        visibility: visible;
+    }
+    .project-overlay-loader-spinner {
+        width: 40px;
+        height: 40px;
+        border: 3px solid #e6e6e6;
+        border-top-color: #999;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+    .project-overlay-content {
+        position: relative;
+    }
+    .project-overlay-content iframe {
+        position: relative;
+        z-index: 1002;
+        opacity: 1;
+        transition: opacity 0.2s ease;
+        background: white;
+    }
+    .project-overlay-content iframe.loading {
+        opacity: 0;
+    }
+</style>
 <div id="grab-overlay" class="project-overlay">
     <div class="project-overlay-backdrop"></div>
 	<div class="project-overlay-content" tabindex="-1" style="overflow-y:hidden;">
