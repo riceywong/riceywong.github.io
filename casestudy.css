@@ -9,6 +9,11 @@ a {
 a:hover {
 	text-decoration: underline solid;
 }
+hr {
+	width: 100%;
+	margin: 0;
+	background-color: rgba(0, 0, 0, 0.05);
+}
 section {
     padding-top: 100px;
     padding-bottom: 100px;
@@ -52,6 +57,7 @@ h1.overlay-title {
     h1.overlay-title {
 		font-size: 3.2rem;
 		margin-bottom: 24px;
+		font-variation-settings: 'wdth' 87.5;
 	}
 }
 h2.overlay-title, span.overlay-title {
@@ -152,6 +158,35 @@ p.portfolio-content {
 	}
 	.research-highlights p:last-child {
 		font-size: 1.2rem;
+	}
+}
+
+.metric {
+	display: flex;
+	gap: 40px;
+	font-size: 3.2rem;
+	font-weight: 300;
+	line-height: 1;
+	@media (max-width: 899px) {
+		flex-direction: column;
+		gap: 20px;
+		font-size: 2.4rem;
+	}
+}
+.metric>div {
+	max-width: 400px;
+	@media (max-width: 899px) {
+		max-width: 300px;
+	}
+}
+.metric p {
+	font-size: 1.4rem;
+	opacity: 0.5;
+	margin-top: 4px !important;
+	line-height: 1.2;
+	text-wrap-style: pretty;
+	@media (max-width: 899px) {
+		line-height: 1.5;
 	}
 }
 
