@@ -74,17 +74,21 @@ section {
 		margin: 10px 10px;
 	}
 }
-@media (max-width: 1889px) {
+@media (max-width: 1599px) {
 	.widescreen {
 		max-width: 1000px;
 	}
 }
-@media (min-width: 3000px) {
+@media (min-width: 2000px) {
 	.widescreen {
-		max-width: 1500px;
+		max-width: 1300px;
 	}
 }
-
+@media (min-width: 3000px) {
+	.widescreen {
+		max-width: 1600px;
+	}
+}
 
 .grid {
 	display: grid;
