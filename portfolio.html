@@ -253,7 +253,7 @@
 
             <div class="divider" style="grid-column:1 / 3;">
                 <svg width="9" height="18" viewBox="0 0 9 18" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right:8px;"">
-                    <path d="M6.68335 13.3323C7.20719 13.1579 7.77437 13.4413 7.94897 13.9651C8.12318 14.4888 7.8397 15.055 7.31616 15.2297C6.65329 15.4507 5.97022 15.7904 5.3894 16.1389C4.7959 16.495 4.37392 16.8205 4.20679 16.9875C3.81639 17.378 3.18329 17.3787 2.79272 16.9885C2.40218 16.598 2.40222 15.964 2.79272 15.5735C3.12566 15.2406 3.70433 14.8176 4.36011 14.4241C5.02909 14.0227 5.84649 13.6113 6.68335 13.3323ZM6.49976 8.28052C7.05183 8.2806 7.49954 8.72847 7.49976 9.28052C7.49976 9.83275 7.05197 10.2814 6.49976 10.2815C4.60397 10.2815 2.7416 10.6274 1.39038 11.2014C0.882118 11.4172 0.295727 11.1794 0.079834 10.6711C-0.135746 10.1631 0.100256 9.57662 0.608154 9.3606C2.25681 8.66026 4.39566 8.28053 6.49976 8.28052ZM3.03687 0.730713C3.1861 0.199014 3.73854 -0.111842 4.27026 0.0373535C4.96872 0.233419 5.69828 0.709102 6.3396 1.23267C7.00178 1.77332 7.6588 2.43988 8.21265 3.11938C8.56136 3.5474 8.49789 4.17769 8.07007 4.52661C7.64203 4.87534 7.01175 4.81093 6.66284 4.38306C6.18702 3.79926 5.62425 3.22998 5.07495 2.78149C4.50496 2.31618 4.03049 2.04864 3.72925 1.96411C3.19764 1.81492 2.88789 1.26235 3.03687 0.730713Z" fill="#2c2c2c"></path>
+                    <path d="M6.68335 13.3323C7.20719 13.1579 7.77437 13.4413 7.94897 13.9651C8.12318 14.4888 7.8397 15.055 7.31616 15.2297C6.65329 15.4507 5.97022 15.7904 5.3894 16.1389C4.7959 16.495 4.37392 16.8205 4.20679 16.9875C3.81639 17.378 3.18329 17.3787 2.79272 16.9885C2.40218 16.598 2.40222 15.964 2.79272 15.5735C3.12566 15.2406 3.70433 14.8176 4.36011 14.4241C5.02909 14.0227 5.84649 13.6113 6.68335 13.3323ZM6.49976 8.28052C7.05183 8.2806 7.49954 8.72847 7.49976 9.28052C7.49976 9.83275 7.05197 10.2814 6.49976 10.2815C4.60397 10.2815 2.7416 10.6274 1.39038 11.2014C0.882118 11.4172 0.295727 11.1794 0.079834 10.6711C-0.135746 10.1631 0.100256 9.57662 0.608154 9.3606C2.25681 8.66026 4.39566 8.28053 6.49976 8.28052ZM3.03687 0.730713C3.1861 0.199014 3.73854 -0.111842 4.27026 0.0373535C4.96872 0.233419 5.69828 0.709102 6.3396 1.23267C7.00178 1.77332 7.6588 2.43988 8.21265 3.11938C8.56136 3.5474 8.49789 4.17769 8.07007 4.52661C7.64203 4.87534 7.01175 4.81093 6.66284 4.38306C6.18702 3.79926 5.62425 3.22998 5.07495 2.78149C4.50496 2.31618 4.03049 2.04864 3.72925 1.96411C3.19764 1.81492 2.88789 1.26235 3.03687 0.730713Z" fill="var(--color-text-primary)"></path>
                 </svg>
                 More about me
                 <svg width="20" height="27" viewBox="0 0 20 27" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-left:8px;margin-bottom:-22px;">
@@ -718,8 +718,11 @@
 document.addEventListener('DOMContentLoaded', function() {
     const overlayOrder = ['grab-overlay', 'beam-overlay', 'tiktok-overlay', 'tiktok-overlay2'];
     const body = document.body;
+    
+    // Track whether we're closing due to popstate (back button) to avoid history.back() loop
+    let isClosingFromPopstate = false;
 
-    function closeOverlayElement(overlay) {
+    function closeOverlayElement(overlay, skipHistoryBack) {
         overlay.classList.remove('show');
         if (!document.querySelector('.project-overlay.show')) {
             body.style.overflow = '';
@@ -739,12 +742,33 @@ document.addEventListener('DOMContentLoaded', function() {
                     el.removeAttribute('data-original-tabindex');
                 });
             }
+            
+            // Sync history when closing via UI (not from back button)
+            if (!skipHistoryBack && !isClosingFromPopstate && history.state && history.state.overlay) {
+                history.back();
+            }
         }
     }
 
-    function closeAllOverlays() {
-        document.querySelectorAll('.project-overlay.show').forEach(closeOverlayElement);
+    function closeAllOverlays(skipHistoryBack) {
+        const openOverlays = document.querySelectorAll('.project-overlay.show');
+        openOverlays.forEach(overlay => closeOverlayElement(overlay, true));
+        
+        // Handle history sync for all overlays closed at once
+        if (openOverlays.length > 0 && !skipHistoryBack && !isClosingFromPopstate && history.state && history.state.overlay) {
+            history.back();
+        }
     }
+    
+    // Handle browser back button to close overlay instead of navigating away
+    window.addEventListener('popstate', function(e) {
+        const openOverlay = document.querySelector('.project-overlay.show');
+        if (openOverlay) {
+            isClosingFromPopstate = true;
+            closeAllOverlays(true);
+            isClosingFromPopstate = false;
+        }
+    });
 
     function updateNavButtons(currentId) {
         const overlay = document.getElementById(currentId);
@@ -780,7 +804,15 @@ document.addEventListener('DOMContentLoaded', function() {
         // Check if we're switching between overlays (not initial open)
         const isSwitching = document.querySelector('.project-overlay.show') !== null;
         
-        closeAllOverlays();
+        closeAllOverlays(true); // Skip history back when switching
+        
+        // Push history state only on initial open (not when switching between overlays)
+        if (!isSwitching) {
+            history.pushState({ overlay: overlayId }, '', '');
+        } else {
+            // When switching, replace current state with new overlay id
+            history.replaceState({ overlay: overlayId }, '', '');
+        }
         overlay.classList.add('show');
         body.style.overflow = 'hidden';
 
@@ -1019,4 +1051,3 @@ function copyEmail() {
 
 </script>
 </html>
-
