@@ -91,7 +91,7 @@ section {
 	.widescreen {
 		max-width: 1500px;
 	}
-	svg {
+	svg:not(.dogear) {
 	    scale: 1.2;
 	}
 }
