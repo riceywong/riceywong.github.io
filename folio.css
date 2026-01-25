@@ -86,7 +86,7 @@ section {
 }
 @media (min-width: 3000px) {
 	.widescreen {
-		max-width: 1600px;
+		max-width: 1500px;
 	}
 }
 
