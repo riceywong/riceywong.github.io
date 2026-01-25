@@ -63,7 +63,7 @@ h1.overlay-title {
 	margin-top: 4px;
 	margin-bottom: 80px;
 	line-height: 1.2;
-	max-width: 20ch;
+	max-width: 67%;
 }
 @media (max-width: 899px) {
     h1.overlay-title {
