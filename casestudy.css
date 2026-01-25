@@ -1,3 +1,15 @@
+html {
+	scroll-behavior: smooth;
+	@media (min-width: 1800px) {
+		font-size: 75%;
+	}
+	@media (min-width: 2200px) {
+			font-size: 85%;
+		}
+	@media (min-width: 3000px) {
+		font-size: 100%;
+	}
+}
 body {
 	background: #f0f0f0;
 	font-family: "Bricolage Grotesque", sans-serif;
@@ -51,7 +63,7 @@ h1.overlay-title {
 	margin-top: 4px;
 	margin-bottom: 80px;
 	line-height: 1.2;
-	max-width: 600px;
+	max-width: 20ch;
 }
 @media (max-width: 899px) {
     h1.overlay-title {
@@ -117,7 +129,7 @@ p.portfolio-content {
 	font-size: 1.4rem;
 	font-weight: 380;
 	line-height: 1.5;
-	max-width: 600px;
+	max-width: 67ch;
 	margin: 0;
 }
 @media (max-width: 899px) {
