@@ -488,6 +488,12 @@ p.portfolio-content {
 	position: relative;
 }
 
+@media (min-width: 1800px) {
+	.expand img {
+		max-width: unset !important;
+		max-height: unset !important;
+	}
+}
 @media screen and (max-width: 899px) {
 	.expand {
 		overflow-x: scroll;
