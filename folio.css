@@ -91,6 +91,9 @@ section {
 	.widescreen {
 		max-width: 1500px;
 	}
+	svg {
+	    scale: 1.2;
+	}
 }
 
 .grid {
