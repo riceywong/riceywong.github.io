@@ -25,6 +25,9 @@ html {
 		font-size: 100%;
 	}
 }
+*:focus-visible {
+	outline-offset: 9px !important;
+}
 body {
 	background: #f0f0f0;
 	font-family: "Bricolage Grotesque", sans-serif;
