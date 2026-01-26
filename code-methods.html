@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet" href="chota.css?v=0.3">
 	<link rel="stylesheet" href="style.css?v=0.3">
-	<link rel="stylesheet" href="casestudy.css">
+	<link rel="stylesheet" href="casestudy.css?v=0.1">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&amp;display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet">
 	<link rel="shortcut icon" href="images/favicon.ico">
@@ -25,7 +25,7 @@
 </head>
 <body>
 
-<section class="top" style="background: radial-gradient(46% 57% at 48% 100%, #F0F0F0 52%, rgba(240, 240, 240, 0) 100%), linear-gradient(180deg, #ffebec 0%, #FFDADC 28%, #F0F0F0 100%);">
+<section class="top" style="background:radial-gradient(46% 57% at 48% 100%, #F0F0F0 52%, rgba(240, 240, 240, 0) 100%), linear-gradient(180deg, #ffebec 0%, #FFDADC 28%, #F0F0F0 100%);">
 <div class="container wrap" style="z-index:1;position:relative;">
     <div class="row">
         <div class="col-12 col-12-md">
@@ -105,10 +105,57 @@
                 <div class="col-12 col-12-md">
                     <div class="project-feature card">
                         <div>
-                            <h3 class="portfolio-content">Problem #1</h3>
-                            <p class="portfolio-content">As there were subtle differences between existing code-type payment method UI, it became a time-consuming task to prepare a consistent and complete spec.</p>
+                            <h3 class="portfolio-content">Problem 1: Inconsistent UI and fragmented UX</h3>
+                            <p class="portfolio-content">Over time, the code-based payment screens had diverged in navigation, content, layout, and error handling. The subtle inconsistencies compounded into extended design time with internal reviews, repeated QA alignment, and UI debt.</p>
                         </div>
-                        <img src="images/codevariations.png" alt="Variations of existing payment instructions UI" style="border-radius:8px;">
+                        <div class="toggle-content">
+                            <button class="toggle" aria-label="Toggle between Security Center and Alternatives" style="margin:0;width:100%;">
+                                <div class="switch">
+                                    <div class="switch-slider"></div>
+                                    <div class="left-label">
+                                        <span style="font-size:12px;font-weight:500;">Existing variations</span>
+                                    </div>
+                                    <div class="right-label">
+                                        <span style="font-size:12px;font-weight:500;">Mobile vs. Desktop</span>
+                                    </div>
+                                </div>
+                            </button>
+                            <div class="image-container" style="position:relative;width:100%;">
+                                <img src="images/codevariations.png" alt="Variations of existing payment instructions UI" class="switch-image left-image seccen" style="border-radius:8px;margin:0 auto;">
+                                <img src="images/codebefore.png" alt="Existing payment instructions UI" class="switch-image right-image alternatives" style="border-radius:8px;margin:0 auto;">
+                            </div>
+                            <script>
+                                (function() {
+                                    const toggleContent = document.currentScript.closest('.toggle-content');
+                                    if (!toggleContent) return;
+                                    
+                                    const seccenToggle = toggleContent.querySelector('.toggle');
+                                    const seccenSwitch = toggleContent.querySelector('.switch');
+                                    const seccenImage = toggleContent.querySelector('.seccen');
+                                    const alternativesImage = toggleContent.querySelector('.alternatives');
+                                    const imageContainer = toggleContent.querySelector('.image-container');
+                                    
+                                    if (seccenToggle && seccenSwitch && seccenImage && alternativesImage && imageContainer) {
+                                        // Initialize: start with Collectibles view (not active = showing Collectibles)
+                                        seccenSwitch.classList.remove('active');
+                                        imageContainer.classList.remove('switch-active');
+                                        
+                                        seccenToggle.addEventListener('click', function(e) {
+                                            e.preventDefault();
+                                            e.stopPropagation();
+                                            const isActive = seccenSwitch.classList.toggle('active');
+                                            
+                                            // Toggle the image container class to switch images
+                                            if (isActive) {
+                                                imageContainer.classList.add('switch-active');
+                                            } else {
+                                                imageContainer.classList.remove('switch-active');
+                                            }
+                                        });
+                                    }
+                                })();
+                                </script>
+                            </div>
                     </div>
                 </div>
             </div>
@@ -116,10 +163,9 @@
                 <div class="col-12 col-12-md">
                     <div class="project-feature card">
                         <div>
-                            <h3 class="portfolio-content">Problem #2</h3>
-                            <p class="portfolio-content">I felt that the UI could be improved but it wasn't a priority at that time due to the relatively high Payment Success Rate (PSR).</p>
+                            <h3 class="portfolio-content">Problem 2: Low priority despite visible issues</h3>
+                            <p class="portfolio-content">Although the UI could be improved, the high Payment Success Rate (PSR) meant redesign work was regularly deprioritised in favour of feature launches. As a result, inefficiencies persisted in the team’s release process and impacted quality.</p>
                         </div>
-                        <img src="images/codebefore.png" alt="Existing payment instructions UI" style="border-radius:8px;">
                     </div>
                 </div>
             </div>
@@ -127,8 +173,8 @@
                 <div class="col-12 col-12-md">
                     <div class="project-feature card">
                         <div>
-                            <h3 class="portfolio-content">Opportunity</h3>
-                            <p class="portfolio-content">Standardising the UI and workflow could significantly reduce design and engineering overhead while improving clarity and reliability for first-time users. However, to proceed, I needed stakeholder buy-in to place this work on the roadmap without affecting launch timelines.</p>
+                            <h3 class="portfolio-content">The opportunity</h3>
+                            <p class="portfolio-content">Standardising the UI and workflow could significantly reduce design and engineering overhead while improving clarity and reliability for first-time users. However, I needed stakeholder buy-in to place this work on the roadmap without affecting launch timelines.</p>
                         </div>
                     </div>
                 </div>
@@ -139,7 +185,7 @@
             <div class="row">
                 <div class="col-12 col-12-md">
                     <div class="project-feature card">
-                        <p class="portfolio-content">A redesign wasn't in the works so to get it on the roadmap, I negotiated with the PM and design management by offering the following reasons:</p>
+                        <p class="portfolio-content">To secure alignment from my PM and Design Manager, I reframed the redesign as an operational improvement with the following benefits:</p>
                         <div>
                             <div class="numbering">
                                 <span>1</span>
@@ -171,7 +217,7 @@
                                 <span>4</span>
                                 <div>
                                     <h3 class="portfolio-content" style="margin-bottom:0;">Commit to the existing launch deadline</h3>
-                                 <p class="portfolio-content">Most importantly, my PM wanted to be able to launch the new payment method on time. This gave me less than a week in total to deliver so I had to manage my time effectively.</p>
+                                 <p class="portfolio-content">My PM’s primary requirement was to avoid delaying the new payment method launch. I scoped the redesign tightly and committed to delivering within a week, using familiar UI patterns to minimise risk.</p>
                                 </div>
                             </div>
                         </div>
@@ -201,13 +247,53 @@
                             <h3 class="portfolio-content">Behavioural signals</h3>
                             <p class="portfolio-content">Since screenshot activity could not be tracked on the web, my Data Analyst and I extrapolated user behaviour from the click-through-rate on the 'Download QR code' button. Analysis of successful payments showed that 10% of users clicked download while 90% completed without interaction, leading us to conclude that screenshots are the dominant method, though there is still some reliance on downloads. After some consideration, we decided to retain the download call-to-action for less tech-savvy users.</p>
                         </div>
-                        <div class="row">
-                            <div class="col-12 col-6-md">
-                                <img src="images/clickdatatt1.png" alt="New-to-method user sankey chart">
+                        <div class="toggle-content">
+                            <button class="toggle" aria-label="Toggle between Collectibles and Unlockables" style="margin:0;width:100%;">
+                                <div class="switch">
+                                    <div class="switch-slider"></div>
+                                    <div class="left-label">
+                                        <span style="font-size:12px;font-weight:500;">New-to-method users</span>
+                                    </div>
+                                    <div class="right-label">
+                                        <span style="font-size:12px;font-weight:500;">Returning users</span>
+                                    </div>
+                                </div>
+                            </button>
+                            <div class="image-container" style="position:relative;width:100%;">
+                                <img src="images/clickdatatt1.png" alt="New-to-method user sankey chart" class="switch-image left-image collectibles" style="max-width:500px;margin:0 auto;">
+                                <img src="images/clickdatatt2.png" alt="Returning user sankey chart" class="switch-image right-image unlockables" style="max-width:500px;margin:0 auto;">
                             </div>
-                            <div class="col-12 col-6-md">
-                                <img src="images/clickdatatt2.png" alt="Returning user sankey chart">
-                            </div>
+                            <script>
+                                (function() {
+                                    const toggleContent = document.currentScript.closest('.toggle-content');
+                                    if (!toggleContent) return;
+                                    
+                                    const collectiblesToggle = toggleContent.querySelector('.toggle');
+                                    const collectiblesSwitch = toggleContent.querySelector('.switch');
+                                    const collectiblesImage = toggleContent.querySelector('.collectibles');
+                                    const unlockablesImage = toggleContent.querySelector('.unlockables');
+                                    const imageContainer = toggleContent.querySelector('.image-container');
+                                    
+                                    if (collectiblesToggle && collectiblesSwitch && collectiblesImage && unlockablesImage && imageContainer) {
+                                        // Initialize: start with Collectibles view (not active = showing Collectibles)
+                                        collectiblesSwitch.classList.remove('active');
+                                        imageContainer.classList.remove('switch-active');
+                                        
+                                        collectiblesToggle.addEventListener('click', function(e) {
+                                            e.preventDefault();
+                                            e.stopPropagation();
+                                            const isActive = collectiblesSwitch.classList.toggle('active');
+                                            
+                                            // Toggle the image container class to switch images
+                                            if (isActive) {
+                                                imageContainer.classList.add('switch-active');
+                                            } else {
+                                                imageContainer.classList.remove('switch-active');
+                                            }
+                                        });
+                                    }
+                                })();
+                                </script>
                         </div>
                     </div>
                 </div>
@@ -239,7 +325,7 @@
                             <img src="images/codemodule.png" alt="" style="border-radius:8px;">
                         </div>
                         <div>
-                            <p style="margin-bottom:0;margin-left:0;max-width:100%;padding-bottom:0;">As a result, I went with the template approach which trades flexibility for clarity. It also limits the number of potential variations in the layout, making it more consistent for development.</p>
+                            <p class="portfolio-content" style="margin-bottom:0;margin-left:0;max-width:100%;padding-bottom:0;">As a result, I went with the template approach which trades flexibility for clarity. It also limits the number of potential variations in the layout, making it more consistent for development.</p>
                         </div>
                         <div class="expand">
                             <img src="images/codetemplate.png" alt="" style="border-radius:8px;">

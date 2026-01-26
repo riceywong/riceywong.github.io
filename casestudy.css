@@ -290,7 +290,7 @@ li {
     .card, .card-row {
 		padding: 20px;
 		gap: 20px;
-		border-radius: 16px;
+		border-radius: 32px;
 	}
 }
 
